@@ -1,26 +1,30 @@
 # View Wireframes
 
+## Front page while signed out
+![homepage]
+
 ## New Session
 ![new-session]
 
-## Feed Show (landing page)
-![feed-show]
+## Album Show
+![album-show]
 
-## Blog Show
-![blog-show]
+## Album View with photo selected
+![album-view-selected]
 
-## Post Show
-![post-show]
+## Photo Show
+![photo-show]
 
-## Post Form
-![post-form]
+## Header
+![header]
 
-## Search Results
-![search-results]
+## User Cover and Navbar
+![user-view]
 
-[new-session]: ./wireframes/new_session.png
-[feed-show]: ./wireframes/feed_show.png
-[blog-show]: ./wireframes/blog_show.png
-[post-show]: ./wireframes/post_show.png
-[post-form]: ./wireframes/post_form.png
-[search-results]: ./wireframes/search_results.png
+[homepage]: ./wireframes/signed-out-front-page.png
+[new-session]: ./wireframes/sign-in-page.png
+[album-show]: ./wireframes/album-view.png
+[album-view-selected]: ./wireframes/album-view-selected.png
+[photo-show]: ./wireframes/photo-view.png
+[user-view]: ./wireframes/user-cover-and-navbar.png
+[header]: ./wireframes/header.png
