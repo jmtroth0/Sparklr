@@ -1,6 +1,7 @@
 Sparklr.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
+    this.makeNavBar();
     this.albums = new Sparklr.Collections.Albums;
     this.albums.fetch();
   },
@@ -36,7 +37,11 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
 
-
+  makeNavBar: function () {
+    var $rootEl = $("div.main-navbar");
+    var navView = new Sparklr.Views.NavBar();
+    $rootEl.html(navView.render().$el);
+  },
 
   _swapView: function (view) {
     this._currentView && this._currentView.remove()

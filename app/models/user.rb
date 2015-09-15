@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :albums
+  has_many :photos, foreign_key: :uploader_id
 
   validates :email, :password_digest, :session_token, uniqueness: true, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
