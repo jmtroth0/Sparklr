@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    @user = User.new
   end
 
   def create
@@ -14,6 +15,7 @@ class SessionsController < ApplicationController
       redirect_to user_url(@user)
     else
       flash.now[:errors] = @user.errors.full_messages
+      render :new
     end
   end
 
