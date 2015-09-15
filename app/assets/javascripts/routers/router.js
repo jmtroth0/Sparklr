@@ -2,10 +2,11 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
     this.albums = new Sparklr.Collections.Albums;
+    this.albums.fetch();
   },
 
   routes: {
-    // "": "albumIndex",
+    "": "albumIndex",
     "albums/new": "albumNew",
     "albums/:id": "albumShow",
   },
@@ -14,7 +15,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     var indexAlbumView = new Sparklr.Views.AlbumIndex({
       albums: this.albums
     });
-    this._swapView(AlbumIndex);
+    this._swapView(indexAlbumView);
   },
 
   albumNew: function () {
