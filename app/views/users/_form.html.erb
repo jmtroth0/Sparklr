@@ -54,4 +54,8 @@
     <h4>New to Sparklr?</h4>
     <a href="<%=new_user_url%>">Sign up for a new account</a>
   <% end %>
+  <% if (status == :new) %>
+    <h4>Have an account?</h4>
+    <a href="<%=new_session_url%>">Sign in for a new account</a>
+  <% end %>
 </div>
