@@ -16,7 +16,6 @@ Sparkl is a clone of Flickr built on Rails and Backbone. Users can:
 - [ ] Add and edit titles, descriptions, privacy
 - [ ] View album as collection of photo thumbnails
 - [ ] See individual enlarged photos
-- [ ] Add comments
 - [ ] Follow Users
 - [ ] See a list of followed users
 - [ ] Search for photos by title or info
@@ -62,24 +61,27 @@ I will probably also make the navbars and headers during this phase.
 
 [Details][phase-three]
 
-### Phase 4: User Feeds (~1-2 days)
+
+### Phase 4: Searching for Users and Photos (~2 days)
+I'll need to add `search` routes to both the Users and Photos controllers. On the
+Backbone side, there will be a `SearchResults` composite view has `UsersIndex`
+and `PhotosIndex` subviews. These views will use plain old `users` and `photos`
+collections, but they will fetch from the new `search` routes.
+
+[Details][phase-four]
+
+
+### Bonus Phase: User Feeds (~1-2 days)
 I'll start by adding a `feed` route that uses the `current_user`'s
-`followed_users_photos` association to serve a list of blog posts ordered
+`followed_users_photos` association to serve a list of photos ordered
 chronologically. On the Backbone side, I'll make a `FeedShow` view whose `photos`
 collection fetches from the new route.  Ultimately, this will be the page users
 see after logging in.
 
 [Details][phase-four]
 
-### Phase 5: Searching for Users and Photos (~2 days)
-I'll need to add `search` routes to both the Users and Photos controllers. On the
-Backbone side, there will be a `SearchResults` composite view has `UsersIndex`
-and `PhotosIndex` subviews. These views will use plain old `users` and `photos`
-collections, but they will fetch from the new `search` routes.
-
-[Details][phase-five]
-
 ### Bonus Features (TBD)
+- [ ] Add comments
 - [ ] "Fave" button and counter for photos
 - [ ] "Fave" album for your favorite photos around Sparkl
 - [ ] View counter for photos
@@ -95,4 +97,4 @@ collections, but they will fetch from the new `search` routes.
 [phase-two]: ./docs/phases/phase2.md
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
-[phase-five]: ./docs/phases/phase5.md
+[phase-four]: ./docs/phases/phase5.md
