@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     if @user
       sign_in @user
       flash[:notice] = ["Welcome back"]
-      redirect_to user_url(@user)
+      redirect_to :root
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
