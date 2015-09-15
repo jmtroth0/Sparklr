@@ -1,0 +1,26 @@
+<h1><%= album.id ? "Edit Album" : "Create Album" %></h1>
+
+<p class='errors'></p>
+
+<form>
+  <label for="title">Title</label>
+  <br>
+  <input
+    id="title"
+    type="text"
+    name="title"
+    value="<%= album.escape("title") %>">
+  <br>
+  <label for="description">Description</label>
+  <br>
+  <textarea
+    id="description"
+    type="textarea"
+    name="description"><%= album.escape("description")%></textarea>
+  <br>
+  <input
+    type="submit"
+    value="Create">
+</form>
+
+<button class='cancel'>X</button>

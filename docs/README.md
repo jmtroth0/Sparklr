@@ -5,7 +5,7 @@
 [heroku]: not yet up
 
 ## Minimum Viable Product
-Sparkl is a clone of Flickr built on Rails and Backbone. Users can:
+Sparklr is a clone of Flickr built on Rails and Backbone. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
@@ -45,8 +45,8 @@ phase, users will be able to create and view primitive albums. I plan to
 integrate Filepicker for file upload so users can finally upload images. I will
 take some time and look around for other file I/O libraries, though. I know
 rather little of what makes one better than another at this point. Users will
-start with camera roll and photostream albums, consisting of private and public
-photos respectively.
+start with the special camera roll and photostream albums, consisting of private
+and public photos respectively.
 
 [Details][phase-two]
 
@@ -83,8 +83,9 @@ see after logging in.
 ### Bonus Features (TBD)
 - [ ] Add comments
 - [ ] "Fave" button and counter for photos
-- [ ] "Fave" album for your favorite photos around Sparkl
+- [ ] "Fave" album for your favorite photos around Sparklr
 - [ ] View counter for photos
+- [ ] Collaborative albums
 - [ ] Photo tagging and tag searches
 - [ ] Photo download to local
 - [ ] Custom user urls
