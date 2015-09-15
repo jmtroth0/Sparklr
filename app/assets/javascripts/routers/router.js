@@ -5,7 +5,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "": "albumIndex"
+    // "": "albumIndex",
     "albums/new": "albumNew",
     "albums/:id": "albumShow",
   },

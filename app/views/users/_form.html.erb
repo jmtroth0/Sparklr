@@ -1,33 +1,57 @@
 <% case status %>
 <% when :new %>
-  <% title_text = "Sign up!" %>
-  <% button_text = "Register" %>
+  <% title_text = "Create an account" %>
+  <% button_text = "Sign Up" %>
   <% action = users_url %>
 <% when :edit %>
-  <% title_text = "Edit user info!" %>
+  <% title_text = "Edit user info" %>
   <% button_text = "Submit edits" %>
   <% action = user_url(@user.id) %>
 <% when :session %>
-  <% title_text = "Sign in!" %>
-  <% button_text = "Sign in" %>
+  <% title_text = "Sign in to your account" %>
+  <% button_text = "Sign In" %>
   <% action = session_url %>
 <% end %>
 
-<h3><%= title_text %></h3>
 
-<form action="<%= action %>" method="post">
-  <% if status == :edit %>
-    <input type="hidden" name="_method" value="patch">
+<div class="form-container">
+  <img src="https://s1.yimg.com/rz/d/yahoo_en-US_f_p_bestfit_2x.png">
+
+  <h3><%= title_text %></h3>
+
+  <form action="<%= action %>" method="post">
+    <% if status == :edit %>
+      <input type="hidden" name="_method" value="patch">
+    <% end %>
+    <%= auth_token %>
+
+    <input
+      type='text'
+      id='email'
+      name='user[email]'
+      value='<%= user.email %>'>
+    <label for='email'>Email</label>
+
+    <% if (status == :new || status == :edit) %>
+      <input
+        type='text'
+        id='fname'
+        name='user[fname]'
+        value='<% user.fname %>'>
+      <label for='fname'>First Name</label>
+    <% end %>
+
+    <input
+      type='password'
+      id='password'
+      name='user[password]'>
+    <label for='password'>Password</label>
+
+    <button><%= button_text %></button>
+  </form>
+
+  <% if (status == :session) %>
+    <h4>New to Sparklr?</h4>
+    <a href="<%=new_user_url%>">Sign up for a new account</a>
   <% end %>
-  <%= auth_token %>
-  <label for='email'>Email:</label>
-  <input type='text' id='email' name='user[email]' value='<%= user.email %>'>
-
-  <label for='fname'>First Name:</label>
-  <input type='text' id='fname' name='user[fname]' value='<%= user.fname %>'>
-
-  <label for='password'>Password:</label>
-  <input type='password' id='password' name='user[password]'>
-
-  <button><%= button_text %></button>
-</form>
+</div>

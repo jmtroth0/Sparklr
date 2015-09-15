@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+ html, body, h1, h2, h3,
+ h4, h5, h6, div, ul, li,
+ label, input, a {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   outline: 0;
+   font: inherit;
+   color: inherit;
+   text-align: inherit;
+   text-decoration: inherit;
+   vertical-align: inherit;
+   box-sizing: inherit;
+   background: transparent;
+   font-family: sans-serif;
+ }
+
+ ul {
+   list-style: none;
+ }
+
+ .group:after {
+   content: "";
+   display: block;
+   clear: both;
+ }
