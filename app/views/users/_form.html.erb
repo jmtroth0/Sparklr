@@ -1,0 +1,35 @@
+
+
+<% case status %>
+<% when :new %>
+  <% title_text = "Sign up!" %>
+  <% button_text = "Register" %>
+  <% action = users_url %>
+<% when :edit %>
+  <% title_text = "Edit user info!" %>
+  <% button_text = "Submit edits" %>
+  <% action = user_url(@user.id) %>
+<% when :session %>
+  <% title_text = "Sign in!" %>
+  <% button_text = "Sign in" %>
+  <% action = session_url %>
+<% end %>
+
+<h3><%= title_text %></h3>
+
+<form action="<%= action %>" method="post">
+  <% if status == :edit %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+  <%= auth_token %>
+  <label for='email'>Email:</label>
+  <input type='text' id='email' name='user[email]' value='<%= user.email %>'>
+
+  <label for='fname'>First Name:</label>
+  <input type='text' id='fname' name='user[fname]' value='<%= user.fname %>'>
+
+  <label for='password'>Password:</label>
+  <input type='password' id='password' name='user[password]'>
+
+  <button><%= button_text %></button>
+</form>

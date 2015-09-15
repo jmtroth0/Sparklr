@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<% if flash[:errors] %>
+  <%= flash[:errors].join(", ") %>
+<% end %>
+<% if flash[:notice] %>
+  <%= flash[:notice].join(", ") %>
+<% end %>
+
 <%= yield %>
 
 </body>

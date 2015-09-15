@@ -5,8 +5,8 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 email           | string    | not null, unique
-fname           | string    | not null
-password_digest | string    | not null
+fname           | string    |
+password_digest | string    | not null, unique
 session_token   | string    | not null, unique
 cover_photo_id  | integer   | foreign key (references photos)
 prof_pic_id     | integer   | foreign key (references photos)
