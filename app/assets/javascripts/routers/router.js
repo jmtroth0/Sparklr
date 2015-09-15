@@ -36,9 +36,8 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     this._swapView(showAlbumView)
   },
 
-
   makeNavBar: function () {
-    var $rootEl = $("div.main-navbar");
+    var $rootEl = $("div#main-navbar-container");
     var navView = new Sparklr.Views.NavBar();
     $rootEl.html(navView.render().$el);
   },

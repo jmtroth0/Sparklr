@@ -1,2 +1,4 @@
-class PhotosController < ApplicationController
+module Api
+  class PhotosController < ApiController
+  end
 end

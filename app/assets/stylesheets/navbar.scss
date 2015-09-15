@@ -1,0 +1,38 @@
+div#main-navbar-container {
+  background: black;
+  color: white;
+  width: 100%;
+}
+
+nav.main-navbar {
+  height: 50px;
+  width: 80%;
+  min-width: 500px;
+  margin: 0 auto 0 130px;
+}
+
+ul.nav-menu {
+  position: relative;
+}
+
+ul.nav-menu > li {
+  float: left;
+  margin: 15px 15px;
+  font-size: 16px;
+  transition: color .5s;
+}
+
+ul.nav-menu > li:hover {
+  cursor: pointer;
+  color: #ccc;
+  transition: color .5s;
+}
+
+ul.nav-menu > li.logo-container {
+  margin: 8px;
+  font-weight: 900;
+}
+
+a.main-logo {
+  font-size: 28px;
+}
