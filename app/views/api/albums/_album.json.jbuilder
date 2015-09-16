@@ -7,11 +7,10 @@ end
 if show_photos
   json.photos do
     json.array! album.photos do |photo|
-      json.partial! 'api/photos/photo', photo: photo
+      json.partial! 'api/photos/photo',
+        photo: photo
     end
   end
-elsif album.photos.first
-  json.cover_photo do
-    json.partial! 'api/photos/photo', photo: album.photos.first
-  end
+else
+  json.cover_photo_url asset_path(album.cover_photo_url)
 end

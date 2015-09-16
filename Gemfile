@@ -14,6 +14,7 @@ gem 'underscore'
 gem 'newrelic_rpm'
 gem 'paperclip'
 gem 'figaro'
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'byebug'

@@ -5,6 +5,7 @@ class Photo < ActiveRecord::Base
   has_many :album_photos
   has_many :albums, through: :album_photos, source: :album
 
-  has_attached_file :image, default_url: 'profile_default.png'
+  DEFAULT_IMAGE_URL = 'profile_default.png'
+  has_attached_file :image, default_url: DEFAULT_IMAGE_URL
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 end

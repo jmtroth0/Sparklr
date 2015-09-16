@@ -1,6 +1,6 @@
-<a class='album-link group' href="#/albums/<%= album.escape('id') %>">
-  <img class="album-thumbnail" src='<%=Sparklr.defaultCoverImage%>'>
+<a class='album-link group' href='#/albums/<%= album.escape("id") %>'>
+  <img class='album-thumbnail' src='<%= album.get("cover_photo_url") %>'>
   <!-- first pic of the album -->
-  <h3><%= album.escape('title') %><h3>
+  <h3><%= album.escape('title') %></h3>
 </a>
 <!-- also get num photos and num views -->

@@ -1,5 +1,7 @@
 module Api
   class PhotosController < ApiController
+    wrap_parameters false
+
     def create
       @post = Post.create!(post_params)
       render :show
@@ -14,13 +16,13 @@ module Api
     def destroy
       @post = Post.find(params[:id])
       @post.destroy!
-      render
+      render :show
     end
 
     private
 
     def photo_params
-      params.require(:photo).permit(:id, :title, :description, :uploader_id)
+      params.require(:photo).permit(:id, :title, :description, :uploader_id, :image)
     end
   end
 end
