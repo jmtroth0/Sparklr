@@ -7,5 +7,6 @@ Sparklr.Views.AlbumShow = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template({ album: this.model }))
+    return this;
   }
 })

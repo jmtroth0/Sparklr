@@ -31,6 +31,10 @@
    font-family: sans-serif;
  }
 
+ div#backdrop {
+   margin-top: 50px;
+ }
+
  ul {
    list-style: none;
  }

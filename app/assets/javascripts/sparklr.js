@@ -5,6 +5,7 @@ window.Sparklr = {
   Routers: {},
   initialize: function() {
     var router = new Sparklr.Routers.Router({ $rootEl: $('div#main') });
+
     Backbone.history.start();
   },
 };

@@ -13,6 +13,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   albumIndex: function () {
+    this.addUserCover();
     var indexAlbumView = new Sparklr.Views.AlbumIndex({
       albums: this.albums
     });
@@ -20,6 +21,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   albumNew: function () {
+    this.addUserCover();
     var newAlbum = new Sparklr.Models.Album();
     var newAlbumView = new Sparklr.Views.AlbumForm({
       album: newAlbum,
@@ -29,11 +31,17 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   albumShow: function (id) {
+
+    this.addUserCover();
     var album = this.albums.getOrFetch(id);
     var showAlbumView = new Sparklr.Views.AlbumShow({
       model: album
     });
     this._swapView(showAlbumView)
+  },
+
+  addUserCover: function () {
+
   },
 
   makeNavBar: function () {

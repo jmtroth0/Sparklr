@@ -24,6 +24,11 @@
 </ul>
 
 <div class='user-menu-container'>
-  <img class='profile-pic' src='/images/profile_default.png'>
-  <button class='sign-out'>Sign Out</button>
+  <img class='profile-pic' src='<%=Sparklr.defaultProfileImage%>'>
+  <div class="nav-dropdown-container">
+    <div class='settings-dropdown-container'>
+      <h2>Hi, <%=Sparklr.currentUser%></h2>
+      <button class='sign-out'>Sign Out</button>
+    </div>
+  </div>
 </div>

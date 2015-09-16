@@ -4,7 +4,7 @@ Sparklr.Views.AlbumForm = Backbone.View.extend({
   initialize: function (options) {
     this.album = options.album;
     this.albums = options.albums;
-    // this.listenTo(this.album, "sync", this.render)
+    this.listenTo(this.album, "sync", this.render)
   },
 
   events: {
@@ -12,7 +12,6 @@ Sparklr.Views.AlbumForm = Backbone.View.extend({
   },
 
   render: function () {
-    // debugger;
     this.$el.html(this.template({ album: this.album }))
     return this;
   },
@@ -23,9 +22,8 @@ Sparklr.Views.AlbumForm = Backbone.View.extend({
     var self = this;
     this.album.save(attrs, {
       success: function () {
-        debugger;
         self.albums.add(self.album);
-        Backbone.history.navigate('/#/albums/' + self.album.id, { trigger: true })
+        Backbone.history.navigate('albums/' + self.album.id, { trigger: true })
       },
 
       error: function (model, response) {
