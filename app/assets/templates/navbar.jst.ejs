@@ -1,16 +1,18 @@
 <ul class='nav-menu'>
   <li class='logo-container group'><a href="#" class='main-logo'>sparklr</a></li>
-  <li class='group personal-link'>
-    <a class='personal-link'>You</a>
-    <div class='nav-dropdown-container'>
-      <ul class='personal-nav-list'>
-        <li class='personal-link'><a href="#">Camera Roll</a></li>
-        <li class='personal-link'><a href="#">Photostream</a></li>
-        <li class='personal-link'><a href="#">Albums</a></li>
-        <li class='personal-link'><a href="#">Favorites</a></li>
-      </ul>
-    </div>
-  </li>
+  <% if (Sparklr.currentUser) { %>
+    <li class='group personal-link'>
+      <a class='personal-link'>You</a>
+      <div class='nav-dropdown-container'>
+        <ul class='personal-nav-list'>
+          <!-- <li class='personal-link'><a href="#">Camera Roll</a></li> -->
+          <li class='personal-link'><a href="#">Photostream</a></li>
+          <li class='personal-link'><a href="#">Albums</a></li>
+          <li class='personal-link'><a href="#">Favorites</a></li>
+        </ul>
+      </div>
+    </li>
+  <% } %>
   <li class='group explore-link'>
     <a class='explore-link'>Explore</a>
     <div class='nav-dropdown-container'>
@@ -20,15 +22,19 @@
       </ul>
     </div>
   </li>
-  <li class='group'><a class='upload-link'>Upload</a></li>
+  <% if (Sparklr.currentUser) { %>
+    <li class='group'><a class='upload-link'>Upload</a></li>
+  <% } %>
 </ul>
 
-<div class='user-menu-container'>
-  <img class='profile-pic' src='<%=Sparklr.defaultProfileImage%>'>
-  <div class="nav-dropdown-container">
-    <div class='settings-dropdown-container'>
-      <h2>Hi, <%=Sparklr.currentUser%></h2>
-      <button class='sign-out'>Sign Out</button>
+<% if (Sparklr.currentUser) { %>
+  <div class='user-menu-container'>
+    <img class='profile-pic' src='<%=Sparklr.defaultProfileImage%>'>
+    <div class="nav-dropdown-container">
+      <div class='settings-dropdown-container'>
+        <h2>Hi, <%=Sparklr.currentUser%></h2>
+        <%= Sparklr.signOutForm %>
+      </div>
     </div>
   </div>
-</div>
+<% } %>

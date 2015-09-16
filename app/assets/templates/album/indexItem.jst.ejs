@@ -1,3 +1,6 @@
-<a href="#/albums/<%= album.escape('id') %>"><img class="album-first" src='<%=Sparklr.defaultProfileImage%>'></a>
+<a href="#/albums/<%= album.escape('id') %>">
+  <img class="album-first" src='<%=Sparklr.defaultProfileImage%>'>
+  <!-- first pic of the album -->
+</a>
 <h3><%= album.escape('title') %><h3>
 <!-- also get num photos and num views -->

@@ -1,4 +1,4 @@
-<div id="main-navbar-container"></div>
+
 <div id="backdrop">
   <div id="main"></div>
 </div>
@@ -7,4 +7,6 @@
   Sparklr.currentUser = "<%= current_user.fname %>"
   Sparklr.defaultProfileImage = "<%= asset_path('profile_default.png') %>"
   Sparklr.defaultCoverImage = "<%= asset_path('cover_default.png') %>"
+  Sparklr.signOutForm = '<%= button_to "Sign out", session_url, method: :delete%>'
+  Sparklr.sessionUrl = "<%= session_url %>"
 </script>
