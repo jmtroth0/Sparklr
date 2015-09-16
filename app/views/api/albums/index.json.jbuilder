@@ -1,1 +1,4 @@
-json.array! @albums, partial: 'album', as: :album, show_photos: false
+json.array! @albums,
+  partial: 'api/albums/album',
+  as: :album,
+  locals: {show_photos: false}

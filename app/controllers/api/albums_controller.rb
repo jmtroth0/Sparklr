@@ -12,7 +12,7 @@ module Api
 
     def index
       @albums = current_user.albums
-      render json: @albums
+      render :index
     end
 
     def update
