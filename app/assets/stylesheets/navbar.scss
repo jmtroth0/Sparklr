@@ -20,9 +20,10 @@ ul.nav-menu {
 
 ul.nav-menu > li {
   float: left;
-  margin: 15px 15px;
+  margin: 10px 10px;
   font-size: 16px;
   transition: color .5s;
+  padding: 5px;
 }
 
 ul.nav-menu > li:hover {
@@ -32,7 +33,7 @@ ul.nav-menu > li:hover {
 }
 
 ul.nav-menu > li.logo-container {
-  margin: 8px;
+  margin: 3px;
   font-weight: 900;
 }
 
@@ -40,21 +41,60 @@ a.main-logo {
   font-size: 28px;
 }
 
-ul.personal-nav-list {
+div.nav-dropdown-container {
   display: none;
-  color: blue; //light blue
+  color: black;
   position: absolute;
   background: white;
-  transform: translateX(-70px) translateY(5px);
-  border: 2px solid blue; // light blue
-  border-radius: 5px;
+  transform: translateY(10px);
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  font-size: 14px;
+  font-weight: normal;
+  min-width: 160px;
 }
 
-li.personal-link:hover ul.personal-nav-list:before {
+div.nav-dropdown-container li {
+  margin: 10px;
+}
+
+ul.nav-menu div.nav-dropdown-container:before {
   content: "";
-  border-top: 5px;
+  display: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid white;
+  border-top: none;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  transform: translateY(-10px) translateX(5px);
 }
 
-li.personal-link:hover ul.personal-nav-list {
+li.personal-link:hover div.nav-dropdown-container,
+li.personal-link:hover div.nav-dropdown-container:before {
   display: block;
+}
+
+li.explore-link:hover div.nav-dropdown-container,
+li.explore-link:hover div.nav-dropdown-container:before {
+  display: block;
+}
+
+li.personal-link:hover div.nav-dropdown-container,
+li.personal-link:hover div.nav-dropdown-container:before {
+  display: block;
+}
+
+div.user-menu-container {
+  float: right;
+}
+
+button.sign-out {
+  margin: 15px 15px;
+}
+
+img.profile-pic {
+  background: image-url
 }

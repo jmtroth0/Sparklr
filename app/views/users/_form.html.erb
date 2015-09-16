@@ -32,6 +32,12 @@
       value='<%= user.email %>'>
     <label for='email'>Email</label>
 
+    <input
+      type='password'
+      id='password'
+      name='user[password]'>
+    <label for='password'>Password</label>
+
     <% if (status == :new || status == :edit) %>
       <input
         type='text'
@@ -40,12 +46,6 @@
         value='<% user.fname %>'>
       <label for='fname'>First Name</label>
     <% end %>
-
-    <input
-      type='password'
-      id='password'
-      name='user[password]'>
-    <label for='password'>Password</label>
 
     <button><%= button_text %></button>
   </form>

@@ -3,10 +3,13 @@ Sparklr.Views.NavBar = Backbone.View.extend({
   tagName: 'nav',
   className: 'main-navbar',
 
-  events: {},
 
   render: function () {
     this.$el.html(this.template());
     return this;
   },
+
+  signOut: function () {
+    
+  }
 })
