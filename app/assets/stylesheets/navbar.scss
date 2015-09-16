@@ -2,9 +2,12 @@ div#main-navbar-container {
   background: black;
   color: white;
   width: 100%;
+  height: 50px;
+  position: fixed;
 }
 
 nav.main-navbar {
+  position: absolute;
   height: 50px;
   width: 80%;
   min-width: 500px;
@@ -35,4 +38,23 @@ ul.nav-menu > li.logo-container {
 
 a.main-logo {
   font-size: 28px;
+}
+
+ul.personal-nav-list {
+  display: none;
+  color: blue; //light blue
+  position: absolute;
+  background: white;
+  transform: translateX(-70px) translateY(5px);
+  border: 2px solid blue; // light blue
+  border-radius: 5px;
+}
+
+li.personal-link:hover ul.personal-nav-list:before {
+  content: "";
+  border-top: 5px;
+}
+
+li.personal-link:hover ul.personal-nav-list {
+  display: block;
 }
