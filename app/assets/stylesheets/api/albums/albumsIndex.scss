@@ -1,3 +1,15 @@
 // Place all the styles related to the Albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a.album-link {
+  position: relative;
+  float: left;
+  display: block;
+  margin: 20px;
+}
+
+img.album-thumbnail {
+  width: 150px;
+  height: auto;
+}
