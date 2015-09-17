@@ -5,10 +5,12 @@ class Photo < ActiveRecord::Base
   has_many :album_photos
   has_many :albums, through: :album_photos, source: :album
 
-  DEFAULT_IMAGE_URL = 'profile_default.png'
+  DEFAULT_PROFILE_IMAGE_URL = 'profile_default.png'
+  DEFAULT_COVER_IMAGE_URL = 'cover_default.png'
+  DEFAULT_THUMB_IMAGE_URL = 'blue-mosque-thumb.jpg'
   has_attached_file :image,
-    default_url: DEFAULT_IMAGE_URL,
-    styles: { thumb: "240x240#", cover: "800x300#" },
-    convert_options: { thumb: "-thumbnail 100" }
+    default_url: DEFAULT_COVER_IMAGE_URL,
+    styles: { thumb: "200x200#", cover: "800x300#" },
+    convert_options: { thumb: "-thumbnail 200" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 end

@@ -1,8 +1,12 @@
 <a href="/#/albums">Back to albums list</a>
 <br>
-<img class="album-cover-photo" src="<%= album.escape('cover_photo_url') %>">
-<h1> <%= album.escape('title') %> </h1>
-<p><%= album.escape('description') %></p>
+
+<div class="album-cover-container">
+  <div class="album-cover-shade"></div>
+  <img class="album-cover-photo" src="<%= album.escape('cover_photo_url') %>">
+  <h1 class='album-title'><%= album.escape('title') %></h1>
+  <p class='album-description'><%= album.escape('description') %></p>
+</div>
 
 <ul class="photo-list"></ul>
 

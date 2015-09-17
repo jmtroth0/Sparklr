@@ -6,8 +6,37 @@ li.photoIndexItem {
   margin: 5px;
 }
 
+div.album-cover-container {
+  width: 800px;
+  height: 300px;
+  margin: 50px;
+}
+
 div.album-show-container {
   width: 80%;
   min-width: 600px;
   margin: 0 auto;
+  position: relative;
+}
+
+div.album-cover-shade {
+  background: black;
+  opacity: .6;
+  position: absolute;
+  z-index: 2;
+}
+
+h1.album-title {
+  position: absolute;
+  top: 80px;
+  left: 425px;
+  z-index: 20;
+  color: white;
+}
+
+p.album-description {
+  top: 100px;
+  left: 425px;
+  z-index: 20;
+  color: white;
 }
