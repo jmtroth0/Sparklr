@@ -25,9 +25,9 @@ Sparklr.Views.PhotoForm = Backbone.View.extend({
     var file = this.$('#input-photo-image')[0].files[0];
 
     var formData = new FormData();
-    for( var attr in attrs) {
+    for(var attr in attrs) {
       if (attrs.hasOwnProperty) {
-        formData.append("photo[" + attr + "]", attrs.attr)
+        formData.append("photo[" + attr + "]", attrs[attr])
       }
     }
     formData.append("photo[image]", file)

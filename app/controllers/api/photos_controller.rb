@@ -3,9 +3,7 @@ module Api
     wrap_parameters false
 
     def create
-      @photo = Photo.new(photo_params)
-      @photo.uploader_id = current_user.id
-      @photo.save!
+      @photo = current_user.photos.create!(photo_params)
       AlbumPhoto.create!({
         album_id: params[:photo][:album_id],
         photo_id: @photo.id

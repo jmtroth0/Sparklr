@@ -5,3 +5,8 @@ button.open-form, button.close-form {
 button.visible {
   display: block;
 }
+
+div.album-form-container {
+  position: relative;
+  z-index: 10;
+}

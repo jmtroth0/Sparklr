@@ -1,4 +1,4 @@
-<a class='album-link group' href='#/albums/<%= album.escape("id") %>'>
+<a class='album-link' href='#/albums/<%= album.escape("id") %>'>
   <img class='album-thumbnail' src='<%= album.get("cover_photo_url") || Sparklr.defaultProfileImage %>'>
   <!-- first pic of the album -->
   <h3><%= album.escape('title') %></h3>

@@ -14,7 +14,7 @@ gem 'underscore'
 gem 'newrelic_rpm'
 gem 'paperclip'
 gem 'figaro'
-gem 'aws-sdk'
+gem 'aws-sdk', '~> 1.6'
 gem 'ejs'
 
 group :development, :test do

@@ -1,1 +1,1 @@
-json.partial! 'photo', photo: @photo, show_photos: true
+json.partial! 'photo', photo: @photo, style: :original

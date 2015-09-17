@@ -3,11 +3,10 @@ Sparklr.Models.Album = Backbone.Model.extend({
 
   parse: function (payload) {
     if (payload.photos) {
-      this.photos().set(payload.photos, {parse: true});
+      this.photos().set(payload.photos);
 
       delete payload.photos;
     } else if (payload.cover_photo) {
-      debugger;
       this.coverPhoto() = payload.coverPhoto;
     };
 
