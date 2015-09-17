@@ -1,0 +1,7 @@
+<a class='photo-link group' href='#/photos/<%= photo.escape("id") %>'>
+  <img class='photo-thumbnail' src='<%= photo.get("image_url") %>'>
+  <h3><%= photo.escape('title') %></h3>
+</a>
+
+<button class='delete-photo'>X</button>
+<!-- also get num views -->

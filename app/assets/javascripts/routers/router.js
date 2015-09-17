@@ -32,7 +32,6 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   albumShow: function (id) {
-
     this.addUserCover();
     var album = this.albums.getOrFetch(id);
     var showAlbumView = new Sparklr.Views.AlbumShow({
@@ -42,7 +41,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   addUserCover: function () {
-
+    // top of main page when logged in and not 'exploring'
   },
 
   makeNavBar: function () {

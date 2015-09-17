@@ -1,0 +1,24 @@
+<h1><%= photo.id ? "Edit Photo" : "Create Photo" %></h1>
+
+<p class='errors'></p>
+
+<form>
+  <label for="title">Title</label>
+  <input
+    id="title"
+    type="text"
+    name="title"
+    value="<%= photo.escape("title") %>">
+  <label for="input-photo-image">Image</label>
+  <input id="input-photo-image" type="file" name="photo[image]">
+  <img src="" id="preview-post-image" width="50">
+  <label for="description">Description</label>
+  <textarea
+    id="description"
+    type="textarea"
+    name="description"><%= photo.escape("description")%></textarea>
+  <input type="hidden" name="album_id" value="<%= album_id %>">
+  <input
+    type="submit"
+    value="Upload">
+</form>

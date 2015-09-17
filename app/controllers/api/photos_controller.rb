@@ -3,26 +3,32 @@ module Api
     wrap_parameters false
 
     def create
-      @post = Post.create!(post_params)
+      @photo = Photo.new(photo_params)
+      @photo.uploader_id = current_user.id
+      @photo.save!
+      AlbumPhoto.create!({
+        album_id: params[:photo][:album_id],
+        photo_id: @photo.id
+      })
       render :show
     end
 
     def update
-      @post = Post.find(params[:id])
-      @post.update!(post_params)
+      @photo = Photo.find(params[:id])
+      @photo.update!(photo_params)
       render :show
     end
 
     def destroy
-      @post = Post.find(params[:id])
-      @post.destroy!
+      @photo = Photo.find(params[:id])
+      @photo.destroy!
       render :show
     end
 
     private
 
     def photo_params
-      params.require(:photo).permit(:id, :title, :description, :uploader_id, :image)
+      params.require(:photo).permit(:id, :title, :description, :image)
     end
   end
 end
