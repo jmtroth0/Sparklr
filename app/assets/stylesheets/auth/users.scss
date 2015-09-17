@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.form-container {
+div.auth-form-container {
   margin-top: 50px;
   position: absolute;
   right: 100px;
@@ -13,18 +13,18 @@ div.form-container {
   border-top: 10px solid #6830eb;
 }
 
-div.form-container > img {
+div.auth-form-container > img {
   margin: 0 auto;
   width: 110px;
   display: block;
 }
 
-div.form-container > h3, div.form-container > h4 {
+div.auth-form-container > h3, div.auth-form-container > h4 {
   font-size: 12px;
   margin-top: 40px;
 }
 
-div.form-container label {
+div.auth-form-container label {
   position: absolute;
   left: 50px;
   margin: -10px 0 0 0;
@@ -32,7 +32,7 @@ div.form-container label {
   font-weight: lighter;
 }
 
-div.form-container input {
+div.auth-form-container input {
   display: block;
   // width: 75%;
   padding: 10px;
@@ -41,7 +41,7 @@ div.form-container input {
   margin: 10px;
 }
 
-div.form-container button {
+div.auth-form-container button {
   background: linear-gradient(to right,#4b1c99 0,#6830eb 100%);
   margin-top: 30px;
   width: 300px;
@@ -50,10 +50,10 @@ div.form-container button {
   font-size: 1.00em;
 }
 
-div.form-container a {
+div.auth-form-container a {
   color: blue;
 }
 
-div.form-container a:hover {
+div.auth-form-container a:hover {
   color: purple;
 }

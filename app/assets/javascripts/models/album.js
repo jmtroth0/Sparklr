@@ -8,7 +8,7 @@ Sparklr.Models.Album = Backbone.Model.extend({
       delete payload.photos;
     } else if (payload.cover_photo) {
       debugger;
-      this._coverPhoto = payload.cover_photo;
+      this.coverPhoto() = payload.coverPhoto;
     };
 
     return payload;
@@ -21,7 +21,7 @@ Sparklr.Models.Album = Backbone.Model.extend({
     return this._photos
   },
 
-  cover_photo: function () {
+  coverPhoto: function () {
     this._coverPhoto = this._coverPhoto || new Sparklr.Models.Photo();
 
     return this._coverPhoto

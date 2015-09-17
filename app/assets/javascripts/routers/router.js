@@ -4,10 +4,11 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     this.makeNavBar();
     this.albums = new Sparklr.Collections.Albums;
     this.albums.fetch();
+    Backbone.history.navigate("albums", { trigger: true })
   },
 
   routes: {
-    "": "albumIndex",
+    "albums": "albumIndex",
     "albums/new": "albumNew",
     "albums/:id": "albumShow",
   },
