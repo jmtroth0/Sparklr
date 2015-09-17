@@ -7,8 +7,7 @@ end
 if show_photos
   json.photos do
     json.array! album.photos do |photo|
-      json.partial! 'api/photos/photo',
-        photo: photo
+      json.partial! 'api/photos/photo', photo: photo
     end
   end
 else

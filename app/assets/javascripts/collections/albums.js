@@ -9,7 +9,7 @@ Sparklr.Collections.Albums = Backbone.Collection.extend({
     if (album){
       album.fetch()
     } else {
-      album = new Sparklr.Models.Album ({id: id})
+      album = new this.model ({id: id})
       albums.add(album)
       album.fetch({
         error: albums.remove

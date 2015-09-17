@@ -1,6 +1,8 @@
 <a class='album-link group' href='#/albums/<%= album.escape("id") %>'>
-  <img class='album-thumbnail' src='<%= album.get("cover_photo_url") %>'>
+  <img class='album-thumbnail' src='<%= album.get("cover_photo_url") || Sparklr.defaultProfileImage %>'>
   <!-- first pic of the album -->
   <h3><%= album.escape('title') %></h3>
 </a>
+
+<button class='delete-album'>X</button>
 <!-- also get num photos and num views -->
