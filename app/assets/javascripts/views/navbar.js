@@ -5,7 +5,6 @@ Sparklr.Views.NavBar = Backbone.View.extend({
 
   events: {
     'click img.profile-pic': 'toggleSettings',
-    'click button.edit-user-info': 'editUserInfo',
     "click button#sign-out": "signOut",
   },
 
@@ -33,8 +32,4 @@ Sparklr.Views.NavBar = Backbone.View.extend({
       }
     })
   },
-
-  editUserInfo: function (e) {
-    var editUserView = new Sparklr.Views.EditUserInfo();
-  }
 })

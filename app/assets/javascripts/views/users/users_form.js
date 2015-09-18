@@ -17,10 +17,10 @@ Sparklr.Views.UsersForm = Backbone.View.extend({
     return this;
   },
 
-  submit: function(event){
-    event.preventDefault();
+  submit: function(e){
+    e.preventDefault();
 
-    var $form = $(event.currentTarget);
+    var $form = $(e.currentTarget);
     var userData = $form.serializeJSON().user;
     var that = this;
 

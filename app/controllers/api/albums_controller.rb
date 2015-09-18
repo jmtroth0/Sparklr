@@ -11,7 +11,7 @@ module Api
     end
 
     def index
-      @albums = current_user.albums
+      @albums = current_user.albums.drop(1)
       render :index
     end
 

@@ -17,6 +17,7 @@ gem 'figaro'
 gem 'aws-sdk', '~> 1.6'
 gem 'ejs'
 gem 'omniauth-facebook'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'

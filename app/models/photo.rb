@@ -10,7 +10,7 @@ class Photo < ActiveRecord::Base
   DEFAULT_THUMB_IMAGE_URL = 'blue-mosque-thumb.jpg'
   has_attached_file :image,
     default_url: DEFAULT_COVER_IMAGE_URL,
-    styles: { thumb: "200x200#", cover: "800x300#" },
+    styles: { thumb: "200x133#", cover: "800x300#" },
     convert_options: { thumb: "-thumbnail 200" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 end

@@ -11,6 +11,7 @@ if show_photos
     end
   end
 end
+
 json.cover_photo_url asset_path(album.cover_photo_url(:cover))
 
 json.cover_thumbnail_url asset_path(album.thumb_photo_url(:thumb))

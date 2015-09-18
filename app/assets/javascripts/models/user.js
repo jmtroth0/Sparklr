@@ -18,9 +18,22 @@ Sparklr.Models.User = Backbone.Model.extend({
 
   albums: function () {
     this._albums = this._albums ||
-      new Sparklr.Collections.Albums([], { photo: this } );
+      new Sparklr.Collections.Albums([]);
 
     return this._albums;
+  },
+
+  photos: function () {
+    if (!this._photos){
+      var self = this;
+      this._photos = new Sparklr.Collections.Photos([]);
+      this.albums().each(function(album) {
+        album.photos().each(function(photo) {
+          self._photos.add(photo);
+        });
+      });
+    }
+    return this._photos
   },
 
   photostream: function () {

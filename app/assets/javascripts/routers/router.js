@@ -14,14 +14,16 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "_=_": "albumIndex",
     "users/new": "userNew",
     "users/:id": "userShow",
+    "users/edit": "userEdit",
     "session/new": "signIn",
     "albums/new": "albumNew",
     "albums/:id": "albumShow",
+    "photos/": "photosIndex",
   },
 
   albumIndex: function () {
     if (!this._requireSignedIn(this.albumNew.bind(this))) { return; }
-    this.addUserCover();
+    // this.addUserCover();
     var indexAlbumView = new Sparklr.Views.AlbumIndex({
       albums: this.albums
     });
@@ -31,7 +33,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   albumNew: function () {
     if (!this._requireSignedIn(this.albumNew.bind(this))) { return; }
 
-    this.addUserCover();
+    // this.addUserCover();
     var newAlbum = new Sparklr.Models.Album();
     var newAlbumView = new Sparklr.Views.AlbumForm({
       album: newAlbum,
@@ -41,12 +43,16 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   albumShow: function (id) {
-    this.addUserCover();
+    // this.addUserCover();
     var album = this.albums.getOrFetch(id);
     var showAlbumView = new Sparklr.Views.AlbumShow({
       model: album
     });
     this._swapView(showAlbumView);
+  },
+
+  photosIndex: function() {
+
   },
 
   userNew: function () {
@@ -57,6 +63,14 @@ Sparklr.Routers.Router = Backbone.Router.extend({
       status: 'new',
       model: model,
     });
+
+    this._swapView(formView);
+  },
+
+  userEdit: function (id) {
+    if (!this._requireSignedIn(this.userEdit.bind(this))) { return; }
+
+    var formView = new Sparklr.Views.EditUserInfo();
 
     this._swapView(formView);
   },

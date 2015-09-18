@@ -13,7 +13,7 @@ class Album < ActiveRecord::Base
 
   def thumb_photo_url(style = :thumb)
     unless photos.empty?
-      photo.first.image.url(style)
+      photos.first.image.url(style)
     else
       Photo::DEFAULT_THUMB_IMAGE_URL
     end

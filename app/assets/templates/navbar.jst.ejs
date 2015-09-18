@@ -31,8 +31,8 @@
     <img class='profile-pic' src='<%=Sparklr.defaultProfileImage%>'>
     <div class="nav-dropdown-container">
       <div class='settings-dropdown-container'>
-        <h2>Hi, <%=Sparklr.currentUser.escape('fname')%></h2>
-        <button class='edit-user-info'>Edit Info?</button>
+        <h2>Hi, <%= Sparklr.currentUser.escape('fname') %></h2>
+        <a class='edit-user-info' href='#/users/<%= Sparklr.currentUser.id %>'>Settings</a>
         <button id="sign-out">Sign Out</button>
       </div>
     </div>

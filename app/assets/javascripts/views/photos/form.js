@@ -4,8 +4,8 @@ Sparklr.Views.PhotoForm = Backbone.View.extend({
   initialize: function (options) {
     this.photo = new Sparklr.Models.Photo();
     this.photos = options.photos;
-    this.album_id = options.album_id
-    this.listenTo(this.photo, "sync", this.render)
+    this.album_id = options.album_id;
+    this.listenTo(this.photo, "sync", this.render);
   },
 
   events: {
