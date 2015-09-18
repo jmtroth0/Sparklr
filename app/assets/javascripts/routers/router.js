@@ -8,7 +8,10 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "albums": "albumIndex",
+    "": "albumIndex",
+    "users/new": "userNew",
+    "users/:id": "userShow",
+    "session/new": "signIn",
     "albums/new": "albumNew",
     "albums/:id": "albumShow",
   },
@@ -38,6 +41,28 @@ Sparklr.Routers.Router = Backbone.Router.extend({
       model: album
     });
     this._swapView(showAlbumView)
+  },
+
+  userNew: function () {
+    var model = new Sparklr.Models.User();
+    var formView = new Sparklr.Views.UsersForm({
+      status: 'new',
+      model: model,
+    });
+
+    this._swapView(formView);
+  },
+
+  signIn: function(callback){
+    var signInView = new Sparklr.Views.SignIn({
+      status: 'session',
+      callback: callback,
+    });
+    this._swapView(signInView);
+  },
+
+  _goHome: function() {
+    Backbone.history.navigate("", { trigger: true });
   },
 
   addUserCover: function () {

@@ -1,7 +1,7 @@
-Sparklr.Collections.Photos = Backbone.Collection.extend({
-  url: 'api/photos',
-  model: Sparklr.Models.Photo,
-  // 
+Sparklr.Collections.Users = Backbone.Collection.extend({
+  url: 'api/users',
+  model: Sparklr.Models.User,
+  //
   // getOrFetch: function (id) {
   //   var photo = this.get(id)
   //   var photos = this;

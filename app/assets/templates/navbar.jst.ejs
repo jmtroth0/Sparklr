@@ -6,8 +6,8 @@
       <div class='nav-dropdown-container'>
         <ul class='personal-nav-list'>
           <!-- <li class='personal-link'><a href="#">Camera Roll</a></li> -->
-          <li class='personal-link'><a href="#">Photostream</a></li>
-          <li class='personal-link'><a href="#/albums">Albums</a></li>
+          <li class='personal-link'><a href="#/albums/<%= Sparklr.currentUser.photostream().escape('id') %>">Photostream</a></li>
+          <li class='personal-link'><a href="#">Albums</a></li>
           <li class='personal-link'><a href="#">Favorites</a></li>
         </ul>
       </div>
@@ -32,8 +32,8 @@
     <img class='profile-pic' src='<%=Sparklr.defaultProfileImage%>'>
     <div class="nav-dropdown-container">
       <div class='settings-dropdown-container'>
-        <h2>Hi, <%=Sparklr.currentUser%></h2>
-        <%= Sparklr.signOutForm %>
+        <h2>Hi, <%=Sparklr.currentUser.escape('fname')%></h2>
+        <button id="sign-out">Sign Out</button>
       </div>
     </div>
   </div>

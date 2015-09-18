@@ -35,6 +35,8 @@ div.auth-form-container label {
 div.auth-form-container input {
   display: block;
   // width: 75%;
+  border-top: none;
+  border-right: none;
   padding: 10px;
   border-bottom: 1px solid #ccc;
   border-left: 1px solid #ccc;

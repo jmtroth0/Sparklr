@@ -5,7 +5,12 @@ Sparklr.Views.NavBar = Backbone.View.extend({
 
   events: {
     'click img.profile-pic': 'toggleSettings',
-    'click button.sign-out': 'signOut',
+    "click button#sign-out": "signOut",
+  },
+
+  initialize: function () {
+    this.listenTo(Sparklr.currentUser, 'signIn signOut', this.render)
+    this.render();
   },
 
   render: function () {
@@ -19,7 +24,12 @@ Sparklr.Views.NavBar = Backbone.View.extend({
              toggleClass('visible')
   },
 
-  signOut: function () {
-    //implement with backbone auth
+  signOut: function (e) {
+    e.preventDefault();
+    Sparklr.currentUser.signOut({
+      success: function(){
+        Backbone.history.navigate("session/new", { trigger: true })
+      }
+    })
   }
 })
