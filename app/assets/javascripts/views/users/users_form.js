@@ -27,9 +27,11 @@ Sparklr.Views.UsersForm = Backbone.View.extend({
     this.model.set(userData);
     this.model.save({}, {
       success: function(){
-        Sparklr.currentUser = that.model
-        Sparklr.currentUser.fetch();
-        Backbone.history.navigate("", { trigger: true });
+        Sparklr.currentUser.fetch({
+          success: function() {
+            Backbone.history.navigate("", { trigger: true });
+          }
+        });
       },
       error: function(data){
         alert("Form invalid");

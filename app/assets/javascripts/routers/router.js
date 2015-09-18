@@ -2,7 +2,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
     this.makeNavBar();
-    if(Sparklr.currentUser.isSignedIn()){
+    if (Sparklr.currentUser.isSignedIn()){
       this.albums = new Sparklr.Collections.Albums;
       this.albums.fetch();
     }

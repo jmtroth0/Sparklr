@@ -23,7 +23,7 @@ module Api
         flash[:notice] = ["Welcome back"]
         render :show
       else
-        render json: @album.errors.full_messages, status: :unprocessable_entity
+        render json: {}, status: :unprocessable_entity
       end
     end
 
