@@ -7,6 +7,14 @@ class Album < ActiveRecord::Base
     unless photos.empty?
       photos.first.image.url(style)
     else
+      Photo::DEFAULT_COVER_IMAGE_URL
+    end
+  end
+
+  def thumb_photo_url(style = :thumb)
+    unless photos.empty?
+      photo.first.image.url(style)
+    else
       Photo::DEFAULT_THUMB_IMAGE_URL
     end
   end

@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base
   has_many :albums, through: :album_photos, source: :album
 
   DEFAULT_PROFILE_IMAGE_URL = 'profile_default.png'
-  DEFAULT_COVER_IMAGE_URL = 'cover_default.png'
+  DEFAULT_COVER_IMAGE_URL = 'blue-mosque-cover.jpg'
   DEFAULT_THUMB_IMAGE_URL = 'blue-mosque-thumb.jpg'
   has_attached_file :image,
     default_url: DEFAULT_COVER_IMAGE_URL,
