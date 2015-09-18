@@ -1,6 +1,6 @@
 <ul class='nav-menu'>
   <li class='logo-container group'><a href="#" class='main-logo'>sparklr</a></li>
-  <% if (Sparklr.currentUser) { %>
+  <% if (Sparklr.currentUser.isSignedIn()) { %>
     <li class='group personal-link'>
       <a class='personal-link'>You</a>
       <div class='nav-dropdown-container'>
@@ -22,17 +22,17 @@
       </ul>
     </div>
   </li>
-  <% if (Sparklr.currentUser) { %>
-    <li class='group'><a class='upload-link'>Upload</a></li>
-  <% } %>
+
+  <li class='group'><a class='upload-link'>Upload</a></li>
 </ul>
 
-<% if (Sparklr.currentUser) { %>
+<% if (Sparklr.currentUser.isSignedIn()) { %>
   <div class='user-menu-container'>
     <img class='profile-pic' src='<%=Sparklr.defaultProfileImage%>'>
     <div class="nav-dropdown-container">
       <div class='settings-dropdown-container'>
         <h2>Hi, <%=Sparklr.currentUser.escape('fname')%></h2>
+        <button class='edit-user-info'>Edit Info?</button>
         <button id="sign-out">Sign Out</button>
       </div>
     </div>

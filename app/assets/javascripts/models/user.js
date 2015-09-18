@@ -3,12 +3,14 @@ Sparklr.Models.User = Backbone.Model.extend({
 
   parse: function (payload) {
     if (payload.albums) {
-      this.albums().set(payload.albums, {parse: true});
+      this.albums().set(payload.albums.slice(1), {parse: true});
 
       delete payload.photos;
     }
     if (payload.photostream){
       this.photostream().set(payload.photostream)
+
+      delete payload.photostream
     }
 
     return payload;
@@ -41,7 +43,7 @@ Sparklr.Models.CurrentUser = Sparklr.Models.User.extend({
   },
 
   isSignedIn: function() {
-    return !this.isNew
+    return !this.isNew()
   },
 
   signIn: function (options){
@@ -58,6 +60,7 @@ Sparklr.Models.CurrentUser = Sparklr.Models.User.extend({
       dataType: "json",
       success: function(data){
         model.set(data);
+
         options.success && options.success();
       },
       error: function(){

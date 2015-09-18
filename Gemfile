@@ -16,17 +16,19 @@ gem 'paperclip'
 gem 'figaro'
 gem 'aws-sdk', '~> 1.6'
 gem 'ejs'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug'
+  gem 'spring'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
+  gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'spring'
 end
 
 group :production do

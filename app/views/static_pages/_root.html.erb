@@ -3,8 +3,11 @@
   <div id="main"></div>
 </div>
 
+
 <script type="text/javascript">
-  Sparklr.initialize();
-  Sparklr.defaultProfileImage = "<%= asset_path('profile_default.png') %>"
-  Sparklr.defaultCoverImage = "<%= asset_path('cover_default.png') %>"
+  $(function(){
+    Sparklr.initialize();
+    Sparklr.defaultProfileImage = "<%= asset_path('profile_default.png') %>"
+    Sparklr.defaultCoverImage = "<%= asset_path('cover_default.png') %>"
+  });
 </script>
