@@ -14,7 +14,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "_=_": "albumIndex",
     "users/new": "userNew",
     "users/:id": "userShow",
-    "users/edit": "userEdit",
+    "user/edit": "userEdit",
     "session/new": "signIn",
     "albums/new": "albumNew",
     "albums/:id": "albumShow",
@@ -56,7 +56,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   userNew: function () {
-    if (!this._requiresSignedOut()) { return; }
+    if (!this._requireSignedOut()) { return; }
 
     var model = new Sparklr.Models.User();
     var formView = new Sparklr.Views.UsersForm({

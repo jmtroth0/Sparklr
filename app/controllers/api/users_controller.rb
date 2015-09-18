@@ -18,7 +18,7 @@ module Api
         sign_in(@user)
         render :show
       else
-        render json: @album.errors.full_messages, status: :unprocessable_entity
+        render json: @user.errors.full_messages, status: :unprocessable_entity
       end
     end
 
