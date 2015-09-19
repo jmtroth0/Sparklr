@@ -34,7 +34,8 @@ h1.album-title {
   font-weight: 600;
   position: absolute;
   top: 30px;
-  margin: 0 auto;  // FIX!
+  width: 100%;
+  text-align: center;
   z-index: 20;
   color: white;
 }

@@ -21,11 +21,13 @@ Sparklr.Views.SignIn = Backbone.View.extend({
     e.preventDefault();
     var $form = $(e.currentTarget);
     var formData = $form.serializeJSON().user;
+    this.albums = new Sparklr.Collections.Albums;
 
     Sparklr.currentUser.signIn({
       email: formData.email,
       password: formData.password,
       success: function(){
+        this.albums.fetch();
         Backbone.history.navigate("", { trigger: true })
       },
       error: function(){
