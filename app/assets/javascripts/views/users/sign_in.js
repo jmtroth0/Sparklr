@@ -29,7 +29,7 @@ Sparklr.Views.SignIn = Backbone.View.extend({
       success: function(){
         this.albums.fetch();
         Backbone.history.navigate("", { trigger: true })
-      },
+      }.bind(this),
       error: function(){
         alert("Bad combination of email/password. Please try again");
       },
