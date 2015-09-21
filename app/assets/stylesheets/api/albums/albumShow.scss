@@ -29,22 +29,37 @@ div.album-cover-shade {
   z-index: 10;
 }
 
+div.album-cover-container > h1,
+div.album-cover-container > h2,
+div.album-cover-container > div.album-info {
+  width: 100%;
+  text-align: center;
+  z-index: 20;
+  color: white;
+  position: absolute;
+}
+
+
 h1.album-title {
   font-size: 36px;
   font-weight: 600;
-  position: absolute;
   top: 30px;
-  width: 100%;
-  text-align: center;
-  z-index: 20;
-  color: white;
 }
 
-p.album-description {
-  position: absolute;
+h2.album-description {
   top: 100px;
-  width: 100%;
-  text-align: center;
-  z-index: 20;
-  color: white;
+}
+
+div.album-info {
+  top: 140px;
+  font-size: 14px;
+}
+
+div.album-info > h3.album-creator:before {
+  content: "·";
+  margin: 0 10px;
+}
+
+div.album-info > h3 {
+  display: inline;
 }

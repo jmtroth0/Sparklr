@@ -7,15 +7,23 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
     'click button.close-form': 'closeForm',
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    this.user = options && options.user || Sparklr.currentUser;
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model.photos(), 'add', this.addPhoto);
-    this.listenTo(this.model.photos(), 'remove', this.removePhoto)
+    this.listenTo(this.model.photos(), 'remove', this.removePhoto);
   },
 
   render: function () {
-    this.$el.html(this.template({ album: this.model }));
-    this.model.photos().each(function (photo) {
+    var creator = this.model.get('user')
+    email = creator && creator.email;
+    var photos = this.model.photos();
+    this.$el.html(this.template({
+      album: this.model,
+      numPhotos: photos.length,
+      creator: email,
+    }));
+    photos.each(function (photo) {
       this.addPhoto(photo)
     }.bind(this))
     return this;
@@ -30,7 +38,6 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
   },
 
   removePhoto: function (photo) {
-    debugger;
     this.removeModelSubview('ul.photo-list', photo)
   },
 
@@ -51,5 +58,24 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
     this.$el.find('button.open-form').addClass('visible');
     this.$el.find('button.close-form').removeClass('visible');
     this._photoFormView = null;
+  },
+});
+
+
+Sparklr.Views.PhotostreamShow = Sparklr.Views.AlbumShow.extend({
+
+  events: {
+    'click button.open-form': 'addForm',
+    'click button.close-form': 'closeForm',
+  },
+
+  render: function () {
+    var coverView = new Sparklr.Views.UserCover({user: this.user})
+    this.$el.html(this.template({ album: this.model, photostream: true }));
+    this.$el.prepend(coverView.render().$el);
+    this.model.photos().each(function (photo) {
+      this.addPhoto(photo)
+    }.bind(this))
+    return this;
   },
 })

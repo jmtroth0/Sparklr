@@ -1,12 +1,18 @@
 <a href="/#/">Back to albums list</a>
 <br>
+<% if (typeof photostream === "undefined") { %>
+  <div class="album-cover-container">
+    <div class="album-cover-shade"></div>
+    <img class="album-cover-photo" src="<%= album.escape('cover_photo_url') %>">
+    <h1 class='album-title'><%= album.escape('title') %></h1>
+    <h2 class='album-description'><%= album.escape('description') %></h2>
+    <div class="album-info">
+      <h3 class='album-num-photos'><%= numPhotos %> Photos</h3>
+      <h3 class='album-creator'>by: <%= creator %></h3>
+    </div>
 
-<div class="album-cover-container">
-  <div class="album-cover-shade"></div>
-  <img class="album-cover-photo" src="<%= album.escape('cover_photo_url') %>">
-  <h1 class='album-title'><%= album.escape('title') %></h1>
-  <p class='album-description'><%= album.escape('description') %></p>
-</div>
+  </div>
+<% } %>
 
 <ul class="photo-list"></ul>
 

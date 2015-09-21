@@ -9,12 +9,15 @@ Sparklr.Views.AlbumIndex = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.albums = options.albums;
+    this.user = options && options.user || Sparklr.currentUsers
     this.listenTo(this.albums, 'sync remove', this.render);
     // this.listenTo(this.albums, 'add', this.addAlbum);
   },
 
   render: function () {
+    var coverView = new Sparklr.Views.UserCover({user: this.user})
     this.$el.html(this.template());
+    this.$el.prepend(coverView.render().$el);
     if (this.albums && this.albums.length > 0) {
       this.albums.each(function (album) {
         this.addAlbum(album);

@@ -2,9 +2,10 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
     this.makeNavBar();
+    this.users = new Sparklr.Collections.Users();
     if (Sparklr.currentUser.isSignedIn()){
-      this.albums = new Sparklr.Collections.Albums;
-      this.albums.fetch();
+      Sparklr.albums = new Sparklr.Collections.Albums;
+      Sparklr.albums.fetch();
     }
     Backbone.history.navigate("", { trigger: true });
   },
@@ -19,16 +20,28 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "photostream": "photostreamShow",
     "albums/new": "albumNew",
     "albums/:id": "albumShow",
-    "photos": "photosIndex",
+    "users/:user_id/photos": "photosIndex",
+    "users/:user_id/albums": "userAlbumIndex",
+    "users/:user_id/photostream": "userPhotostreamShow",
   },
 
-  albumIndex: function () {
+  albumIndex: function (options) {
+    debugger;
     if (!this._requireSignedIn(this.albumNew.bind(this))) { return; }
-    this.addUserCover();
+    var albums = (options && options.albums) || Sparklr.albums;
+    var user = (options && options.user) || Sparklr.currentUser;
     var indexAlbumView = new Sparklr.Views.AlbumIndex({
-      albums: this.albums
+      albums: albums,
+      user: user
     });
     this._swapView(indexAlbumView);
+  },
+
+  userAlbumIndex: function (user_id){
+    var userAlbums = new Sparklr.Collections.Albums({url: "api/users/" + user_id + "/albums"});
+    userAlbums.fetch()
+    var user = this.users.getOrFetch(user_id)
+    this.albumIndex({albums: userAlbums, user: user})
   },
 
   albumNew: function () {
@@ -36,24 +49,24 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     var newAlbum = new Sparklr.Models.Album();
     var newAlbumView = new Sparklr.Views.AlbumForm({
       album: newAlbum,
-      albums: this.albums,
+      albums: Sparklr.albums,
     });
     this._swapView(newAlbumView);
   },
 
   albumShow: function (id) {
-    var album = this.albums.getOrFetch(id);
+    var album = Sparklr.albums.getOrFetch(id);
     var showAlbumView = new Sparklr.Views.AlbumShow({
       model: album
     });
     this._swapView(showAlbumView);
   },
 
-  photostreamShow: function () {
+  photostreamShow: function (options) {
+    var user = options && options.user || Sparklr.currentUser
     var photostream = Sparklr.currentUser.photostream();
     photostream.fetch();
-    this.addUserCover();
-    var showPhotostreamView = new Sparklr.Views.AlbumShow({
+    var showPhotostreamView = new Sparklr.Views.PhotostreamShow({
       model: photostream
     });
 
@@ -116,19 +129,6 @@ Sparklr.Routers.Router = Backbone.Router.extend({
 
   _goHome: function() {
     Backbone.history.navigate("", { trigger: true });
-  },
-
-  addUserCover: function () {
-    // top of main page when logged in and not 'exploring' or using a 'show' action
-    var $rootEl = ($("div.user-cover-container"))
-
-    var coverView = new Sparklr.Views.UserCover();
-    if ($rootEl.length === 0) {
-      $rootEl = $("div#backdrop");
-      $rootEl.prepend(coverView.render().$el);
-    } else {
-      $rootEl.html(coverView.render().$el)
-    }
   },
 
   makeNavBar: function () {

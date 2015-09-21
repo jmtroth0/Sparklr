@@ -11,7 +11,13 @@ module Api
     end
 
     def index
-      @albums = current_user.albums.drop(1)
+      @albums = current_user.albums
+      render :index
+    end
+
+    def user_index
+      @user = User.find(params[:user_id])
+      @albums = @user.albums
       render :index
     end
 
@@ -40,7 +46,7 @@ module Api
     private
 
     def album_params
-      params.require(:album).permit(:title, :description)
+      params.require(:album).permit(:title, :description, :user_id)
     end
   end
 end
