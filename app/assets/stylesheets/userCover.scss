@@ -1,0 +1,49 @@
+.user-cover-container {
+  background: #228b22;
+  // background: url-image(Sparklr.defaultCoverImage);
+  height: 250px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.user-cover > img.profile-pic {
+  width: 100px;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+}
+
+.user-cover {
+  max-width: 1000px;
+  min-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+  color: white;
+}
+
+.user-cover-info {
+  position: absolute;
+  bottom: 40px;
+  left: 130px;
+  z-index: 1;
+}
+
+.user-cover-info > h1,
+.user-cover-info > h2 {
+  display: inline;
+}
+
+.user-cover-info > h1 {
+  font-size: 36px;
+}
+
+.user-cover-info > h2 {
+  font-size: 16px;
+}
+
+.user-cover-stats {
+  position: absolute;
+  bottom: 40px;
+  right: 0;
+}

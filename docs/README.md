@@ -13,12 +13,12 @@ Sparklr is a clone of Flickr built on Rails and Backbone. Users can:
 - [ ] Log in and out
 - [ ] Create albums
 - [ ] Upload photos
-- [ ] Add and edit titles, descriptions, privacy
+- [ ] Add and edit titles, descriptions
 - [ ] View album as collection of photo thumbnails
 - [ ] See individual enlarged photos
 - [ ] Follow Users
 - [ ] See a list of followed users
-- [ ] Search for photos by title or info
+- [ ] Search for photos by title or user
 
 ## Design Docs
 * [View Wireframes][views]
@@ -51,7 +51,7 @@ and public photos respectively.
 [Details][phase-two]
 
 ### Phase 3: Displaying Albums and Photos (~3 days)
-I will add comments on the photo show page. Then I will develop both show views
+Then I will develop both show views
 as composites. The album show view will be a list of photos streaming down the
 page in rows. It will link to the photo show pages on click at first, but will
 develop some further editing capabilities including privacy adjustment, which

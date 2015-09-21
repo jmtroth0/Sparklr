@@ -15,17 +15,17 @@ module Api
       render :index
     end
 
-    def update
-      @album = Album.find(params[:id])
-
-      if @album.update(album_params)
-        flash[:notice] = ["Updated"]
-        redirect_to :back
-      else
-        render json: @album.errors.full_messages, status: :unprocessable_entity
-        render :edit
-      end
-    end
+    # def update
+    #   @album = Album.find(params[:id])
+    #
+    #   if @album.update(album_params)
+    #     flash[:notice] = ["Updated"]
+    #     redirect_to :back
+    #   else
+    #     render json: @album.errors.full_messages, status: :unprocessable_entity
+    #     render :edit
+    #   end
+    # end
 
     def show
       @album = Album.find(params[:id])

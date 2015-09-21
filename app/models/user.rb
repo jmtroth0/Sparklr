@@ -38,8 +38,15 @@ class User < ActiveRecord::Base
       user.save
     end
 
-
     user
+  end
+
+  def profile_cover_image_url
+    # if profile_cover_image
+    #
+    # else
+      Photo::DEFAULT_PROFILE_COVER_IMAGE_URL
+    # end
   end
 
   def password=(password)

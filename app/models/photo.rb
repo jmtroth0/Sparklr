@@ -8,6 +8,7 @@ class Photo < ActiveRecord::Base
   DEFAULT_PROFILE_IMAGE_URL = 'profile_default.png'
   DEFAULT_COVER_IMAGE_URL = 'blue-mosque-cover.jpg'
   DEFAULT_THUMB_IMAGE_URL = 'blue-mosque-thumb.jpg'
+  DEFAULT_PROFILE_COVER_IMAGE_URL = 'cover_default.png'
   has_attached_file :image,
     default_url: DEFAULT_COVER_IMAGE_URL,
     styles: { thumb: "200x133#", cover: "800x300#" },

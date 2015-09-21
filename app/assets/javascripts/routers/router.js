@@ -19,12 +19,12 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "photostream": "photostreamShow",
     "albums/new": "albumNew",
     "albums/:id": "albumShow",
-    "photos/": "photosIndex",
+    "photos": "photosIndex",
   },
 
   albumIndex: function () {
     if (!this._requireSignedIn(this.albumNew.bind(this))) { return; }
-    // this.addUserCover();
+    this.addUserCover();
     var indexAlbumView = new Sparklr.Views.AlbumIndex({
       albums: this.albums
     });
@@ -33,8 +33,6 @@ Sparklr.Routers.Router = Backbone.Router.extend({
 
   albumNew: function () {
     if (!this._requireSignedIn(this.albumNew.bind(this))) { return; }
-
-    // this.addUserCover();
     var newAlbum = new Sparklr.Models.Album();
     var newAlbumView = new Sparklr.Views.AlbumForm({
       album: newAlbum,
@@ -44,7 +42,6 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   albumShow: function (id) {
-    // this.addUserCover();
     var album = this.albums.getOrFetch(id);
     var showAlbumView = new Sparklr.Views.AlbumShow({
       model: album
@@ -55,7 +52,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   photostreamShow: function () {
     var photostream = Sparklr.currentUser.photostream();
     photostream.fetch();
-
+    this.addUserCover();
     var showPhotostreamView = new Sparklr.Views.AlbumShow({
       model: photostream
     });
@@ -122,7 +119,16 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   addUserCover: function () {
-    // top of main page when logged in and not 'exploring'
+    // top of main page when logged in and not 'exploring' or using a 'show' action
+    var $rootEl = ($("div.user-cover-container"))
+
+    var coverView = new Sparklr.Views.UserCover();
+    if ($rootEl.length === 0) {
+      $rootEl = $("div#backdrop");
+      $rootEl.prepend(coverView.render().$el);
+    } else {
+      $rootEl.html(coverView.render().$el)
+    }
   },
 
   makeNavBar: function () {
