@@ -43,7 +43,8 @@ h1.album-title {
 p.album-description {
   position: absolute;
   top: 100px;
-  left: 47%;
+  width: 100%;
+  text-align: center;
   z-index: 20;
   color: white;
 }
