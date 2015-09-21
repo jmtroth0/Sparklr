@@ -10,7 +10,7 @@ Sparklr.Views.AlbumIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.albums = options.albums;
     this.user = options && options.user || Sparklr.currentUsers
-    this.listenTo(this.albums, 'sync remove', this.render);
+    this.listenTo(this.albums, 'sync remove reset', this.render);
     // this.listenTo(this.albums, 'add', this.addAlbum);
   },
 
@@ -24,7 +24,7 @@ Sparklr.Views.AlbumIndex = Backbone.CompositeView.extend({
       }.bind(this))
     } else {
       var $h1 = $('<h1>');
-      $h1.html("No albums found")
+      $h1.html("No albums found");
       this.$el.prepend($h1);
     }
     return this;

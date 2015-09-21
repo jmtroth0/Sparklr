@@ -26,8 +26,9 @@ Sparklr.Views.SignIn = Backbone.View.extend({
       email: formData.email,
       password: formData.password,
       success: function(){
-        Sparklr.albums.fetch();
-        Backbone.history.navigate("", { trigger: true })
+        Sparklr.albums = new Sparklr.Collections.Albums();
+        Sparklr.albums.fetch({ reset: true });
+        Backbone.history.navigate("", { trigger: true });
       },
       error: function(){
         alert("Bad combination of email/password. Please try again");
