@@ -7,6 +7,7 @@ Sparklr.Models.User = Backbone.Model.extend({
 
       delete payload.photos;
     }
+
     if (payload.photostream){
       this.photostream().set(payload.photostream)
 
@@ -38,7 +39,7 @@ Sparklr.Models.User = Backbone.Model.extend({
 
   photostream: function () {
     this._photostream = this._photostream ||
-      new Sparklr.Models.Album()
+      new Sparklr.Models.Photostream()
 
     return this._photostream;
   },

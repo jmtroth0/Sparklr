@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
 
-  has_many :albums
-  has_many :photos, foreign_key: :uploader_id
-  belongs_to :photostream, class_name: 'Album'
+  has_many :albums, dependent: :destroy
+  has_one :photostream, dependent: :destroy
+  has_many :photos, foreign_key: :uploader_id, dependent: :destroy
+  has_many :photos_in_albums, through: :albums, source: :photos
 
   validates :email, :password_digest, :session_token, uniqueness: true, presence: true
-  validates :photostream_id, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
   attr_reader :password

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:show, :create, :update]
     resources :albums, except: [:new, :edit]
+    get 'photostream', to: 'photostreams#show'
     resources :photos, only: [:index, :create, :update, :destroy]
     resource :session, only: [:show, :create, :destroy]
   end

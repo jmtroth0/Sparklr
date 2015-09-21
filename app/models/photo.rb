@@ -2,7 +2,7 @@ class Photo < ActiveRecord::Base
   validates :title, :uploader_id, presence: true
 
   belongs_to :uploader, class_name: 'User'
-  has_many :album_photos
+  has_many :album_photos, dependent: :destroy
   has_many :albums, through: :album_photos, source: :album
 
   DEFAULT_PROFILE_IMAGE_URL = 'profile_default.png'

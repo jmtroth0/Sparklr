@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918200847) do
+ActiveRecord::Schema.define(version: 20150921142945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(version: 20150918200847) do
 
   add_index "photos", ["uploader_id"], name: "index_photos_on_uploader_id", using: :btree
 
+  create_table "photostreams", force: :cascade do |t|
+    t.string   "title",      default: "PhotoStream", null: false
+    t.integer  "user_id",                            null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
     t.string   "fname"
@@ -57,7 +64,6 @@ ActiveRecord::Schema.define(version: 20150918200847) do
     t.string   "session_token",   null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "photostream_id"
     t.string   "provider"
     t.string   "uid"
     t.integer  "profile_pic_id"
@@ -65,7 +71,6 @@ ActiveRecord::Schema.define(version: 20150918200847) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["password_digest"], name: "index_users_on_password_digest", unique: true, using: :btree
-  add_index "users", ["photostream_id"], name: "index_users_on_photostream_id", unique: true, using: :btree
   add_index "users", ["profile_pic_id"], name: "index_users_on_profile_pic_id", using: :btree
   add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
   add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree

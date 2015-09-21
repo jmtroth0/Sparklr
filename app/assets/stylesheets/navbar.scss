@@ -36,6 +36,7 @@ ul.nav-menu > li:hover {
   transition: color .5s;
 }
 
+
 ul.nav-menu > li.logo-container {
   margin: 3px;
   font-weight: 900;
@@ -61,7 +62,11 @@ div.nav-dropdown-container {
 }
 
 div.nav-dropdown-container li {
-  margin: 10px;
+  padding: 8px 10px;
+}
+
+div.nav-dropdown-container li:hover {
+  background: #eee;
 }
 
 ul.nav-menu div.nav-dropdown-container:before {

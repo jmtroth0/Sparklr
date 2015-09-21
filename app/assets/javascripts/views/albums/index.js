@@ -15,9 +15,15 @@ Sparklr.Views.AlbumIndex = Backbone.CompositeView.extend({
 
   render: function () {
     this.$el.html(this.template());
-    this.albums.each(function (album) {
-      this.addAlbum(album);
-    }.bind(this))
+    if (this.albums && this.albums.length > 0) {
+      this.albums.each(function (album) {
+        this.addAlbum(album);
+      }.bind(this))
+    } else {
+      var $h1 = $('<h1>');
+      $h1.html("No albums found")
+      this.$el.prepend($h1);
+    }
     return this;
   },
 

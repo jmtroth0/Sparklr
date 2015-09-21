@@ -26,3 +26,7 @@ Sparklr.Models.Album = Backbone.Model.extend({
     return this._coverPhoto
   }
 })
+
+Sparklr.Models.Photostream = Sparklr.Models.Album.extend({
+  url: 'api/photostream'
+})
