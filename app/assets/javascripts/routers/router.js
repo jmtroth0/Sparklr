@@ -29,6 +29,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     if (!this._requireSignedIn(this.albumNew.bind(this))) { return; }
     var albums = (options && options.albums) || Sparklr.albums;
     var user = (options && options.user) || Sparklr.currentUser;
+    albums.fetch();
     var indexAlbumView = new Sparklr.Views.AlbumIndex({
       albums: albums,
       user: user

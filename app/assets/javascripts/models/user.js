@@ -92,6 +92,7 @@ Sparklr.Models.CurrentUser = Sparklr.Models.User.extend({
       dataType: 'json',
       success: function(data){
         model.clear();
+        Sparklr.albums = new Sparklr.Collections.Albums();
         options.success && options.success();
       }
     });

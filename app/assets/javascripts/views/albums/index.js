@@ -10,7 +10,7 @@ Sparklr.Views.AlbumIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.albums = options.albums;
     this.user = options && options.user || Sparklr.currentUsers
-    this.listenTo(this.albums, 'sync remove reset', this.render);
+    this.listenTo(this.albums, 'sync', this.render);
     // this.listenTo(this.albums, 'add', this.addAlbum);
   },
 
