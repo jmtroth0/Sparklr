@@ -30,7 +30,7 @@ Sparklr.Views.UsersForm = Backbone.View.extend({
         Sparklr.currentUser.fetch({
           success: function() {
             Backbone.history.navigate("", { trigger: true });
-          }
+          },
         });
       },
       error: function(data){

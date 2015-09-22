@@ -36,6 +36,7 @@ Sparklr.Views.PhotoForm = Backbone.View.extend({
     this.photo.saveFormData(formData, {
       success: function () {
         self.photos.add(self.photo);
+        Backbone.history.navigate("/photo" + self.photo.id, { trigger: true })
       },
       error: function (model, response) {
         $('.form-errors').empty();

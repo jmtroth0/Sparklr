@@ -5,7 +5,8 @@ module Api
     end
 
     def show
-      if current_user
+      @user = current_user
+      if @user
         render :show
       else
         render json: {}

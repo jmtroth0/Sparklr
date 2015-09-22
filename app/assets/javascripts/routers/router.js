@@ -3,8 +3,8 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
     this.makeNavBar();
     this.users = new Sparklr.Collections.Users();
+    Sparklr.albums = new Sparklr.Collections.Albums;
     if (Sparklr.currentUser.isSignedIn()){
-      Sparklr.albums = new Sparklr.Collections.Albums;
       Sparklr.albums.fetch();
     }
     Backbone.history.navigate("", { trigger: true });
