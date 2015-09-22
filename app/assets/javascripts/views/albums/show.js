@@ -89,7 +89,6 @@ Sparklr.Views.PhotostreamShow = Sparklr.Views.AlbumShow.extend({
   render: function () {
     var coverView = new Sparklr.Views.UserCover({user: this.user})
     this.$el.html(this.template({ album: this.model, photostream: true }));
-    // this.$el.prepend(coverView.render().$el);
     coverView.addUserCover($('#main'));
     this.model.photos().each(function (photo) {
       this.addPhoto(photo, true)

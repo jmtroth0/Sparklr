@@ -1,6 +1,10 @@
-<a href="/#" class="return-to-albums">Back to albums list</a>
-<br>
 <% if (typeof photostream === "undefined") { %>
+  <a href="/#" class="return-to-albums">Back to albums list</a>
+
+  <% if (album.get('user') && album.get('user').email === Sparklr.currentUser.get('email')) { %>
+    <button class="delete-album">Delete Album</button>
+  <% } %>
+
   <div class="album-cover-container">
     <div class="album-cover-shade"></div>
     <img class="album-cover-photo" src="<%= album.escape('cover_photo_url') %>">
@@ -14,11 +18,7 @@
   </div>
 <% } %>
 
-<button class="delete-album">Delete Album</button>
-
 <ul class="photo-list"></ul>
-
-
 
 <div class='photo-form-container'>
   <button class="open-form visible">Upload Photo?</button>
