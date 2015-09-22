@@ -1,4 +1,4 @@
-<a class='photo-link group' href='#/photos/<%= photo.escape("id") %>'>
+<a class='photo-link group' href='<%= photoUrl %>'>
   <img class='photo-thumbnail' src='<%= photo.get("image_url") %>'>
   <h3><%= photo.escape('title') %></h3>
 </a>

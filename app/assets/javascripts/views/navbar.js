@@ -6,6 +6,7 @@ Sparklr.Views.NavBar = Backbone.View.extend({
   events: {
     'click img.profile-pic': 'toggleSettings',
     "click button#sign-out": "signOut",
+    "click .upload-link": "openUploadForm",
   },
 
   initialize: function () {
@@ -22,6 +23,13 @@ Sparklr.Views.NavBar = Backbone.View.extend({
     this.$el.find('div.user-menu-container').
              find('div.nav-dropdown-container').
              toggleClass('visible')
+  },
+
+  openUploadForm: function () {
+    var uploadView = new Sparklr.Views.PhotoForm();
+    this.$el.append(JST['modal']);
+    this.$el.find('article.form-content').html(uploadView.render().$el);
+    this.$el.find('.form-modal').addClass('is-active');
   },
 
   signOut: function (e) {

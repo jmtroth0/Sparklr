@@ -9,12 +9,17 @@ Sparklr.Views.PhotoIndexItem = Backbone.View.extend({
 
   initialize: function (options) {
     this.photo = options.photo;
-    this.photos = options.photos;
+    this.photoUrl = "#"
+    if (typeof options.album_id === "number") {
+      this.photoUrl = "/albums/" + options.album_id
+    }
+    this.photoUrl += "/photos/" + this.photo.id
+    // this.photos = options.photos;
     // this.listenTo(this.photo, 'sync', this.render);
   },
 
   render: function () {
-    this.$el.html(this.template({ photo: this.photo }));
+    this.$el.html(this.template({ photo: this.photo, photoUrl: this.photoUrl }));
     return this;
   },
   //

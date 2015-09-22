@@ -1,0 +1,13 @@
+<div class="background">
+  <div class="image-container">
+    <img class="focused-photo" src="<%= photo.get('image_url') %>">
+  </div>
+</div>
+
+<a class="back-to-album" href="<%= albumUrl %>">
+  <% if (albumUrl === "photostream") { %>
+    Back to photostream
+  <% } else { %>
+    Back to Album
+  <% } %>
+</a>

@@ -6,8 +6,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     Sparklr.albums = new Sparklr.Collections.Albums;
     if (Sparklr.currentUser.isSignedIn()){
       Sparklr.albums.fetch();
-    }
-    Backbone.history.navigate("", { trigger: true });
+    };
   },
 
   routes: {
@@ -20,13 +19,15 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "photostream": "photostreamShow",
     "albums/new": "albumNew",
     "albums/:id": "albumShow",
+    "albums/:album_id/photos/:id": "albumPhotoShow",
+    "photostream/:stream_id/photos/:id": "streamPhotoShow",
     "users/:user_id/photos": "photosIndex",
     "users/:user_id/albums": "userAlbumIndex",
     "users/:user_id/photostream": "userPhotostreamShow",
   },
 
   albumIndex: function (options) {
-    if (!this._requireSignedIn(this.albumNew.bind(this))) { return; }
+    if (!this._requireSignedIn(this.albumIndex.bind(this))) { return; }
     var albums = (options && options.albums) || Sparklr.albums;
     var user = (options && options.user) || Sparklr.currentUser;
     albums.fetch();
@@ -38,7 +39,9 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   userAlbumIndex: function (user_id){
-    var userAlbums = new Sparklr.Collections.Albums({url: "api/users/" + user_id + "/albums"});
+    var userAlbums = new Sparklr.Collections.Albums({
+      url: "api/users/" + user_id + "/albums"
+    });
     userAlbums.fetch();
     var user = this.users.getOrFetch(user_id);
     this.albumIndex({albums: userAlbums, user: user});
@@ -62,8 +65,9 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     this._swapView(showAlbumView);
   },
 
-  photostreamShow: function (options) {
-    var user = options && options.user || Sparklr.currentUser
+  photostreamShow: function () {
+    if (!this._requireSignedIn(this.photostreamShow.bind(this))) { return; }
+    var user = Sparklr.currentUser
     var photostream = Sparklr.currentUser.photostream();
     photostream.fetch();
     var showPhotostreamView = new Sparklr.Views.PhotostreamShow({
@@ -71,6 +75,30 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(showPhotostreamView);
+  },
+
+  albumPhotoShow: function (album_id, id) {
+    var album = Sparklr.albums.getOrFetch(album_id);
+    var photo = album.photos().getOrFetch(id);
+    var showPhotoView = new Sparklr.Views.PhotoShow({
+      photo: photo,
+      album_id: album_id,
+    });
+    this._swapView(showPhotoView);
+  },
+
+  streamPhotoShow: function (stream_id, id) {
+    if (stream_id !== Sparklr.currentUser.id) {
+      alert("Stop hacking the url");
+      return;
+    }
+
+    var photo = Sparklr.photos.getOrFetch(id);
+
+    var showPhotoView = new Sparklr.Views.PhotoShow({
+      photo: photo,
+    });
+    this._swapView(showPhotoView);
   },
 
   photosIndex: function() {

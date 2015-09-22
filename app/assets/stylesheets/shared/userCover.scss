@@ -1,19 +1,26 @@
 .user-cover-container {
+ width: 100%;
+ border-bottom: 1px solid #ccc;
+ background: white;
+ font: helvetica;
+}
+
+.user-cover-main {
   background: image-url('cover_default.png');
   width: 100%;
   height: 250px;
   overflow: hidden;
 }
 
-.user-cover > img.profile-pic {
+.user-cover-stuff > img.profile-pic {
   width: 100px;
   position: absolute;
   bottom: 20px;
   left: 0;
 }
 
-.user-cover {
-  max-width: 1000px;
+.user-cover-stuff {
+  max-width: 800px;
   min-width: 600px;
   margin: 0 auto;
   position: relative;
@@ -45,4 +52,26 @@
   position: absolute;
   bottom: 40px;
   right: 0;
+}
+
+.user-cover-nav {
+  height: 50px;
+  max-width: 750px;
+  min-width: 400px;
+  background: white;
+  margin: 0 auto;
+}
+
+.user-cover-nav > a {
+  padding: 15px 60px;
+  font-size: 16px;
+  font-weight: lighter;
+  display: block;
+  float: left;
+  border-bottom: 3px solid transparent;
+}
+
+.user-cover-nav > a:hover {
+  border-color: #0091DC;
+  transition: border .5s;
 }

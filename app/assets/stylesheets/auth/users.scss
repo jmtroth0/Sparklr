@@ -19,7 +19,13 @@ div.auth-form-container > img {
   display: block;
 }
 
-div.auth-form-container > h3, div.auth-form-container > h4 {
+div.auth-form-container > h2 {
+  text-align: right;
+}
+
+div.auth-form-container > h2,
+div.auth-form-container > h3,
+div.auth-form-container > h4 {
   font-size: 12px;
   margin-top: 40px;
 }

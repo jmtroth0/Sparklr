@@ -14,4 +14,13 @@ class Photo < ActiveRecord::Base
     styles: { thumb: "200x133#", cover: "800x300#" },
     convert_options: { thumb: "-thumbnail 200" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+  before_save :extract_dimensions
+
+  def extract_dimensions
+    tempfile = image.queued_for_write[:original]
+    unless tempfile.nil?
+      geometry = Paperclip::Geometry.from_file(tempfile)
+      self.dimensions = "" + geometry.width.to_i.to_s + "," + geometry.height.to_i.to_s
+    end
+  end
 end

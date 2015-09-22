@@ -48,14 +48,16 @@ Sparklr.Views.AlbumIndex = Backbone.CompositeView.extend({
       album: album,
       albums: this.albums
     });
-    this.addSubview('div.album-form-container', this._albumFormView, true);
+    this.addSubview('article.form-content', this._albumFormView, true);
+    this.$el.find('.form-modal').addClass('is-active');
     this.$el.find('button.open-form').removeClass('visible');
     this.$el.find('button.close-form').addClass('visible');
     return this;
   },
 
   closeForm: function () {
-    this.removeSubview('div.album-form-container', this._albumFormView)
+    this.removeSubview('div.album-form-container', this._albumFormView);
+    this.$el.find('.form-modal').removeClass('is-active');
     this.$el.find('button.open-form').addClass('visible');
     this.$el.find('button.close-form').removeClass('visible');
     this._albumFormView = null;

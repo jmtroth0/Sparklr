@@ -1,0 +1,22 @@
+div.background {
+  width: 100%;
+  height: 700px;
+  background: #212124;
+}
+
+div.image-container {
+  margin: 0 auto
+}
+
+img.focused-photo {
+  margin: 0 auto;
+  max-width: auto;
+  display: absolute;
+}
+
+a.back-to-album {
+  display: block;
+  margin-top: -50px;
+  color: white;
+  font-size: 12px;
+}

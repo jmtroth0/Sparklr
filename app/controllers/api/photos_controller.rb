@@ -15,6 +15,11 @@ module Api
       render :show
     end
 
+    def show
+      @photo = Photo.find(params[:id])
+      width, height = @photo.dimensions
+    end
+
     def update
       @photo = Photo.find(params[:id])
       @photo.update!(photo_params)
@@ -30,7 +35,7 @@ module Api
     private
 
     def photo_params
-      params.require(:photo).permit(:id, :title, :description, :image)
+      params.require(:photo).permit(:id, :title, :description, :image, :dimensions)
     end
   end
 end

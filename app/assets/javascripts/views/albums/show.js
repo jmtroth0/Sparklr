@@ -29,11 +29,20 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
     return this;
   },
 
-  addPhoto: function (photo) {
-    var photoView = new Sparklr.Views.PhotoIndexItem ({
-      photo: photo,
-      photos: this.model.photos(),
-    });
+  addPhoto: function (photo, photostream) {
+    if (!photostream) {
+      var photoView = new Sparklr.Views.PhotoIndexItem ({
+        photo: photo,
+        photos: this.model.photos(),
+        album_id: this.model.id,
+      });
+    } else {
+      var photoView = new Sparklr.Views.PhotoIndexItem ({
+        photo: photo,
+        photos: this.model.photos(),
+        album_id: photostream,
+      });
+    }
     this.addSubview('ul.photo-list', photoView, true);
   },
 
@@ -46,7 +55,8 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
       album_id: this.model.id,
       photos: this.model.photos(),
     });
-    this.addSubview('div.photo-form-container', this._photoFormView, true);
+    this.addSubview('article.form-content', this._photoFormView, true);
+    this.$el.find('.form-modal').addClass('is-active');
     this.$el.find('button.open-form').removeClass('visible');
     this.$el.find('button.close-form').addClass('visible');
     this.listenTo(this.model.photos(), 'add', this.closeForm);
@@ -76,7 +86,7 @@ Sparklr.Views.PhotostreamShow = Sparklr.Views.AlbumShow.extend({
     // this.$el.prepend(coverView.render().$el);
     coverView.addUserCover($('#main'));
     this.model.photos().each(function (photo) {
-      this.addPhoto(photo)
+      this.addPhoto(photo, true)
     }.bind(this))
     return this;
   },

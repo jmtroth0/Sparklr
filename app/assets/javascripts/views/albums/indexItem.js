@@ -10,7 +10,7 @@ Sparklr.Views.AlbumIndexItem = Backbone.View.extend({
   initialize: function (options) {
     this.album = options.album;
     this.albums = options.albums;
-    // this.listenTo(this.album, 'sync', this.render);
+    this.listenTo(this.album, 'sync', this.render);
   },
 
   render: function () {

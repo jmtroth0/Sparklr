@@ -4,9 +4,17 @@ Sparklr.Models.Photo = Backbone.Model.extend({
   parse: function (payload) {
     if (payload.albums) {
       this.albums().set(payload.albums, {parse: true});
+      delete payload.albums;
+    };
 
-      delete payload.photos;
-    }
+    if (payload.dimensions) {
+      this.dimensions = payload.dimensions.split(",");
+      this.dimensions[0] = parseInt(this.dimensions[0])
+      this.dimensions[1] = parseInt(this.dimensions[1])
+      delete payload.dimensions;
+    } else {
+      this.dimensions = [400, 300];
+    };
 
     return payload;
   },
@@ -41,6 +49,4 @@ Sparklr.Models.Photo = Backbone.Model.extend({
       }
     });
   },
-
-
 })
