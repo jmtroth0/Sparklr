@@ -11,11 +11,18 @@ Sparklr.Views.AlbumIndex = Backbone.CompositeView.extend({
     this.albums = options.albums;
     this.user = options && options.user || Sparklr.currentUsers
     this.listenTo(this.albums, 'sync', this.render);
+    this.listenTo(this.albums, 'remove', this.removeAlbum)
   },
 
   render: function () {
-    var coverView = new Sparklr.Views.UserCover({user: this.user})
     this.$el.html(this.template());
+    this.placeAlbums();
+    this.addUserCover();
+    return this;
+  },
+
+  placeAlbums: function () {
+    this.$el.find("ul.album-list").html("");
     if (this.albums && this.albums.length > 0) {
       this.albums.each(function (album) {
         this.addAlbum(album);
@@ -24,9 +31,7 @@ Sparklr.Views.AlbumIndex = Backbone.CompositeView.extend({
       var $h1 = $('<h1>');
       $h1.html("No albums found");
       this.$el.prepend($h1);
-    }
-    this.$el.prepend(coverView.render().$el);
-    return this;
+    };
   },
 
   addAlbum: function (album) {
@@ -38,8 +43,9 @@ Sparklr.Views.AlbumIndex = Backbone.CompositeView.extend({
     this.addSubview('ul.album-list', albumView, true);
   },
 
-  removeAlbum: function (album) {
-    this.removeModelSubview('ul.album-list', album)
+  removeAlbum: function (album, collection) {
+    this.removeModelSubview('ul.album-list', album);
+    this.placeAlbums();
   },
 
   addForm: function (e) {

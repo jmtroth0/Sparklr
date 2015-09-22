@@ -4,5 +4,7 @@
   <h3><%= album.escape('title') %></h3>
 </a>
 
-<button class='delete-album'>X</button>
+<% if (album.get('user').email === Sparklr.currentUser.get('email')) { %>
+  <button class='delete-album'>X</button>
+<% } %>
 <!-- also get num photos and num views -->

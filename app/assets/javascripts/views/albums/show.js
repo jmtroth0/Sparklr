@@ -5,6 +5,7 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
     'click button.return-to-albums': 'backToAlbums',
     'click button.open-form': 'addForm',
     'click button.close-form': 'closeForm',
+    'click button.delete-album': 'deleteAlbum',
   },
 
   initialize: function (options) {
@@ -48,6 +49,11 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
 
   removePhoto: function (photo) {
     this.removeModelSubview('ul.photo-list', photo)
+  },
+
+  deleteAlbum: function () {
+    this.model.destroy();
+    Backbone.history.navigate("", { trigger: true })
   },
 
   addForm: function (e) {
