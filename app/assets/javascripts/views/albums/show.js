@@ -70,7 +70,8 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
   },
 
   closeForm: function () {
-    this.removeSubview('div.photo-form-container', this._photoFormView)
+    this.removeSubview('div.photo-form-container', this._photoFormView);
+    this.$el.find('.form-modal').removeClass('is-active');
     this.$el.find('button.open-form').addClass('visible');
     this.$el.find('button.close-form').removeClass('visible');
     this._photoFormView = null;

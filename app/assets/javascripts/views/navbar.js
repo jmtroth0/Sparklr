@@ -1,5 +1,5 @@
 Sparklr.Views.NavBar = Backbone.View.extend({
-  template: JST['navbar'],
+  template: JST['shared/navbar'],
   tagName: 'nav',
   className: 'main-navbar',
 
@@ -27,7 +27,7 @@ Sparklr.Views.NavBar = Backbone.View.extend({
 
   openUploadForm: function () {
     var uploadView = new Sparklr.Views.PhotoForm();
-    this.$el.append(JST['modal']);
+    this.$el.append(JST['shared/modal']);
     this.$el.find('article.form-content').html(uploadView.render().$el);
     this.$el.find('.form-modal').addClass('is-active');
   },

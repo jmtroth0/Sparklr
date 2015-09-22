@@ -2,6 +2,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
     this.makeNavBar();
+    this.makeFooter();
     this.users = new Sparklr.Collections.Users();
     Sparklr.albums = new Sparklr.Collections.Albums;
     if (Sparklr.currentUser.isSignedIn()){
@@ -163,6 +164,12 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     var $rootEl = $("div#main-navbar-container");
     var navView = new Sparklr.Views.NavBar();
     $rootEl.html(navView.render().$el);
+  },
+
+  makeFooter: function () {
+    var $rootEl = $("div#backdrop");
+    var footView = new Sparklr.Views.Footer();
+    $rootEl.append(footView.render().$el);
   },
 
   _swapView: function (view) {
