@@ -5,3 +5,4 @@ json.photostream do
 end
 # json.profilePhoto
 json.coverPhoto asset_path(user.cover_photo_url)
+json.profile_pic_url asset_path(user.profile_pic_url)

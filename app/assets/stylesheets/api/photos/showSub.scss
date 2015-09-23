@@ -1,0 +1,28 @@
+div.photo-info {
+  color: #eee;
+}
+
+div.photo-info h1.photo-title {
+  font-size: 24px;
+  text-align: center;
+}
+
+div.photo-info h1.photo-title:before {
+  content: "Title: ";
+  font-size: 12px;
+}
+
+div.photo-info h2.photo-uploader {
+  font-size: 20px;
+  text-align: center;
+}
+
+div.photo-info h2.photo-uploader:before {
+  content: "by: ";
+  font-size: 12px;
+}
+
+div.photo-info p.photo-desc {
+  font-size: 16px;
+  text-align: center;
+}

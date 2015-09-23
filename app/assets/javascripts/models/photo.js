@@ -49,4 +49,14 @@ Sparklr.Models.Photo = Backbone.Model.extend({
       }
     });
   },
+
+  destroy: function (album_id) {
+    // if no album id, delete photo from database
+    // otherwise, just delete the entry with this photo_id and album_id
+    if (!album_id) {
+      Backbone.Model.prototype.destroy.call(this);
+    } else {
+      
+    }
+  }
 })

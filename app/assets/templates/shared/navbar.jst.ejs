@@ -36,7 +36,7 @@
 
   <% if (Sparklr.currentUser.isSignedIn()) { %>
     <div class='user-menu-container'>
-      <img class='profile-pic group' src='<%=Sparklr.defaultProfileImage%>'>
+      <img class='profile-pic group' src='<%=Sparklr.currentUser.get('profile_pic_url')%>'>
       <div class="nav-dropdown-container">
         <div class='settings-dropdown-container'>
           <h2>Hi, <%= Sparklr.currentUser.escape('fname') %></h2>

@@ -16,5 +16,5 @@ Backbone.Collection.prototype.getOrFetch = function (id) {
 
 Backbone.View.prototype.addUserCover = function () {
   var coverView = new Sparklr.Views.UserCover({user: this.user})
-  this.$el.prepend(coverView.render().$el);
+  coverView.addUserCover($('#main'));
 };

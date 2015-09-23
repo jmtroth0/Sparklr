@@ -83,6 +83,6 @@ class User < ActiveRecord::Base
   end
 
   def create_photostream
-    @photostream = Photostream.create!(title: 'Photostream', user_id: @user.id)
+    @photostream = Photostream.create!(title: 'Photostream', user_id: self.id)
   end
 end

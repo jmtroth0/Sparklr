@@ -1,0 +1,7 @@
+<div class="photo-info">
+  <h1 class='photo-title'><%= photo.escape('title') %></h1>
+  <h2 class='photo-uploader'><%= photo.get('uploader') && photo.get('uploader').email %></h2>
+  <p class='photo-desc'>
+    "<%= photo.escape('description') %>"
+  </p>
+</div>
