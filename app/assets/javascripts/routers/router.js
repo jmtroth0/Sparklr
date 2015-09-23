@@ -4,6 +4,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     this.makeNavBar();
     this.makeFooter();
     this.users = new Sparklr.Collections.Users();
+    this.photos = new Sparklr.Collections.Photos();
     Sparklr.albums = new Sparklr.Collections.Albums;
     if (Sparklr.currentUser.isSignedIn()){
       Sparklr.albums.fetch();
@@ -16,15 +17,16 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "users/new": "userNew",
     "users/:id": "userShow",
     "user/edit": "userEdit",
-    "session/new": "signIn",
-    "photostream": "photostreamShow",
-    "albums/new": "albumNew",
-    "albums/:id": "albumShow",
-    "albums/:album_id/photos/:id": "albumPhotoShow",
-    "photostream/:stream_id/photos/:id": "streamPhotoShow",
     "users/:user_id/photos": "photosIndex",
     "users/:user_id/albums": "userAlbumIndex",
     "users/:user_id/photostream": "userPhotostreamShow",
+    "photos/:id": "photoShow",
+    "albums/new": "albumNew",
+    "albums/:id": "albumShow",
+    "albums/:album_id/photos/:id": "albumPhotoShow",
+    "photostream": "photostreamShow",
+    "photostream/:stream_id/photos/:id": "streamPhotoShow",
+    "session/new": "signIn",
     "search": "search",
   },
 
@@ -36,7 +38,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   albumIndex: function (options) {
-    if (!this._requireSignedIn(this.albumIndex.bind(this))) { return; }
+    if (!this._requireSignedIn(this.albumIndex.bind(this, options))) { return; }
     var albums = (options && options.albums) || Sparklr.albums;
     var user = (options && options.user) || Sparklr.currentUser;
     albums.fetch();
@@ -49,7 +51,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
 
   userAlbumIndex: function (user_id){
     var userAlbums = new Sparklr.Collections.Albums({
-      url: "api/users/" + user_id + "/albums"
+      url: "api/users/" + user_id + "/albums",
     });
     userAlbums.fetch();
     var user = this.users.getOrFetch(user_id);
@@ -97,16 +99,23 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   streamPhotoShow: function (stream_id, id) {
-    if (stream_id !== Sparklr.currentUser.id) {
-      alert("Stop hacking the url");
-      return;
-    }
-
-    var photo = Sparklr.photos.getOrFetch(id);
+    // add url protections?
+    var photo = Sparklr.currentUser.photos().getOrFetch(id);
 
     var showPhotoView = new Sparklr.Views.PhotoShow({
       photo: photo,
+      photostream: true,
     });
+    this._swapView(showPhotoView);
+  },
+
+  photoShow: function (id) {
+    var photo = this.photos.getOrFetch(id);
+
+    var showPhotoView = new Sparklr.Views.PhotoShow({
+      photo: photo,
+    })
+
     this._swapView(showPhotoView);
   },
 

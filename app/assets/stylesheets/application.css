@@ -36,10 +36,11 @@
  }
 
  div#backdrop {
-   padding: 50px 0 35px 0;
+   padding: 50px 0 50px 0;
    min-height: calc(100% - 85px);
    overflow: auto;
    position: relative;
+   background: #eee;
  }
 
  ul {

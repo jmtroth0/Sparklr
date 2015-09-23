@@ -18,7 +18,6 @@ module Api
     def create
       @user = User.new(user_params)
       if @user.save
-        @photostream = Photostream.create(title: 'Photostream', user_id: @user.id)
         sign_in(@user)
         render :show
       else

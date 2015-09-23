@@ -1,4 +1,7 @@
-Sparklr.Views.Search = Backbone.View.extend({
+Sparklr.Views.Search = Backbone.CompositeView.extend({
+  template: JST['search/main'],
+  className: 'main-search',
+
   initialize: function (options) {
     this.bindScroll();
     this.searchResults = new Sparklr.Collections.SearchResults();
@@ -10,16 +13,16 @@ Sparklr.Views.Search = Backbone.View.extend({
   },
 
   events: {
-    "change .query": "search",
+    "change .query": "searchFromView",
   },
 
-  template: JST['shared/search'],
-
   render: function () {
-    var content = this.template({
-      results: this.searchResults,
-    });
-    this.$el.html(content);
+    this.$el.html(this.template());
+
+    this.searchResults.each(function (result) {
+      this.addResult(result);
+    }.bind(this))
+
 
     return this;
   },
@@ -41,8 +44,20 @@ Sparklr.Views.Search = Backbone.View.extend({
     });
   },
 
+  addResult: function (result) {
+    var resultView = new Sparklr.Views.ResultItem ({
+      result: result
+    });
+    this.addSubview('ul.results', resultView);
+  },
+
   bindScroll: function () {
     $(window).on("scroll", this.handleScroll.bind(this));
+  },
+
+  remove: function () {
+    $(window).off();
+    Backbone.CompositeView.prototype.remove.call(this);
   },
 
   handleScroll: function (e) {
@@ -59,7 +74,7 @@ Sparklr.Views.Search = Backbone.View.extend({
 
     this.requestingNextPage = true;
     this.searchResults.fetch({
-      remove: false,
+      remove: true,
       data: {
         query: this.searchResults.query,
         page: this.searchResults.pageNum + 1

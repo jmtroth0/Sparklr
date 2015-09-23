@@ -1,0 +1,18 @@
+
+<% if (result instanceof Sparklr.Models.User) { %>
+  <a href="#/users/<%= result.escape('id') %>/albums">
+    <img src="<%= result.escape('coverPhoto') %>">
+    <%= result.escape("email") %>
+  </a>
+<% } else { %>
+  <%= result.escape("title") %>
+  <% if (result instanceof Sparklr.Models.Album) { %>
+    <a href="#/albums/<%= result.escape('id') %>">
+      <img src="<%= result.escape('cover_thumbnail_url') %>">
+    </a>
+  <% } else { %>
+    <a href="#/photos/<%= result.escape('id') %>">
+      <img src="<%= result.escape('image_url') %>">
+    </a>
+  <% } %>
+<% } %>

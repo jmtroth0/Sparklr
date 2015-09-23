@@ -1,10 +1,14 @@
 <a class='album-link' href='#/albums/<%= album.escape("id") %>'>
-  <img class='album-thumbnail' src='<%= album.get("cover_thumbnail_url") || Sparklr.defaultProfileImage %>'>
+  <img
+    class='album-thumbnail'
+    src='<%= album.get("cover_thumbnail_url") || Sparklr.defaultProfileImage %>'>
   <!-- first pic of the album -->
   <h3><%= album.escape('title') %></h3>
 </a>
 
-<% if (album.get('user').email === Sparklr.currentUser.get('email')) { %>
-  <button class='delete-album'>Delete Album</button>
+<% if (album.get('user')) { %>
+  <% if (album.get('user').email === Sparklr.currentUser.get('email')) { %>
+    <button class='delete-album'>Delete Album</button>
+  <% } %>
 <% } %>
 <!-- also get num photos and num views -->

@@ -3,9 +3,11 @@
     <img class="focused-photo" src="<%= photo.get('image_url') %>">
   </div>
 
-  <a class="back-to-album" href="<%= albumUrl %>">
-    <% if (albumUrl === "photostream") { %>
+  <a class="back-to-album" href="<%= sourceUrl %>">
+    <% if (sourceUrl === "#/photostream") { %>
       Back to photostream
+    <% } else if (independent) { %>
+      To user
     <% } else { %>
       Back to Album
     <% } %>

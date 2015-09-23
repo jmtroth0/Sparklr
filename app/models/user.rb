@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   after_initialize :ensure_session_token
+  before_save :create_photostream
 
   def self.find_by_credentials(email, password)
     user = User.find_by({email: email})
@@ -46,14 +47,6 @@ class User < ActiveRecord::Base
     user
   end
 
-  def profile_cover_image_url
-    # if profile_cover_image
-    #
-    # else
-      Photo::DEFAULT_PROFILE_COVER_IMAGE_URL
-    # end
-  end
-
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -71,5 +64,25 @@ class User < ActiveRecord::Base
 
   def ensure_session_token
     self.session_token ||= SecureRandom.base64
+  end
+
+  def cover_photo_url
+    if cover_photo_id
+      Photo.find(cover_photo_id).image.url(:original)
+    else
+      Photo::DEFAULT_PROFILE_COVER_IMAGE_URL
+    end
+  end
+
+  def profile_pic_url
+    if profile_pic_id
+      Photo.find(profile_pic_id).image.url(:thumb)
+    else
+      Photo::DEFAULT_PROFILE_IMAGE_URL
+    end
+  end
+
+  def create_photostream
+    @photostream = Photostream.create!(title: 'Photostream', user_id: @user.id)
   end
 end

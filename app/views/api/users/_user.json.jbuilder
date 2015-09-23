@@ -4,4 +4,4 @@ json.photostream do
   json.extract! user.photostream, :id, :title, :description
 end
 # json.profilePhoto
-json.coverPhoto asset_path(user.profile_cover_image_url)
+json.coverPhoto asset_path(user.cover_photo_url)
