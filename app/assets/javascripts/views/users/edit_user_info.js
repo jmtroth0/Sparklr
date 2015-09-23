@@ -21,9 +21,15 @@ Sparklr.Views.EditUserInfo = Backbone.View.extend({
 
     var $form = $(e.currentTarget);
     var userData = $form.serializeJSON().user;
-    var user = new Sparklr.Models.User();
-    user.set(userData);
-    user.save({}, {
+    for(var attr in userData) {
+      // if (userData.hasOwnProperty()) {
+        if (userData[attr]){
+          Sparklr.currentUser.set(attr, userData[attr]);
+        }
+      // }
+    }
+    Sparklr.currentUser.save({}, {
+      url: "/api/users/" + Sparklr.currentUser.id,
       success: function(){
         Backbone.history.navigate("", { trigger: true });
       },

@@ -2,7 +2,13 @@ module Api
   class UsersController < ApplicationController
 
     def update
-      # might implement once I'm using backbone
+      @user = User.find(params[:id])
+
+      if @user.update(user_params)
+        render :show
+      else
+        render json: @user.errors.full_messages, status: :unprocessable_entity
+      end
     end
 
     def show
