@@ -3,10 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div.auth-form-container {
-  margin-top: 50px;
-  position: absolute;
-  right: 100px;
-  top: 20px;
+  float: right;
+  margin: 50px 100px 50px 0;
   width: 300px;
   padding: 25px;
   border: 1px solid black;
@@ -64,4 +62,15 @@ div.auth-form-container a {
 
 div.auth-form-container a:hover {
   color: purple;
+}
+
+div.sign-in-warning {
+  background: red;
+  width: 100%;
+}
+
+h4.sign-in-warning {
+  color: white;
+  width: calc(100% - 100px);
+  text-align: right;
 }

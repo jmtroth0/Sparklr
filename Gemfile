@@ -18,6 +18,7 @@ gem 'aws-sdk', '~> 1.6'
 gem 'ejs'
 gem 'omniauth-facebook'
 gem 'kaminari'
+gem 'pg_search'
 
 group :development, :test do
   gem 'byebug'

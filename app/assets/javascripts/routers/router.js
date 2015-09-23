@@ -25,6 +25,14 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "users/:user_id/photos": "photosIndex",
     "users/:user_id/albums": "userAlbumIndex",
     "users/:user_id/photostream": "userPhotostreamShow",
+    "search": "search",
+  },
+
+  search: function (options) {
+    var searchQuery = options && options.searchQuery;
+    var searchView = new Sparklr.Views.Search({ searchQuery: searchQuery });
+
+    this._swapView(searchView);
   },
 
   albumIndex: function (options) {
@@ -100,10 +108,6 @@ Sparklr.Routers.Router = Backbone.Router.extend({
       photo: photo,
     });
     this._swapView(showPhotoView);
-  },
-
-  photosIndex: function() {
-
   },
 
   userNew: function () {

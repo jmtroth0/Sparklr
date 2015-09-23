@@ -6,7 +6,7 @@ window.Sparklr = {
   initialize: function() {
     this.currentUser = new Sparklr.Models.CurrentUser();
     this.currentUser.fetch()
-    var router = new Sparklr.Routers.Router({ $rootEl: $('div#main') });
+    this.router = new Sparklr.Routers.Router({ $rootEl: $('div#main') });
 
     Backbone.history.start();
   },

@@ -1,9 +1,14 @@
 class User < ActiveRecord::Base
+  include PgSearch
 
   has_many :albums, dependent: :destroy
   has_one :photostream, dependent: :destroy
   has_many :photos, foreign_key: :uploader_id, dependent: :destroy
   has_many :photos_in_albums, through: :albums, source: :photos
+
+  multisearchable against: [:email]
+
+  pg_search_scope :search_by_email, against: :email
 
   validates :email, :password_digest, :session_token, uniqueness: true, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }

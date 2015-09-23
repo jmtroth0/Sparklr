@@ -26,15 +26,24 @@
   <li class='group'><a class='upload-link'>Upload</a></li>
 </ul>
 
-<% if (Sparklr.currentUser.isSignedIn()) { %>
-  <div class='user-menu-container'>
-    <img class='profile-pic' src='<%=Sparklr.defaultProfileImage%>'>
-    <div class="nav-dropdown-container">
-      <div class='settings-dropdown-container'>
-        <h2>Hi, <%= Sparklr.currentUser.escape('fname') %></h2>
-        <a class='edit-user-info' href='#/user/edit'>Settings</a>
-        <button id="sign-out">Sign Out</button>
+<div class="nav-right">
+
+  <div class="search-bar group">
+    <form class="search">
+      <input type="text" class="search-query" placeholder="search...">
+    </form>
+  </div>
+
+  <% if (Sparklr.currentUser.isSignedIn()) { %>
+    <div class='user-menu-container'>
+      <img class='profile-pic group' src='<%=Sparklr.defaultProfileImage%>'>
+      <div class="nav-dropdown-container">
+        <div class='settings-dropdown-container'>
+          <h2>Hi, <%= Sparklr.currentUser.escape('fname') %></h2>
+          <a class='edit-user-info' href='#/user/edit'>Settings</a>
+          <button id="sign-out">Sign Out</button>
+        </div>
       </div>
     </div>
-  </div>
-<% } %>
+  <% } %>
+</div>

@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     get 'photostream', to: 'photostreams#show'
     resources :photos, except: [:new, :edit]
     resource :session, only: [:show, :create, :destroy]
+    get "/search", to: "static_pages#search"
+    get "/user_search", to: "static_pages#user_search"
   end
 end

@@ -16,22 +16,22 @@
       type='text'
       id='email'
       name='user[email]'
-      value='<%= user.escape('email') %>'>
-    <label for='email'>Email</label>
+      value='<%= user.escape('email') %>'
+      placeholder='email'>
 
     <input
       type='password'
       id='password'
-      name='user[password]'>
-    <label for='password'>Password</label>
+      name='user[password]'
+      placeholder='password'>
 
     <% if (status == 'new') { %>
       <input
         type='text'
         id='fname'
         name='user[fname]'
-        value='<%= user.escape('fname') %>'>
-      <label for='fname'>First Name</label>
+        value='<%= user.escape('fname') %>'
+        placeholder='First Name'>
     <% } %>
 
     <button><%= button_text %></button>

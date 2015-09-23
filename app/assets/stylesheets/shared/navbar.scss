@@ -101,6 +101,10 @@ div.user-menu-container {
   float: right;
 }
 
+div.nav-right {
+  float: right;
+}
+
 div.nav-dropdown-container.visible {
   display: block;
 }
@@ -118,10 +122,36 @@ div.user-menu-container > div.nav-dropdown-container:before {
   transform: translateY(-10px) translateX(5px);
 }
 
+div.user-menu-container > div.nav-dropdown-container {
+  transform: translateY(50px);
+}
+
 img.profile-pic {
   cursor: pointer;
   margin: 8px;
   width: 55%;
   height: auto;
   border-radius: 50%;
+  float: right;
+}
+
+div.search-bar {
+  float: left;
+}
+
+input.search-query {
+  background: #ccc;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: none;
+  width: 180px;
+  transition: width .4s, background-color .4s;
+}
+
+input.search-query:focus {
+  background: white;
+  width: 300px;
+  transition: width .4s, background .4s;
 }

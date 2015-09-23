@@ -7,6 +7,8 @@ Sparklr.Views.NavBar = Backbone.View.extend({
     'click img.profile-pic': 'toggleSettings',
     "click button#sign-out": "signOut",
     "click .upload-link": "openUploadForm",
+    "click .close-modal": "closeUploadForm",
+    "submit form.search": "initiateSearch",
   },
 
   initialize: function () {
@@ -26,10 +28,31 @@ Sparklr.Views.NavBar = Backbone.View.extend({
   },
 
   openUploadForm: function () {
+    if (Sparklr.currentUser.isNew()){
+
+      return;
+    };
+
     var uploadView = new Sparklr.Views.PhotoForm();
     this.$el.append(JST['shared/modal']);
-    this.$el.find('article.form-content').html(uploadView.render().$el);
+    this.$el.find('article.form-content').prepend(uploadView.render().$el);
     this.$el.find('.form-modal').addClass('is-active');
+  },
+
+  closeUploadForm: function () {
+    this.$el.find('section.form-modal.is-active').remove();
+  },
+
+  initiateSearch: function (e) {
+    e.preventDefault();
+    var searchQuery = this.$(".search-query").val();
+    Sparklr.router.search({searchQuery: searchQuery});
+  },
+
+  addSignedOutarning: function () {
+    $warning = $('<div class="sign-in-warning">');
+    $warning.html("<h4 class='sign-in-warning'>Please Sign in First</h4>");
+    $('div#main').prepend($warning);
   },
 
   signOut: function (e) {
