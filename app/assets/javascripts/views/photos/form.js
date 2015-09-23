@@ -15,6 +15,7 @@ Sparklr.Views.PhotoForm = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template({ photo: this.photo, album_id: this.album_id }))
+
     return this;
   },
 
@@ -26,9 +27,7 @@ Sparklr.Views.PhotoForm = Backbone.View.extend({
 
     var formData = new FormData();
     for(var attr in attrs) {
-      if (attrs.hasOwnProperty()) {
-        formData.append("photo[" + attr + "]", attrs[attr])
-      }
+      formData.append("photo[" + attr + "]", attrs[attr])
     }
     formData.append("photo[image]", file)
 
