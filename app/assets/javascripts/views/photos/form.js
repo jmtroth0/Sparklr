@@ -3,8 +3,14 @@ Sparklr.Views.PhotoForm = Backbone.View.extend({
 
   initialize: function (options) {
     this.photo = new Sparklr.Models.Photo();
-    this.photos = options && options.photos || Sparklr.currentUser.photos();
-    this.album_id = options && options.album_id;
+    if (options && options.photos) {
+      this.photos = options && options.photos;
+      this.album_id = options && options.album_id;
+      this.redirectURLRoot = "/albums/" + this.album_id + "/photos/"
+    } else {
+      this.photos = Sparklr.currentUser.photos();
+      this.redirectURLRoot = "/photostream/" + Sparklr.currentUser.id + "/photos/"
+    }
     this.listenTo(this.photo, "sync", this.render);
   },
 
@@ -30,13 +36,12 @@ Sparklr.Views.PhotoForm = Backbone.View.extend({
       formData.append("photo[" + attr + "]", attrs[attr])
     }
     formData.append("photo[image]", file)
-
     var self = this;
     this.photo.saveFormData(formData, {
       success: function () {
         self.photos.add(self.photo);
         Backbone.history.navigate(
-          "#/albums/" + self.album_id + "/photos/" + self.photo.id,
+          self.redirectURLRoot + self.photo.id,
           { trigger: true }
         )
       },

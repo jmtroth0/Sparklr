@@ -57,10 +57,14 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
   },
 
   addForm: function (e) {
-    this._photoFormView = new Sparklr.Views.PhotoForm({
-      album_id: this.model.id,
-      photos: this.model.photos(),
-    });
+    if (this instanceof Sparklr.Views.PhotostreamShow) {
+      this._photoFormView = new Sparklr.Views.PhotoForm();
+    } else {
+      this._photoFormView = new Sparklr.Views.PhotoForm({
+        album_id: this.model.id,
+        photos: this.model.photos(),
+      });
+    }
     this.addSubview('article.form-content', this._photoFormView, true);
     this.$el.find('.form-modal').addClass('is-active');
     this.$el.find('button.open-form').removeClass('visible');

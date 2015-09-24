@@ -29,8 +29,8 @@ Sparklr.Views.NavBar = Backbone.View.extend({
   },
 
   openUploadForm: function () {
-    if (Sparklr.currentUser.isNew()){
-
+    if (!Sparklr.currentUser.isSignedIn()){
+      addSignedOutWarning();
       return;
     };
 
@@ -38,10 +38,11 @@ Sparklr.Views.NavBar = Backbone.View.extend({
     this.$el.append(JST['shared/modal']);
     this.$el.find('article.form-content').prepend(uploadView.render().$el);
     this.$el.find('.form-modal').addClass('is-active');
+    this.listenTo(Sparklr.currentUser.photos(), 'add', this.closeUploadForm);
   },
 
   closeUploadForm: function () {
-    this.$el.find('section.form-modal.is-active').remove();
+    this.$el.find('section.form-modal').removeClass('is-active');
   },
 
   initiateSearch: function (e) {
@@ -50,7 +51,7 @@ Sparklr.Views.NavBar = Backbone.View.extend({
     Backbone.history.navigate("search/" + searchQuery, { trigger: true} );
   },
 
-  addSignedOutarning: function () {
+  addSignedOutWarning: function () {
     $warning = $('<div class="sign-in-warning">');
     $warning.html("<h4 class='sign-in-warning'>Please Sign in First</h4>");
     $('div#main').prepend($warning);
