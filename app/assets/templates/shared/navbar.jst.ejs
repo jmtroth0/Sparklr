@@ -34,16 +34,20 @@
     </form>
   </div>
 
-  <% if (Sparklr.currentUser.isSignedIn()) { %>
-    <div class='user-menu-container'>
-      <img class='profile-pic group' src='<%=Sparklr.currentUser.get('profile_pic_url')%>'>
-      <div class="nav-dropdown-container">
-        <div class='settings-dropdown-container'>
-          <h2>Hi, <%= Sparklr.currentUser.escape('fname') %></h2>
-          <a class='edit-user-info' href='#/user/edit'>Settings</a>
-          <button id="sign-out">Sign Out</button>
+  <div class='user-menu-container'>
+    <% if (Sparklr.currentUser.isSignedIn()) { %>
+        <img class='profile-pic group' src='<%=Sparklr.currentUser.get('profile_pic_url')%>'>
+        <div class="nav-dropdown-container">
+          <div class='settings-dropdown-container'>
+            <h2>Hi, <%= Sparklr.currentUser.escape('fname') %></h2>
+            <a class='edit-user-info' href='#/user/edit'>Settings</a>
+            <button id="sign-out">Sign Out</button>
+          </div>
         </div>
+    <% } else { %>
+      <div class="sign-in">
+        <button id="sign-in">Sign In</button>
       </div>
-    </div>
-  <% } %>
+    <% } %>
+  </div>
 </div>

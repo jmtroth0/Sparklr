@@ -27,12 +27,12 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "photostream": "photostreamShow",
     "photostream/:stream_id/photos/:id": "streamPhotoShow",
     "session/new": "signIn",
-    "search": "search",
+    "search/:query": "search",
   },
 
-  search: function (options) {
+  search: function (query) {
     var searchQuery = options && options.searchQuery;
-    var searchView = new Sparklr.Views.Search({ searchQuery: searchQuery });
+    var searchView = new Sparklr.Views.Search({ searchQuery: query });
 
     this._swapView(searchView);
   },

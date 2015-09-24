@@ -155,3 +155,22 @@ input.search-query:focus {
   width: 300px;
   transition: width .4s, background .4s;
 }
+
+button#sign-in {
+  background: transparent;
+  border: none;
+  color: white;
+  float: left;
+  font-size: 16px;
+  transition: color .3s;
+}
+
+button#sign-in:hover {
+  cursor: pointer;
+  color: #ccc;
+  transition: color .5s;
+}
+
+div.sign-in {
+  margin: 15px;
+}

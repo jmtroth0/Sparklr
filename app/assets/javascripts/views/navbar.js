@@ -6,6 +6,7 @@ Sparklr.Views.NavBar = Backbone.View.extend({
   events: {
     'click img.profile-pic': 'toggleSettings',
     "click button#sign-out": "signOut",
+    "click button#sign-in": "signIn",
     "click .upload-link": "openUploadForm",
     "click .close-modal": "closeUploadForm",
     "submit form.search": "initiateSearch",
@@ -46,7 +47,7 @@ Sparklr.Views.NavBar = Backbone.View.extend({
   initiateSearch: function (e) {
     e.preventDefault();
     var searchQuery = this.$(".search-query").val();
-    Sparklr.router.search({searchQuery: searchQuery});
+    Backbone.history.navigate("search/" + searchQuery, { trigger: true} );
   },
 
   addSignedOutarning: function () {
@@ -63,4 +64,8 @@ Sparklr.Views.NavBar = Backbone.View.extend({
       }
     })
   },
+
+  signIn: function (e) {
+    Backbone.history.navigate("session/new", { trigger: true })
+  }
 })
