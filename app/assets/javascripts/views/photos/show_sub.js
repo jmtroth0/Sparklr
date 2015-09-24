@@ -27,9 +27,10 @@ Sparklr.Views.PhotoShowSub = Backbone.View.extend({
   },
 
   addChoicesToModal: function () {
-    var $choices = $('<div class="choices">')
-    $choices.prepend('Your Albums: <br>')
-
+    var $choices = this.$el.find('div.choices')
+    $choices.append('Your Albums: <br>')
+    var $emptyChoice = $('<input type="hidden" name="cat[tag_ids][]" value="">');
+    $choices.append($emptyChoice);
     Sparklr.currentUser.albums().each(function(album) {
       var $choice = $('<label class="album-choice">');
       if (this.photo.albums().some(function(my_album) {
@@ -47,11 +48,12 @@ Sparklr.Views.PhotoShowSub = Backbone.View.extend({
     this.$el.find('.form-modal form.choose-albums').html($choices);
   },
 
-
   submitAlbums: function (e) {
     e.preventDefault();
     var attrs = $(e.target).serializeJSON();
+    attrs.album_ids = attrs.album_ids && attrs.album_ids.concat([""]) || [""];
     var self = this;
+    debugger;
     this.photo.save(attrs, {
       success: function () {
         self.closeModal();

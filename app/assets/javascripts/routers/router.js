@@ -78,7 +78,6 @@ Sparklr.Routers.Router = Backbone.Router.extend({
 
   photostreamShow: function () {
     if (!this._requireSignedIn(this.photostreamShow.bind(this))) { return; }
-    var user = Sparklr.currentUser
     var photostream = Sparklr.currentUser.photostream();
     photostream.fetch();
     var showPhotostreamView = new Sparklr.Views.PhotostreamShow({
