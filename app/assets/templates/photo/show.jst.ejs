@@ -3,7 +3,7 @@
     <img class="focused-photo" src="<%= photo.get('image_url') %>">
   </div>
 
-  <a class="back-to-album" href="<%= sourceUrl %>">
+  <a class="back-to-album group" href="<%= sourceUrl %>">
     <% if (sourceUrl === "#/photostream") { %>
       Back to photostream
     <% } else if (independent) { %>
@@ -12,4 +12,6 @@
       Back to Album
     <% } %>
   </a>
+
+  <button class="delete-photo-form group">Delete Photo</button>
 </div>

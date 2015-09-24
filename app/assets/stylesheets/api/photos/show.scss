@@ -19,4 +19,24 @@ a.back-to-album {
   color: white;
   font-size: 12px;
   margin-left: 100px;
+  float: left;
+}
+
+a.back-to-album:hover {
+  color: #ccc;
+}
+
+button.delete-photo-form {
+  color: white;
+  background: transparent;
+  border: none;
+  display: block;
+  font-size: 12px;
+  margin-right: 130px;
+  float: right;
+}
+
+button.delete-photo-form:hover {
+  color: red;
+  cursor: pointer;
 }

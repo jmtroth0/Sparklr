@@ -2,7 +2,9 @@ Sparklr.Views.PhotoShow = Backbone.CompositeView.extend({
   template: JST['photo/show'],
 
   events: {
-    'click button.return-to-album': 'backToAlbum',
+    'click button.delete-photo-form': 'openDeletePhotoForm',
+    'click button.delete-photo': "deletePhoto",
+    'click button.close-delete-modal': "closeDeletePhotoForm",
   },
 
   initialize: function (options) {
@@ -14,7 +16,7 @@ Sparklr.Views.PhotoShow = Backbone.CompositeView.extend({
 
   render: function () {
     this.uploader = this.photo.get('uploader');
-    this.setSourceUrl();
+    this._setSourceUrl();
     this.$el.html(this.template({
       photo: this.photo,
       sourceUrl: this.sourceURL,
@@ -32,7 +34,7 @@ Sparklr.Views.PhotoShow = Backbone.CompositeView.extend({
     return this;
   },
 
-  setSourceUrl: function () {
+  _setSourceUrl: function () {
     if (this.album_id) {
       this.sourceURL = "#/albums/" + this.album_id;
     } else if (this.photostream){
@@ -41,5 +43,20 @@ Sparklr.Views.PhotoShow = Backbone.CompositeView.extend({
       this.sourceURL = "#/users/" + this.uploader.id + "/albums"
       this.independent = true;
     }
-  }
+  },
+
+  openDeletePhotoForm: function () {
+    this.$el.append(JST['photo/delete_form']);
+  },
+
+  closeDeletePhotoForm: function () {
+    this.$el.find('section.form-modal').remove();
+  },
+
+  deletePhoto: function () {
+    this.photo.destroy();
+    Backbone.history.navigate(this.sourceURL, { trigger: true })
+  },
+
+
 });
