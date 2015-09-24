@@ -26,8 +26,9 @@ Sparklr.Views.PhotoShow = Backbone.CompositeView.extend({
       this.$el.find('.background').height(this.photo.dimensions[1] + 100)
     };
 
-    this.$el.find('.image-container').append(JST['photo/showSub']({photo: this.photo}));
-    // when a subview, not in this container
+    var subPhotoView = new Sparklr.Views.PhotoShowSub({photo: this.photo})
+    this.$el.find('.image-container').append(subPhotoView.render().$el);
+    // when I build out the subview, it won't be in this container
     return this;
   },
 

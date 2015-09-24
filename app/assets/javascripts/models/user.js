@@ -3,7 +3,7 @@ Sparklr.Models.User = Backbone.Model.extend({
 
   parse: function (payload) {
     if (payload.albums) {
-      this.albums().set(payload.albums.slice(1), {parse: true});
+      this.albums().set(payload.albums, {parse: true});
 
       delete payload.photos;
     }

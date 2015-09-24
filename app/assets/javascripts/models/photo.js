@@ -56,7 +56,7 @@ Sparklr.Models.Photo = Backbone.Model.extend({
     if (!album_id) {
       Backbone.Model.prototype.destroy.call(this);
     } else {
-      
+
     }
   }
 })

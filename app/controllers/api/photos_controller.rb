@@ -8,12 +8,6 @@ module Api
 
     def create
       @photo = current_user.photos.create!(photo_params)
-      unless params[:photo][:album_id] == ""
-        AlbumPhoto.create!({
-          album_id: params[:photo][:album_id],
-          photo_id: @photo.id
-        })
-      end
       render :show
     end
 
@@ -37,7 +31,9 @@ module Api
     private
 
     def photo_params
-      params.require(:photo).permit(:id, :title, :description, :image, :dimensions)
+      params.require(:photo).permit(
+        :id, :title, :description, :image, :dimensions, album_ids: []
+      )
     end
   end
 end
