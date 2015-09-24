@@ -39,9 +39,6 @@ class User < ActiveRecord::Base
               fname: fname,
               email: fname + lname + SecureRandom.urlsafe_base64(7),
               password: SecureRandom.urlsafe_base64)
-      photostream = user.albums.create(title: 'Photostream')
-      user.photostream_id = photostream.id
-      user.save
     end
 
     user
