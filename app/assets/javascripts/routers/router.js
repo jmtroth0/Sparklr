@@ -5,10 +5,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     this.makeFooter();
     this.users = new Sparklr.Collections.Users();
     this.photos = new Sparklr.Collections.Photos();
-    Sparklr.albums = new Sparklr.Collections.Albums;
-    if (Sparklr.currentUser.isSignedIn()){
-      Sparklr.albums.fetch();
-    };
+    Sparklr.albums = new Sparklr.Collections.Albums();
   },
 
   routes: {
@@ -31,7 +28,6 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   search: function (query) {
-    var searchQuery = options && options.searchQuery;
     var searchView = new Sparklr.Views.Search({ searchQuery: query });
 
     this._swapView(searchView);
@@ -40,6 +36,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   albumIndex: function (options) {
     var albums = (options && options.albums) || Sparklr.albums;
     var user = (options && options.user) || Sparklr.currentUser;
+    debugger
     albums.fetch();
     var indexAlbumView = new Sparklr.Views.AlbumIndex({
       albums: albums,
@@ -52,7 +49,6 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     var userAlbums = new Sparklr.Collections.Albums({
       url: "api/users/" + user_id + "/albums",
     });
-    userAlbums.fetch();
     var user = this.users.getOrFetch(user_id);
     this.albumIndex({albums: userAlbums, user: user});
   },

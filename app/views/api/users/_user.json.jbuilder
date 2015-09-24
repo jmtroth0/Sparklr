@@ -1,4 +1,4 @@
-json.extract! user, :id, :email, :fname, :albums
+json.extract! user, :id, :email, :fname
 json.created_at user.created_at.to_date
 json.photostream do
   json.extract! user.photostream, :id, :title, :description

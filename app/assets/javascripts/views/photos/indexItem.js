@@ -24,13 +24,15 @@ Sparklr.Views.PhotoIndexItem = Backbone.View.extend({
     return this;
   },
 
-  setCoverPhoto: function () {
+  setCoverPhoto: function (e) {
+    e.preventDefault();
     Sparklr.currentUser.save({ cover_photo_id: this.photo.id }, {
       url: (function () { return 'api/users/' + Sparklr.currentUser.id }())
     });
   },
 
-  setProfilePhoto: function () {
+  setProfilePhoto: function (e) {
+    e.preventDefault();
     Sparklr.currentUser.save({ profile_pic_id: this.photo.id }, {
       url: (function () { return 'api/users/' + Sparklr.currentUser.id }())
     });

@@ -16,10 +16,10 @@ Sparklr.Views.UserCover = Backbone.View.extend({
 
   addUserCover: function ($el) {
     // top of main page when logged in and not 'exploring' or using a 'show' action
-    var coverView = new Sparklr.Views.UserCover({user: this.user});
-    if ($el.find('.user-cover-container').length === 0){
-      $el.prepend(coverView.render().$el);
+    if ($el.find('.user-cover-container').length > 0){
+      $el.find('.user-cover-container').remove();
     }
+    $el.prepend(this.render().$el);
     $el.find('.user-cover-main').css('background-image', 'url(' + this.user.get('coverPhoto'));
   },
 

@@ -9,7 +9,10 @@ end
 if show_albums
   json.albums do
     json.array! photo.albums do |album|
-      json.partial! 'api/albums/album', album: album, show_photos: false
+      json.partial! 'api/albums/album',
+        album: album,
+        show_photos: false,
+        show_user: false
     end
   end
 end

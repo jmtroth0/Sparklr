@@ -23,12 +23,12 @@ Sparklr.Views.Search = Backbone.CompositeView.extend({
       this.addResult(result);
     }.bind(this))
 
-
     return this;
   },
 
   searchFromView: function (e) {
     e.preventDefault();
+    window.history.pushState({}, "", "#/search/" + this.$(".query").val())
     this.search(this.$(".query").val());
   },
 

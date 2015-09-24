@@ -10,11 +10,26 @@ li.photoIndexItem {
 div.button-set {
   display: none;
   position: absolute;
-  top: 0;
+  top: 2px;
 }
 
 li.photoIndexItem:hover div.button-set {
   display: block;
+}
+
+div.button-set > button {
+  float: right;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  margin-top: 2px;
+}
+
+div.button-set > button:hover {
+  background: #ccc;
+  border: 1px solid #aaa;
+  border-right: none;
+  transition: background .3s, border .3s;
 }
 
 div.album-cover-container {
