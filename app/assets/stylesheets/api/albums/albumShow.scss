@@ -4,6 +4,17 @@ img.photo-thumbnail {
 li.photoIndexItem {
   float: left;
   margin: 5px;
+  position: relative;
+}
+
+div.button-set {
+  display: none;
+  position: absolute;
+  top: 0;
+}
+
+li.photoIndexItem:hover div.button-set {
+  display: block;
 }
 
 div.album-cover-container {

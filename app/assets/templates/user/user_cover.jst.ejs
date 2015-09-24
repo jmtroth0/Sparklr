@@ -1,6 +1,6 @@
 <div class="user-cover-main">
   <div class='user-cover-stuff'>
-    <img class='profile-pic group' src='<%=Sparklr.defaultProfileImage%>'>
+    <img class='profile-pic group' src='<%= Sparklr.currentUser.get('profile_pic_url') %>'>
     <div class="user-cover-info">
       <h1 class='group'><%= user.escape('fname') %></h1>
       <h2 class='group'><%= user.escape('email') %></h2>

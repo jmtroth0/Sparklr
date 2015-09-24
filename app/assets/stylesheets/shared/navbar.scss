@@ -109,27 +109,36 @@ div.nav-dropdown-container.visible {
   display: block;
 }
 
-div.user-menu-container > div.nav-dropdown-container:before {
-  content: "";
-  display: none;
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-bottom: 10px solid red;
-  border-top: none;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  transform: translateY(-10px) translateX(5px);
-}
+// div.user-menu-container > div.nav-dropdown-container:before {
+//   content: "";
+//   display: none;
+//   position: absolute;
+//   width: 0;
+//   height: 0;
+//   border-bottom: 10px solid red;
+//   border-top: none;
+//   border-left: 10px solid transparent;
+//   border-right: 10px solid transparent;
+//   transform: translateY(-10px) translateX(5px);
+// }
 
 div.user-menu-container > div.nav-dropdown-container {
-  transform: translateY(50px);
+  transform: translateX(-30px) translateY(50px);
+  padding: 10px;
+}
+
+a.edit-user-info {
+  border: 1px solid #C0C0C0;
+  border-radius: 5px;
+  font-size: 11px;
+  padding: 2px 6px 3px 6px;
+  font: helvetica;
 }
 
 img.profile-pic {
   cursor: pointer;
   margin: 8px;
-  width: 55%;
+  width: 50px;
   height: auto;
   border-radius: 50%;
   float: right;

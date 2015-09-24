@@ -7,7 +7,6 @@ Sparklr.Views.EditUserInfo = Backbone.View.extend({
 
   events: {
     'submit form': 'submit',
-    'change #input-prof-pic': "fileInputChange",
   },
 
   render: function(){
@@ -22,20 +21,22 @@ Sparklr.Views.EditUserInfo = Backbone.View.extend({
     var $form = $(e.currentTarget);
     var userData = $form.serializeJSON().user;
     for(var attr in userData) {
-      // if (userData.hasOwnProperty()) {
-        if (userData[attr]){
-          Sparklr.currentUser.set(attr, userData[attr]);
-        }
-      // }
+      if (userData[attr]){
+        Sparklr.currentUser.set(attr, userData[attr]);
+      }
     }
     Sparklr.currentUser.save({}, {
       url: "/api/users/" + Sparklr.currentUser.id,
       success: function(){
-        Backbone.history.navigate("", { trigger: true });
+        Backbone.history.navigate("user/edit", { trigger: true });
       },
-      error: function(data){
-        alert("Form invalid");
+      error: function(data, resp){
+        alert(resp.responseJSON.join());
       }
     });
   },
+
+
+
+
 })

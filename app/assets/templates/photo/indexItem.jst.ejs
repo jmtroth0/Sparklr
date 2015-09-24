@@ -1,5 +1,9 @@
 <a class='photo-link group' href='<%= photoUrl %>'>
   <img class='photo-thumbnail' src='<%= photo.get("image_url") %>'>
   <h3><%= photo.escape('title') %></h3>
+  <div class="button-set">
+    <button class='set-cover-photo'>Set as personal cover photo</button>
+    <button class='set-profile-photo'>Set as profile pic</button>
+  </div>
 </a>
 <!-- also get num views -->

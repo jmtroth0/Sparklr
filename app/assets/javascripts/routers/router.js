@@ -38,7 +38,6 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   albumIndex: function (options) {
-    if (!this._requireSignedIn(this.albumIndex.bind(this, options))) { return; }
     var albums = (options && options.albums) || Sparklr.albums;
     var user = (options && options.user) || Sparklr.currentUser;
     albums.fetch();
@@ -98,7 +97,9 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   streamPhotoShow: function (stream_id, id) {
-    // add url protections?
+    if (!this._requireSignedIn(
+      this.streamPhotoShow.bind(this, stream_id, id)
+    )) { return; }
     var photo = Sparklr.currentUser.photos().getOrFetch(id);
 
     var showPhotoView = new Sparklr.Views.PhotoShow({
@@ -113,7 +114,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
 
     var showPhotoView = new Sparklr.Views.PhotoShow({
       photo: photo,
-    })
+    });
 
     this._swapView(showPhotoView);
   },
