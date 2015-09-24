@@ -20,7 +20,9 @@ Sparklr.Views.UserCover = Backbone.View.extend({
       $el.find('.user-cover-container').remove();
     }
     $el.prepend(this.render().$el);
-    $el.find('.user-cover-main').css('background-image', 'url(' + this.user.get('coverPhoto'));
+    if (this.user.get('coverPhoto')) {
+      $el.find('.user-cover-main').css('background-image', 'url(' + this.user.get('coverPhoto'));
+    }
   },
 
   removeCover: function() {
