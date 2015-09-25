@@ -9,7 +9,7 @@ Sparklr.Views.Search = Backbone.CompositeView.extend({
     this.listenTo(this.searchResults, "sync", this.render);
     if (options && options.searchQuery) {
       this.search(options.searchQuery);
-    }
+    };
   },
 
   events: {
