@@ -98,7 +98,6 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     var user = this.users.getOrFetch(user_id);
     var photostream = user.photostream({url: "api/users/" + user_id + "/photostream"});
     photostream.fetch();
-    debugger;
     var showPhotostreamView = new Sparklr.Views.PhotostreamShow({
       model: photostream,
       user: user
