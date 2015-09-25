@@ -22,8 +22,6 @@ Sparklr.Views.PhotoShow = Backbone.CompositeView.extend({
       sourceUrl: this.sourceURL,
       independent: this.independent,
     }));
-    if (this.photo.dimensions){
-    };
 
     var subPhotoView = new Sparklr.Views.PhotoShowSub({photo: this.photo});
     this.$el.find('.image-container').append(subPhotoView.render().$el);

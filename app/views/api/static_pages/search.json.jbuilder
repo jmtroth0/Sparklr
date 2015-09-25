@@ -13,7 +13,7 @@ json.results do
       json.partial! "api/albums/album",
         album: search_result.searchable,
         show_photos: false,
-        show_user: false;
+        show_user: true;
       json._type "Album"
     end
   end
