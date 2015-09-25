@@ -24,8 +24,10 @@ Sparklr.Views.UserCover = Backbone.View.extend({
     if (this.user.get('coverPhoto')) {
       $el.find('.user-cover-main').css('background-image', 'url(' + this.user.get('coverPhoto'));
     }
-    this.$el.find('a.photostream-link').attr('href', "#/users/" + this.user.get('id') + "/photostream")
-    this.$el.find('a.albums-link').attr('href', "#/users/" + this.user.get('id') + "/albums")
+    if (this.user.id !== Sparklr.currentUser.id) {
+      this.$el.find('a.photostream-link').attr('href', "#/users/" + this.user.get('id') + "/photostream")
+      this.$el.find('a.albums-link').attr('href', "#/users/" + this.user.get('id') + "/albums")
+    }
   },
 
   removeCover: function() {
