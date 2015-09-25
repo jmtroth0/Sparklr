@@ -39,7 +39,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   albumIndex: function (options) {
-    if (options || !this._requireSignedIn(this.albumIndex.bind(this))) { return; }
+    if (!this._requireSignedIn(this.albumIndex.bind(this))) { return; }
     var albums = (options && options.albums) || Sparklr.albums;
     var user = (options && options.user) || Sparklr.currentUser;
     albums.fetch();
@@ -54,8 +54,13 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     var userAlbums = new Sparklr.Collections.Albums({
       url: "api/users/" + user_id + "/albums",
     });
+    userAlbums.fetch();
     var user = this.users.getOrFetch(user_id);
-    this.albumIndex({albums: userAlbums, user: user});
+    var indexAlbumView = new Sparklr.Views.AlbumIndex({
+      albums: userAlbums,
+      user: user,
+    });
+    this._swapView(indexAlbumView);
   },
 
   albumNew: function () {

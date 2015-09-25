@@ -136,11 +136,15 @@ a.edit-user-info {
 }
 
 img.profile-pic {
-  cursor: pointer;
-  margin: 8px;
-  width: 50px;
   height: auto;
   border-radius: 50%;
+}
+
+div.user-menu-container img.profile-pic {
+  cursor: pointer;
+  margin: 8px;
+  width: 34px;
+  max-height: 34px;
   float: right;
 }
 
