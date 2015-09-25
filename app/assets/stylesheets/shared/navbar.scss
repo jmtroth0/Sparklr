@@ -54,7 +54,7 @@ div.nav-dropdown-container {
   transform: translateY(10px);
   border-radius: 2px;
   border: 1px solid #ccc;
-  box-shadow: 1px 1px 1px 1px #aaa;
+  box-shadow: 1px 1px 1px #aaa;
   font-size: 14px;
   font-weight: normal;
   min-width: 160px;
@@ -92,11 +92,6 @@ li.explore-link:hover div.nav-dropdown-container:before {
   display: block;
 }
 
-li.personal-link:hover div.nav-dropdown-container,
-li.personal-link:hover div.nav-dropdown-container:before {
-  display: block;
-}
-
 div.user-menu-container {
   float: right;
 }
@@ -109,30 +104,38 @@ div.nav-dropdown-container.visible {
   display: block;
 }
 
-// div.user-menu-container > div.nav-dropdown-container:before {
-//   content: "";
-//   display: none;
-//   position: absolute;
-//   width: 0;
-//   height: 0;
-//   border-bottom: 10px solid red;
-//   border-top: none;
-//   border-left: 10px solid transparent;
-//   border-right: 10px solid transparent;
-//   transform: translateY(-10px) translateX(5px);
-// }
-
-div.user-menu-container > div.nav-dropdown-container {
-  transform: translateX(-30px) translateY(50px);
-  padding: 10px;
+div.user-menu-container > div.nav-dropdown-container:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid #eee;
+  border-top: none;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  transform: translateY(-20px) translateX(105px);
 }
 
-a.edit-user-info {
-  border: 1px solid #C0C0C0;
-  border-radius: 5px;
-  font-size: 11px;
-  padding: 2px 6px 3px 6px;
+div.user-menu-container > div.nav-dropdown-container {
+  transform: translateX(-100px) translateY(50px);
+  padding: 10px;
+  border: 1px solid black;
+  background: #eee;
+}
+
+a.edit-user-info,
+button#sign-out {
   font: helvetica;
+  font-size: 14px;
+  color: #006dac;
+  border: none;
+  background: none;
+}
+
+a.edit-user-info:hover,
+button#sign-out:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 img.profile-pic {
