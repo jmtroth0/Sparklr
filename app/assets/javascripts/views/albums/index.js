@@ -16,7 +16,7 @@ Sparklr.Views.AlbumIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    this.$el.html(this.template());
+    this.$el.html(this.template({user: this.user}));
     this.placeAlbums();
     this.addUserCover();
     return this;

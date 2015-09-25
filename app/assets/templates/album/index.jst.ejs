@@ -2,15 +2,18 @@
 
   <ul class="album-list group"></ul>
 
+</div>
+
+<% if (user.id === Sparklr.currentUser.id) { %>
   <div class='album-form-container'>
     <button class="open-form visible">Create Album?</button>
   </div>
-</div>
 
-<section class="form-modal">
-  <article class="form-content">
+  <section class="form-modal">
+    <article class="form-content">
 
-    <button class="close-form">Cancel</button>
-  </article>
-  <div class="modal-screen"></div>
-</section>
+      <button class="close-form">Cancel</button>
+    </article>
+    <div class="modal-screen"></div>
+  </section>
+<% } %>

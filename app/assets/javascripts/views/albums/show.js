@@ -18,7 +18,7 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var creator = this.model.get('user')
+    var creator = this.model.get('user');
     var email = creator && creator.email;
     var photos = this.model.photos();
     this.$el.html(this.template({

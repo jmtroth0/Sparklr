@@ -20,15 +20,16 @@
 
 <ul class="photo-list group"></ul>
 
-<div class='photo-form-container'>
-  <button class="open-form visible">Upload Photo?</button>
-</div>
+<% if (creator === Sparklr.currentUser.get('email')) { %>
+  <div class='photo-form-container'>
+    <button class="open-form visible">Upload Photo?</button>
+  </div>
 
+  <section class="form-modal">
+    <article class="form-content">
 
-<section class="form-modal">
-  <article class="form-content">
-
-    <button class="close-form">Cancel</button>
-  </article>
-  <div class="modal-screen"></div>
-</section>
+      <button class="close-form">Cancel</button>
+    </article>
+    <div class="modal-screen"></div>
+  </section>
+<% } %>
