@@ -1,11 +1,11 @@
 <div class="user-cover-main">
   <div class='user-cover-stuff'>
-    <img class='profile-pic group' src='<%= Sparklr.currentUser.get('profile_pic_url') %>'>
+    <img class='profile-pic group' src='<%= user.get('profile_pic_url') %>'>
     <div class="user-cover-info">
       <h1 class='group'><%= user.escape('fname') %></h1>
       <h2 class='group'><%= user.escape('email') %></h2>
     </div>
-    
+
     <div class="user-cover-stats">
       <!-- <span>Photos</span> -->
       <span>Joined <%= user.escape('created_at') %></span>

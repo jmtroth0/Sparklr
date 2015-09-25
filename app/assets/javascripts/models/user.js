@@ -39,8 +39,7 @@ Sparklr.Models.User = Backbone.Model.extend({
 
   photostream: function (options) {
     if (options && options.url) {
-      this._photostream = this._photostream ||
-        new Sparklr.Models.Photostream({url: options.url})
+      this._photostream = new Sparklr.Models.Photostream({url: options.url})
     } else {
       this._photostream = this._photostream ||
         new Sparklr.Models.Photostream()

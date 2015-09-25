@@ -14,6 +14,7 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
     this.listenTo(this.user, 'sync', this.render);
     this.listenTo(this.model.photos(), 'add', this.addPhoto);
     this.listenTo(this.model.photos(), 'remove', this.removePhoto);
+    this.listenTo(this.model.photos(), 'sync', this.render);
   },
 
   render: function () {
