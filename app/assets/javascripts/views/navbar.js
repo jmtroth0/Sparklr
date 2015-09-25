@@ -35,6 +35,9 @@ Sparklr.Views.NavBar = Backbone.View.extend({
     };
 
     var uploadView = new Sparklr.Views.PhotoForm();
+    if (this.$el.find('.form-modal')){
+      this.$el.find('.form-modal').remove();
+    };
     this.$el.append(JST['shared/modal']);
     this.$el.find('article.form-content').prepend(uploadView.render().$el);
     this.$el.find('.form-modal').addClass('is-active');
