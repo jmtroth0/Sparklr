@@ -20,7 +20,7 @@
 
 <ul class="photo-list group"></ul>
 
-<% if (photostream || creator === Sparklr.currentUser.get('email')) { %>
+<% if (typeof photostream !== "undefined" || creator === Sparklr.currentUser.get('email')) { %>
   <div class='photo-form-container'>
     <button class="open-form visible">Upload Photo?</button>
   </div>
