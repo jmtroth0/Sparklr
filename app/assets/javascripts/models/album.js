@@ -28,5 +28,9 @@ Sparklr.Models.Album = Backbone.Model.extend({
 });
 
 Sparklr.Models.Photostream = Sparklr.Models.Album.extend({
-  url: 'api/photostream'
+  url: 'api/photostream',
+
+  initialize: function (options) {
+    this.url = options && options.url || this.url;
+  },
 });

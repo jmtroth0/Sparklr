@@ -22,6 +22,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "albums/:id": "albumShow",
     "albums/:album_id/photos/:id": "albumPhotoShow",
     "photostream": "photostreamShow",
+    "users/:user_id/photostream": "userPhotostreamShow",
     "photostream/:stream_id/photos/:id": "streamPhotoShow",
     "session/new": "signIn",
     "search/:query": "search",
@@ -87,6 +88,20 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     photostream.fetch();
     var showPhotostreamView = new Sparklr.Views.PhotostreamShow({
       model: photostream
+    });
+
+    this._swapView(showPhotostreamView);
+  },
+
+  userPhotostreamShow: function (user_id) {
+    if (!this._requireSignedIn(this.userPhotostreamShow.bind(this, user_id))) { return; }
+    var user = this.users.getOrFetch(user_id);
+    var photostream = user.photostream({url: "api/users/" + user_id + "/photostream"});
+    photostream.fetch();
+    debugger;
+    var showPhotostreamView = new Sparklr.Views.PhotostreamShow({
+      model: photostream,
+      user: user
     });
 
     this._swapView(showPhotostreamView);
