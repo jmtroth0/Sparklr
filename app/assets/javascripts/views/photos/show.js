@@ -34,7 +34,9 @@ Sparklr.Views.PhotoShow = Backbone.CompositeView.extend({
     } else if (this.photostream){
       this.sourceURL = "#/photostream"
     } else {
-      this.sourceURL = "#/users/" + this.photo.get('uploader').id + "/albums"
+      if (this.photo.get('uploader')) {
+        this.sourceURL = "#/users/" + this.photo.get('uploader').id + "/albums"
+      }
       this.independent = true;
     }
   },
