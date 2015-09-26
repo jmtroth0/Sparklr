@@ -4,7 +4,7 @@
   </div>
   <div class="photo-buttons group">
     <a class="back-to-album group" href="<%= sourceUrl %>">
-      <% if (sourceUrl === "#/photostream") { %>
+      <% if (sourceUrl.indexOf("photostream") !== -1) { %>
         Back to photostream
       <% } else if (independent) { %>
         To user
@@ -13,7 +13,8 @@
       <% } %>
     </a>
 
-
+  <% if (photo.get("uploader") && photo.get("uploader").id === Sparklr.currentUser.id) { %>
     <button class="delete-photo-form group">Delete Photo</button>
+  <% } %>
   </div>
 </div>

@@ -6,6 +6,11 @@ module Api
       @photos = current_user.photos
     end
 
+    def recent_photos
+      @photos = Photo.all.page(params[:page]).per(6)
+      render :recent_photos
+    end
+
     def create
       @photo = current_user.photos.create!(photo_params)
       render :show

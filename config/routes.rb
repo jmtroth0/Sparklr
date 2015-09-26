@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
     resources :albums, except: [:new, :edit]
     get 'photostream', to: 'photostreams#show'
+    get "photos/recent", to: "photos#recent_photos"
     resources :photos, except: [:new, :edit]
     resource :session, only: [:show, :create, :destroy]
     get "/search", to: "static_pages#search"

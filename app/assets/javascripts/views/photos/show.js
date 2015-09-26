@@ -29,15 +29,24 @@ Sparklr.Views.PhotoShow = Backbone.CompositeView.extend({
   },
 
   _setSourceUrl: function () {
-    if (this.album_id) {
-      this.sourceURL = "#/albums/" + this.album_id;
-    } else if (this.photostream){
-      this.sourceURL = "#/photostream"
-    } else {
-      if (this.photo.get('uploader')) {
-        this.sourceURL = "#/users/" + this.photo.get('uploader').id + "/albums"
+    var uploader = this.photo.get('uploader')
+    if (uploader) {
+      if (this.album_id) {
+        this.sourceURL = "#/albums/" + this.album_id;
+      } else if (this.photostream){
+        if (uploader.id === Sparklr.currentUser.id){
+          this.sourceURL = "#/photostream"
+        } else (
+          this.sourceURL = "#/users/" + uploader.id + "/photostream"
+        )
+      } else {
+        if (uploader) {
+          this.sourceURL = "#/users/" + this.photo.get('uploader').id + "/albums"
+        }
+        this.independent = true;
       }
-      this.independent = true;
+    } else {
+      this.sourceURL = "#";
     }
   },
 

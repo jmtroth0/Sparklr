@@ -17,6 +17,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "users/:user_id/photos": "photosIndex",
     "users/:user_id/albums": "userAlbumIndex",
     "users/:user_id/photostream": "userPhotostreamShow",
+    "photos/recent": "recentPhotos",
     "photos/:id": "photoShow",
     "albums/new": "albumNew",
     "albums/:id": "albumShow",
@@ -137,6 +138,15 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(showPhotoView);
+  },
+
+  recentPhotos: function () {
+    var photos = new Sparklr.Collections.RecentPhotos();
+    photos.fetch();
+    
+    var showPhotos = new Sparklr.Views.PhotoIndex({photos: photos});
+
+    this._swapView(showPhotos);
   },
 
   userNew: function () {

@@ -2,12 +2,13 @@
 module Api
   class StaticPagesController < ApplicationController
     # before_action :require_signed_in!
-    
+
     def search
       @search_results = PgSearch
         .multisearch(params[:query])
         .includes(:searchable)
-
+        .page(params[:page])
+        
       render :search
     end
 
