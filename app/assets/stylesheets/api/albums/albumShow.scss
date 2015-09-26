@@ -12,6 +12,21 @@ li.photoIndexItem {
   position: relative;
 }
 
+li.photoIndexItem div.photo-info {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  color: black;
+  background: #eee;
+  opacity: .2;
+  transition: opacity .5s;
+}
+
+li.photoIndexItem:hover div.photo-info {
+  opacity: .7;
+  transition: opacity .5s;
+}
+
 div.button-set {
   display: none;
   position: absolute;

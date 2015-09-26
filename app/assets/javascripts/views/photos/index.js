@@ -25,8 +25,6 @@ Sparklr.Views.PhotoIndex = Backbone.CompositeView.extend({
     this.$el.find('.photo-list').removeClass('group');
     this.$el.find('.photoIndexItem').removeClass('group');
     this.$el.find('.photoIndexItem').css('float', 'none');
-    this.$el.find('img.photo-thumbnail').css('max-width', '100%');
-    this.$el.find('.photo-link').removeClass('group');
   },
 
   addPhoto: function (photo) {
@@ -34,8 +32,15 @@ Sparklr.Views.PhotoIndex = Backbone.CompositeView.extend({
       photo: photo,
       photos: this.photos,
     });
-
     this.addSubview('ul.photo-list', photoView);
+    var width = photo.dimensions[0] < $(window).width() * .8 ? photo.dimensions[0] : $(window).width() * .8
+    photoView.$el.css('width', width);
+    photoView.$el.css('margin', '5px auto');
+    photoView.$el.find('.photoIndexItem').css('float', 'none');
+    photoView.$el.find('img.photo-thumbnail').css('width', width);
+    photoView.$el.find('.photo-link').removeClass('group');
+    photoView.$el.find('.photoIndexItem').css('width', width);
+    photoView.$el.find('div.photo-info').append('<h4>By: ' + photo.get('uploader').email +'</h4>');
   },
 
   bindScroll: function () {
