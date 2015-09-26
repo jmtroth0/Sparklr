@@ -22,7 +22,7 @@ Sparklr.Views.NavBar = Backbone.View.extend({
     return this;
   },
 
-  toggleSettings: function () {
+  toggleSettings: function (e) {
     this.$el.find('div.user-menu-container').
              find('div.nav-dropdown-container').
              toggleClass('visible')

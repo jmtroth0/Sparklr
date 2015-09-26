@@ -33,6 +33,10 @@ Sparklr.Views.PhotoIndex = Backbone.CompositeView.extend({
       photos: this.photos,
     });
     this.addSubview('ul.photo-list', photoView);
+    this.setPhotoViewStyle(photo, photoView);
+  },
+
+  setPhotoViewStyle: function (photo, photoView) {
     var width = photo.dimensions[0] < $(window).width() * .8 ? photo.dimensions[0] : $(window).width() * .8
     photoView.$el.css('width', width);
     photoView.$el.css('margin', '5px auto');
