@@ -142,8 +142,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
 
   recentPhotos: function () {
     var photos = new Sparklr.Collections.RecentPhotos();
-    photos.fetch();
-    
+
     var showPhotos = new Sparklr.Views.PhotoIndex({photos: photos});
 
     this._swapView(showPhotos);
