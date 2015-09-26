@@ -65,6 +65,26 @@ div.auth-form-container a:hover {
   color: purple;
 }
 
+div.auth-form-container a.facebook-auth-link {
+  display: block;
+  background: blue;
+  border-top: 2px solid #ccc;
+  border-right: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  border-left: 2px solid #ccc;
+  color: white;
+  padding: 5px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+div.auth-form-container a.facebook-auth-link:active {
+  border-top: 1px solid #aaa;
+  border-right: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  border-left: 1px solid #aaa;
+}
+
 div.sign-in-warning {
   background: red;
   width: 100%;

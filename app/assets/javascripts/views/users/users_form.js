@@ -7,7 +7,8 @@ Sparklr.Views.UsersForm = Backbone.View.extend({
   template: JST['user/form'],
 
   events: {
-    "submit form": "submit"
+    "submit form": "submit",
+    "click button.guest-sign-in": 'guestSignIn',
   },
 
   render: function(){
@@ -17,13 +18,12 @@ Sparklr.Views.UsersForm = Backbone.View.extend({
     return this;
   },
 
-  submit: function(e){
+  submit: function(e, options){
     e.preventDefault();
 
     var $form = $(e.currentTarget);
     var userData = $form.serializeJSON().user;
     var that = this;
-
     this.model.set(userData);
     this.model.save({}, {
       success: function(){
@@ -36,6 +36,17 @@ Sparklr.Views.UsersForm = Backbone.View.extend({
       error: function(data){
         alert("Form invalid");
       }
+    });
+  },
+
+  guestSignIn: function (e){
+    e.preventDefault();
+    Sparklr.currentUser.signIn({
+      email: 'guest@yahoo.com',
+      password: 'password',
+      success: function(){
+        Backbone.history.navigate("", { trigger: true });
+      },
     });
   }
 

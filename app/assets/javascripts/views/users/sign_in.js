@@ -6,6 +6,7 @@ Sparklr.Views.SignIn = Backbone.View.extend({
 
   events: {
     "submit form": "submit",
+    "click button.guest-sign-in": 'guestSignIn',
   },
 
   template: JST['user/form'],
@@ -17,14 +18,13 @@ Sparklr.Views.SignIn = Backbone.View.extend({
     return this;
   },
 
-  submit: function(e){
+  submit: function(e, options){
     e.preventDefault();
     var $form = $(e.currentTarget);
     var formData = $form.serializeJSON().user;
-
     Sparklr.currentUser.signIn({
-      email: formData.email,
-      password: formData.password,
+      email: formData && formData.email || options.email,
+      password: formData && formData.password || options.password,
       success: function(){
         Backbone.history.navigate("", { trigger: true });
       },
@@ -41,5 +41,10 @@ Sparklr.Views.SignIn = Backbone.View.extend({
       Backbone.history.navigate("", { trigger: true });
     }
   },
+
+  guestSignIn: function (e){
+    e.preventDefault();
+    this.submit(e, {email: 'guest@yahoo.com', password: 'password'})
+  }
 
 })
