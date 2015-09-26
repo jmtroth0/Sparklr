@@ -7,7 +7,7 @@ module Api
     end
 
     def recent_photos
-      @photos = Photo.all.page(params[:page]).per(6)
+      @photos = Photo.all.order(id: :desc).page(params[:page]).per(6)
       render :recent_photos
     end
 
