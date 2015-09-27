@@ -2,6 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+div.page-info {
+  width: calc(100% - 450px);
+  position: absolute;
+  top: 30%;
+}
+
+div.page-info > h1 {
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  text-transform: capitalize;
+}
+
 div.auth-form-container {
   float: right;
   margin: 50px 100px 50px 0;

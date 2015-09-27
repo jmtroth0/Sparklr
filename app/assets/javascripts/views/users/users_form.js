@@ -5,6 +5,7 @@ Sparklr.Views.UsersForm = Backbone.View.extend({
   },
 
   template: JST['user/form'],
+  className: 'user-form-backdrop',
 
   events: {
     "submit form": "submit",
@@ -12,11 +13,18 @@ Sparklr.Views.UsersForm = Backbone.View.extend({
   },
 
   render: function(){
-    $('#backdrop').css('background-image', 'url(' + Sparklr.signInBackdropUrl + ')')
+    $('#backdrop').css('background-image', 'url(' + Sparklr.signInBackdropUrl + ')');
     var html = this.template({ user: this.model, status: "new" });
     this.$el.html(html);
+    this.$el.append(this.addSiteInfo());
 
     return this;
+  },
+
+  addSiteInfo: function () {
+    var $info = $('<div class="page-info">')
+    $info.append('<h1 class="title-text">A Home for your photos to sparkl</h1>');
+    return $info;
   },
 
   submit: function(e, options){
@@ -30,13 +38,12 @@ Sparklr.Views.UsersForm = Backbone.View.extend({
       success: function(){
         Sparklr.currentUser.fetch({
           success: function() {
-            $('#backdrop').attr('style', "");
             Backbone.history.navigate("", { trigger: true });
           },
         });
       },
-      error: function(data){
-        alert("Form invalid");
+      error: function(data, resp){
+        alert(resp.responseJSON.join(", "));
       }
     });
   },

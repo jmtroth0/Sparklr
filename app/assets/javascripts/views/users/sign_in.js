@@ -1,4 +1,5 @@
 Sparklr.Views.SignIn = Backbone.View.extend({
+
   initialize: function(options){
     this.callback = options.callback;
     this.listenTo(Sparklr.currentUser, "signIn", this.signInCallback);
@@ -12,11 +13,17 @@ Sparklr.Views.SignIn = Backbone.View.extend({
   template: JST['user/form'],
 
   render: function(){
-    $('#backdrop').css('background-image', 'url(' + Sparklr.signInBackdropUrl + ')')
+    $('#backdrop').css('background-image', 'url(' + Sparklr.signInBackdropUrl + ')');
     var user = new Sparklr.Models.User();
     this.$el.html(this.template({user: user}));
-
+    this.$el.append(this.addSiteInfo());
     return this;
+  },
+
+  addSiteInfo: function () {
+    var $info = $('<div class="page-info">')
+    $info.append('<h1 class="title-text">A Home for your photos to sparkl</h1>');
+    return $info;
   },
 
   submit: function(e, options){
@@ -27,7 +34,6 @@ Sparklr.Views.SignIn = Backbone.View.extend({
       email: formData && formData.email || options.email,
       password: formData && formData.password || options.password,
       success: function(){
-        $('#backdrop').attr('style', "");
         Backbone.history.navigate("", { trigger: true });
       },
       error: function() {
