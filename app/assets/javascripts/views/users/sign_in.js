@@ -12,6 +12,7 @@ Sparklr.Views.SignIn = Backbone.View.extend({
   template: JST['user/form'],
 
   render: function(){
+    $('#backdrop').css('background-image', 'url(' + Sparklr.signInBackdropUrl + ')')
     var user = new Sparklr.Models.User();
     this.$el.html(this.template({user: user}));
 
@@ -26,6 +27,7 @@ Sparklr.Views.SignIn = Backbone.View.extend({
       email: formData && formData.email || options.email,
       password: formData && formData.password || options.password,
       success: function(){
+        $('#backdrop').attr('style', "");
         Backbone.history.navigate("", { trigger: true });
       },
       error: function() {

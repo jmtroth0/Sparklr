@@ -8,8 +8,9 @@
 
 <script type="text/javascript">
   $(function(){
-    Sparklr.initialize();
-    Sparklr.defaultProfileImage = "<%= asset_path('profile_default.png') %>"
-    Sparklr.defaultCoverImage = "<%= asset_path('cover_default.png') %>"
+    var signInBackdropUrl = "<%= asset_path('beautiful-landscape-wallpaper.jpg') %>";
+    Sparklr.initialize(signInBackdropUrl);
+    Sparklr.defaultProfileImage = "<%= asset_path('profile_default.png') %>";
+    Sparklr.defaultCoverImage = "<%= asset_path('cover_default.png') %>";
   });
 </script>

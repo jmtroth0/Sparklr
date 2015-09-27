@@ -3,7 +3,8 @@ window.Sparklr = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
+  initialize: function(signInBackdropUrl) {
+    this.signInBackdropUrl = signInBackdropUrl
     this.currentUser = new Sparklr.Models.CurrentUser();
     this.currentUser.fetch();
     this.router = new Sparklr.Routers.Router({ $rootEl: $('div#main') });

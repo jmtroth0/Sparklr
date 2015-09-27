@@ -12,6 +12,7 @@ Sparklr.Views.UsersForm = Backbone.View.extend({
   },
 
   render: function(){
+    $('#backdrop').css('background-image', 'url(' + Sparklr.signInBackdropUrl + ')')
     var html = this.template({ user: this.model, status: "new" });
     this.$el.html(html);
 
@@ -29,6 +30,7 @@ Sparklr.Views.UsersForm = Backbone.View.extend({
       success: function(){
         Sparklr.currentUser.fetch({
           success: function() {
+            $('#backdrop').attr('style', "");
             Backbone.history.navigate("", { trigger: true });
           },
         });
