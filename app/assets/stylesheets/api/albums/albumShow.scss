@@ -74,8 +74,9 @@ div.album-cover-shade {
   z-index: 10;
 }
 
-div.album-cover-container > h1,
-div.album-cover-container > h2,
+div.album-cover-container h1,
+div.album-cover-container h2,
+div.album-cover-container input,
 div.album-cover-container > div.album-info {
   width: 100%;
   text-align: center;
@@ -84,17 +85,25 @@ div.album-cover-container > div.album-info {
   position: absolute;
 }
 
+div.album-cover-container input {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
 img.album-cover-photo {
   width: 100%
 }
 
-h1.album-title {
+h1.album-title,
+div.album-title input.album-title {
   font-size: 36px;
   font-weight: 600;
   top: 30px;
 }
 
-h2.album-description {
+h2.album-description,
+div.album-description input.album-description {
   top: 100px;
 }
 

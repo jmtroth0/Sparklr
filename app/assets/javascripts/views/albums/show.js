@@ -6,6 +6,10 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
     'click button.open-form': 'addForm',
     'click button.close-form': 'closeForm',
     'click button.delete-album': 'deleteAlbum',
+    'click h1.album-title': 'editAlbumTitle',
+    'submit form.album-title': 'submitEdit',
+    'click h2.album-description': 'editAlbumDescription',
+    'submit form.album-description': 'submitEdit',
   },
 
   initialize: function (options) {
@@ -49,6 +53,46 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
   deleteAlbum: function () {
     this.model.destroy();
     Backbone.history.navigate("", { trigger: true })
+  },
+
+  editAlbumTitle: function (e) {
+    var $form = $('<form class="album-title">');
+    var $input = $('<input type=text class="album-title" value="' +
+      this.model.escape('title') +
+      '" name="album[title]">');
+    $form.html($input);
+    this.$el.find('div.album-title').html($form);
+  },
+
+  editAlbumDescription: function (e) {
+    var $form = $('<form class="album-description">')
+    var $input = $('<input type=text class="album-description" value="' +
+      this.model.escape('description') +
+      '" name="album[description]">');
+    $form.html($input);
+    this.$el.find('div.album-description').html($form);
+  },
+
+  submitEdit: function (e) {
+    e.preventDefault();
+    var attrs = $(e.target).serializeJSON();
+    var self = this;
+    this.model.save(attrs, {
+      success: function () {
+        debugger;
+        self.$el.find('div.album-title').html("<h1 class='album-title'>" + album.escape('title') + "</h1>")
+        self.$el.find('div.album-description').html("<h1 class='album-description'>" + album.escape('description') + "</h1>")
+      },
+
+      error: function (model, response) {
+        $('.form-errors').empty();
+        response.responseJSON.forEach(function (el) {
+          var $li = $('<li>');
+          $li.text(el);
+          $('.form-errors').append($li);
+        });
+      },
+    });
   },
 
   addForm: function (e) {

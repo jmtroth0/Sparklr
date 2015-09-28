@@ -8,8 +8,12 @@
   <div class="album-cover-container">
     <div class="album-cover-shade"></div>
     <img class="album-cover-photo" src="<%= album.escape('cover_photo_url') %>">
-    <h1 class='album-title'><%= album.escape('title') %></h1>
-    <h2 class='album-description'><%= album.escape('description') %></h2>
+    <div class="album-title">
+      <h1 class='album-title'><%= album.escape('title') %></h1>
+    </div>
+    <div class="album-description">
+      <h2 class='album-description'><%= album.escape('description') %></h2>
+    </div>
     <div class="album-info">
       <h3 class='album-num-photos'><%= numPhotos %> Photos</h3>
       <h3 class='album-creator'>by: <%= creator %></h3>
