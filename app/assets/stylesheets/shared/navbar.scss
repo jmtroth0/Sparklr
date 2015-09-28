@@ -173,6 +173,26 @@ input.search-query:focus {
   transition: width .4s, background .4s;
 }
 
+div.search-bar div.search-dropdown {
+  display: none;
+  position: absolute;
+}
+
+div.search-dropdown > a.search-option {
+  color: #128FDC;
+  background: white;
+  width: 200px;
+  display: block;
+  padding: 3px 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+input.search-query:focus + div.search-dropdown,
+div.search-dropdown:hover:active {
+  display: block;
+}
+
 button#sign-in {
   background: transparent;
   border: none;

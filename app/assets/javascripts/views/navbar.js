@@ -10,6 +10,8 @@ Sparklr.Views.NavBar = Backbone.View.extend({
     "click .upload-link": "openUploadForm",
     "click .close-modal": "closeUploadForm",
     "submit form.search": "initiateSearch",
+    "click a.search-by-album-and-photo": "searchByAandP",
+    "click a.search-by-user": "searchByUser",
   },
 
   initialize: function () {
@@ -52,6 +54,23 @@ Sparklr.Views.NavBar = Backbone.View.extend({
     e.preventDefault();
     var searchQuery = this.$(".search-query").val();
     Backbone.history.navigate("search/" + searchQuery, { trigger: true} );
+  },
+
+  openDropdown: function (e) {
+    e.preventDefault();
+    this.$el.find('div.search-dropdown').css('display', 'block');
+  },
+
+  searchByAandP: function (e) {
+    e.preventDefault();
+    var searchQuery = this.$(".search-query").val();
+    Backbone.history.navigate("search/" + searchQuery, { trigger: true });
+  },
+
+  searchByUser: function (e) {
+    e.preventDefault();
+    var searchQuery = this.$(".search-query").val();
+    Backbone.history.navigate("search/users/" + searchQuery, { trigger: true });
   },
 
   addSignedOutWarning: function () {
