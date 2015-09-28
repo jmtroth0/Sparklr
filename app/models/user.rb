@@ -6,9 +6,8 @@ class User < ActiveRecord::Base
   has_many :photos, foreign_key: :uploader_id, dependent: :destroy
   has_many :photos_in_albums, through: :albums, source: :photos
 
-  multisearchable against: [:email]
-
-  pg_search_scope :search_by_email, against: :email
+  pg_search_scope :search_by_email, against: :email,
+    using: { tsearch: { prefix: true } }
 
   validates :email, :password_digest, :session_token, uniqueness: true, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }

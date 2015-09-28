@@ -4,16 +4,16 @@ Sparklr.Views.Search = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.bindScroll();
-    this.searchResults = new Sparklr.Collections.SearchResults();
-    this.searchResults.pageNum = 1;
-    this.listenTo(this.searchResults, "sync", this.render);
     if (options && options.searchQuery) {
+      this.searchResults = new Sparklr.Collections[options.type]();
+      this.listenTo(this.searchResults, "sync", this.render);
       this.search(options.searchQuery);
     };
   },
 
   events: {
-    "change .query": "searchFromView",
+    "click button.photo-album-search": "searchPhotoAlbumFromView",
+    "click button.user-search": "searchUsersFromView"
   },
 
   render: function () {
@@ -26,13 +26,22 @@ Sparklr.Views.Search = Backbone.CompositeView.extend({
     return this;
   },
 
-  searchFromView: function (e) {
+  searchPhotoAlbumFromView: function (e) {
     e.preventDefault();
+    this.searchResults = new Sparklr.Collections.SearchResults();
     window.history.pushState({}, "", "#/search/" + this.$(".query").val())
     this.search(this.$(".query").val());
   },
 
+  searchUsersFromView: function (e) {
+    e.preventDefault();
+    this.searchResults = new Sparklr.Collections.UserSearchResults();
+    window.history.pushState({}, "", "#/search/users/" + this.$(".query").val())
+    this.search(this.$(".query").val());
+  },
+
   search: function (query) {
+    this.listenTo(this.searchResults, "sync", this.render);
     this.searchResults.pageNum = 1;
     this.searchResults.query = query;
 

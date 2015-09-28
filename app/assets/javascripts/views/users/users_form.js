@@ -5,7 +5,6 @@ Sparklr.Views.UsersForm = Backbone.View.extend({
   },
 
   template: JST['user/form'],
-  className: 'user-form-backdrop',
 
   events: {
     "submit form": "submit",

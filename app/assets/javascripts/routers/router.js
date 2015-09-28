@@ -31,13 +31,15 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   search: function (query) {
-    var searchView = new Sparklr.Views.Search({ searchQuery: query });
+    var searchView = new Sparklr.Views.Search({ searchQuery: query, type: 'SearchResults' });
 
     this._swapView(searchView);
   },
 
   userSearch: function (query) {
-    var searchView = new Sparklr.Views.UserSearch({ searchQuery: query })
+    var searchView = new Sparklr.Views.Search({ searchQuery: query, type: 'UserSearchResults' });
+
+    this._swapView(searchView);
   },
 
   albumIndex: function (options) {

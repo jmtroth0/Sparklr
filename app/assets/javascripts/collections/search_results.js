@@ -16,3 +16,11 @@ Sparklr.Collections.SearchResults = Backbone.Collection.extend({
     return new Sparklr.Models[type](attrs);
   },
 })
+
+Sparklr.Collections.UserSearchResults = Sparklr.Collections.SearchResults.extend({
+  url: "/api/user_search",
+
+  model: function (attrs) {
+    return new Sparklr.Models.User(attrs);
+  }
+})

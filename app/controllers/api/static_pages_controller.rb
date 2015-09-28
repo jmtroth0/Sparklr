@@ -8,16 +8,15 @@ module Api
         .multisearch(params[:query])
         .includes(:searchable)
         .page(params[:page])
-        
+
       render :search
     end
 
     def user_search
-      @search_results = PgSearch
-        .search_by_email
-        .includes(:searchable)
+      @search_results = User
+        .search_by_email(params[:query])
 
-      render :search
+      render :user_search
     end
   end
 end

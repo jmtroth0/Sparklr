@@ -20,7 +20,17 @@ button.search {
   font-size: 16px;
   border: none;
   transform: translateX(-7px);
+  cursor: pointer;
+}
+
+button.user-search {
+  transform: translateX(-14px);
   border-radius: 0 5px 5px 0;
+  border-left: 1px solid white;
+}
+
+button.search:hover {
+  background: blue;
 }
 
 ul.results {
