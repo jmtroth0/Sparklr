@@ -11,6 +11,12 @@ module Api
       render :recent_photos
     end
 
+    def albums
+      @photo = Photo.find(params[:photo_id]);
+      @albums = @photo.albums
+      render :albums
+    end
+
     def create
       @photo = current_user.photos.create!(photo_params)
       render :show

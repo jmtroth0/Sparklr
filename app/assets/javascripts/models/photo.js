@@ -15,14 +15,12 @@ Sparklr.Models.Photo = Backbone.Model.extend({
     } else {
       this.dimensions = [400, 300];
     };
-
     return payload;
   },
 
   albums: function () {
     this._albums = this._albums ||
-      new Sparklr.Collections.Albums([], { photo: this } );
-
+      new Sparklr.Collections.Albums({ photo: this, url: "api/photos/" + this.id + "/albums" } );
     return this._albums;
   },
 

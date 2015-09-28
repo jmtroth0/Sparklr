@@ -43,8 +43,7 @@ Sparklr.Views.PhotoShowSub = Backbone.View.extend({
       } else {
         $choice.html('<input type="checkbox" name="album_ids[]" value="' + album.id + '">')
       }
-      $choice.append(album.escape('title'))
-        .append('<br>');
+      $choice.append(album.escape('title')).append('<br>');
       $choices.append($choice);
     }.bind(this));
     $choices.append($('<input type="submit" value="Edit Albums">'))
