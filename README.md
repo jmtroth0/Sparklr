@@ -2,7 +2,7 @@
 
 A photo sharing site inspired by Flickr.
 
-Located at [www.sparklr.xyz]
+Located at www.sparklr.xyz
 
 ## Features
 * A single-page Backbone.js app built on a RESTful Ruby on Rails architecture
