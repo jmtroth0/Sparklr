@@ -1,10 +1,8 @@
-Should have link to live site, description/how to use, list of techs/languages/plugins/apis used, technical implementation details for anything worth mentioning (basically anything you had to stop and think about before building), and to-dos/future features. These guidelines apply to all your projects.
-
 # Sparklr
 
 A photo sharing site inspired by Flickr.
 
-Located at [sparklr.xyz][www.sparklr.xyz]
+Located at [www.sparklr.xyz]
 
 ## Features
 * A single-page Backbone.js app built on a RESTful Ruby on Rails architecture
