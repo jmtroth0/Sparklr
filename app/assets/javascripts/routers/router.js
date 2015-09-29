@@ -1,8 +1,8 @@
 Sparklr.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
-    this.makeNavBar();
-    this.makeFooter();
+    this._makeNavBar();
+    this._makeFooter();
     this.users = new Sparklr.Collections.Users();
     this.photos = new Sparklr.Collections.Photos();
     Sparklr.albums = new Sparklr.Collections.Albums();
@@ -28,18 +28,6 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "session/new": "signIn",
     "search/:query": "search",
     "search/users/:query": "userSearch",
-  },
-
-  search: function (query) {
-    var searchView = new Sparklr.Views.Search({ searchQuery: query, type: 'SearchResults' });
-
-    this._swapView(searchView);
-  },
-
-  userSearch: function (query) {
-    var searchView = new Sparklr.Views.Search({ searchQuery: query, type: 'UserSearchResults' });
-
-    this._swapView(searchView);
   },
 
   albumIndex: function (options) {
@@ -150,6 +138,18 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     this._swapView(showPhotos);
   },
 
+  search: function (query) {
+    var searchView = new Sparklr.Views.Search({ searchQuery: query, type: 'SearchResults' });
+
+    this._swapView(searchView);
+  },
+
+  userSearch: function (query) {
+    var searchView = new Sparklr.Views.Search({ searchQuery: query, type: 'UserSearchResults' });
+
+    this._swapView(searchView);
+  },
+
   userNew: function () {
     if (!this._requireSignedOut()) { return; }
 
@@ -204,13 +204,13 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     Backbone.history.navigate("", { trigger: true });
   },
 
-  makeNavBar: function () {
+  _makeNavBar: function () {
     var $rootEl = $("div#main-navbar-container");
     var navView = new Sparklr.Views.NavBar();
     $rootEl.html(navView.render().$el);
   },
 
-  makeFooter: function () {
+  _makeFooter: function () {
     var $rootEl = $("div#backdrop");
     var footView = new Sparklr.Views.Footer();
     $rootEl.append(footView.render().$el);

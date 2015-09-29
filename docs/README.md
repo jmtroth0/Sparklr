@@ -14,12 +14,10 @@ Sparklr is a clone of Flickr built on Rails and Backbone. Users can:
 - [x] Create albums
 - [x] Upload photos
 - [x] Add titles, descriptions
-- [ ] Edit titles, descriptions
+- [x] Edit titles, descriptions
 - [x] View album as collection of photo thumbnails
-- [ ] See individual enlarged photos
-- [ ] Follow Users
-- [ ] See a list of followed users
-- [ ] Search for photos by title or user
+- [x] See individual enlarged photos
+- [x] Search for photos, albums, user
 
 ## Design Docs
 * [View Wireframes][views]
@@ -85,15 +83,15 @@ see after logging in.
 - [ ] Add comments
 - [ ] "Fave" button and counter for photos
 - [ ] "Fave" album for your favorite photos around Sparklr
+- [ ] Follow Users
+- [ ] See a list of followed users
 - [ ] View counter for photos
-- [ ] Collaborative albums
 - [ ] Photo tagging and tag searches
-- [ ] Photo download to local
 - [ ] Custom user urls
-- [ ] Pagination/infinite scroll
+- [x] Pagination/infinite scroll
 - [ ] Activity history (e.g. faves, shares, taggings)
 - [ ] Photo editing
-- [ ] Typeahead search bar
+- [ ] Search for photos by user
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
