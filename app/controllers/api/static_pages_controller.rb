@@ -8,6 +8,7 @@ module Api
         .multisearch(params[:query])
         .includes(:searchable)
         .page(params[:page])
+        .per(16)
 
       render :search
     end

@@ -83,7 +83,7 @@ Sparklr.Views.Search = Backbone.CompositeView.extend({
 
     this.requestingNextPage = true;
     this.searchResults.fetch({
-      remove: true,
+      remove: false,
       data: {
         query: this.searchResults.query,
         page: this.searchResults.pageNum + 1
