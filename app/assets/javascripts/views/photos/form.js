@@ -38,25 +38,23 @@ Sparklr.Views.PhotoForm = Backbone.View.extend({
     formData.append("photo[image]", file)
     formData.append("photo[album_ids][]", [this.album_id])
     var self = this;
-    for (var i = 0; i < 20; i++) {
-      this.photo.saveFormData(formData, {
-        success: function () {
-          self.photos.add(self.photo);
-          Backbone.history.navigate(
-            self.redirectURLRoot + self.photo.id,
-            { trigger: true }
-          )
-        },
-        error: function (model, response) {
-          $('.form-errors').empty();
-          response.responseJSON.forEach(function (el) {
-            var $li = $('<li>');
-            $li.text(el);
-            $('.form-errors').append($li);
-          });
-        },
-      });
-    }
+    this.photo.saveFormData(formData, {
+      success: function () {
+        self.photos.add(self.photo);
+        Backbone.history.navigate(
+          self.redirectURLRoot + self.photo.id,
+          { trigger: true }
+        )
+      },
+      error: function (model, response) {
+        $('.form-errors').empty();
+        response.responseJSON.forEach(function (el) {
+          var $li = $('<li>');
+          $li.text(el);
+          $('.form-errors').append($li);
+        });
+      },
+    });
   },
 
   fileInputChange: function(e) {
