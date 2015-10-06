@@ -14,10 +14,6 @@ module Api
     end
 
     def index
-      @favorites = current_user.favorite_photos
-    end
-
-    def user_index
       @user = User.find(params[:user_id])
       @favorites = @user.favorite_photos
       render :index

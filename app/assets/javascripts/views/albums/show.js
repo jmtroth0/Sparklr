@@ -37,8 +37,8 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
     return this;
   },
 
-  addPhoto: function (photo, photostream) {
-    var album_identifier = photostream || this.model.id;
+  addPhoto: function (photo, options) {
+    var album_identifier = options.photostream || options.favorite || this.model.id;
     var photoView = new Sparklr.Views.PhotoIndexItem ({
       photo: photo,
       photos: this.model.photos(),
@@ -80,7 +80,6 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
     var self = this;
     this.model.save(attrs, {
       success: function () {
-        debugger;
         self.$el.find('div.album-title').html("<h1 class='album-title'>" + album.escape('title') + "</h1>")
         self.$el.find('div.album-description').html("<h1 class='album-description'>" + album.escape('description') + "</h1>")
       },

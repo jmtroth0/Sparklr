@@ -3,10 +3,10 @@ Sparklr.Views.ShowFavorites = Sparklr.Views.AlbumShow.extend({
 
   render: function () {
     var coverView = new Sparklr.Views.UserCover({user: this.user})
-    this.$el.html(this.template({ album: this.model, photostream: true }));
+    this.$el.html(this.template({ album: this.model, favorite: 'favorite' }));
     coverView.addUserCover($('#main'));
     this.model.photos().each(function (photo) {
-      this.addPhoto(photo, true)
+      this.addPhoto(photo, { favorite: 'favorite' })
     }.bind(this))
     return this;
   },

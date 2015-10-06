@@ -14,7 +14,7 @@ Sparklr.Views.PhotoIndexItem = Backbone.View.extend({
     if (typeof options.album_id === "number") {
       this.photoUrl += "/albums/" + options.album_id
     } else {
-      this.photoUrl += "/photostream/" + Sparklr.currentUser.id
+      this.photoUrl += "/photostream/" + this.photo.get('uploader').id
     }
     this.photoUrl += "/photos/" + this.photo.id
   },
