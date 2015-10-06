@@ -27,6 +27,7 @@ Sparklr.Views.UserCover = Backbone.View.extend({
     if (this.user.id !== Sparklr.currentUser.id) {
       this.$el.find('a.photostream-link').attr('href', "#/users/" + this.user.get('id') + "/photostream")
       this.$el.find('a.albums-link').attr('href', "#/users/" + this.user.get('id') + "/albums")
+      this.$el.find('a.favorites-link').attr('href', "#/users/" + this.user.get('id') + "/favorites")
     }
   },
 
