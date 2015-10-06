@@ -1,7 +1,11 @@
 
   <div class="album-cover-container">
   <% if (typeof photostream === "undefined") { %>
-    <a href="/#" class="return-to-albums">Back to albums list</a>
+    <% var backToAlbumsHref = "/#/" %>
+    <% if (album.get('user') && album.get('user').email !== Sparklr.currentUser.get('email')) { %>
+      <% backToAlbumsHref += "users/" + album.get('user').id + "/albums" %>
+    <% } %>
+    <a href="<%= backToAlbumsHref %>" class="return-to-albums">Back to albums list</a>
 
     <% if (album.get('user') && album.get('user').email === Sparklr.currentUser.get('email')) { %>
       <button class="delete-album">Delete Album</button>
