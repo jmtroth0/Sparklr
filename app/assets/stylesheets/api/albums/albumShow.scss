@@ -125,22 +125,23 @@ div.album-info > h3 {
 
 a.return-to-albums,
 div.album-cover-container button.delete-album {
+  margin: 5px 0 0 5px;
   position: absolute;
   z-index: 20;
-  opacity: .3;
-  background: #eee;
-  transition: opacity .3s;
+  background: rgba(0,0,0,.3);
+  transition: background .3s;
 }
 
 div.album-cover-container button.delete-album {
   left: 120px;
-  border: 3px solid #660000;
+  color: #fff;
 }
 
 a.return-to-albums {
-  border: 3px solid #add8e6;
-  border-radius: 5px;
-  padding: 2px 5px;
+  background: rgba(0,0,0,.3);
+  color: #fff;
+  border-radius: 3px;
+  padding: 4px 8px;
   font-size: 12px;
   cursor: pointer;
 }
@@ -152,6 +153,6 @@ div.album-cover-container button.delete-album:active {
 
 div.album-cover-container:hover a.return-to-albums,
 div.album-cover-container:hover button.delete-album {
-  opacity: 1;
-  transition: opacity .3s;
+  background: rgba(0,0,0,.8);
+  transition: background .3s;
 }
