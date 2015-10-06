@@ -6,6 +6,7 @@ class Photo < ActiveRecord::Base
   belongs_to :uploader, class_name: 'User'
   has_many :album_photos, inverse_of: :photo, dependent: :destroy
   has_many :albums, through: :album_photos, source: :album
+  belongs_to :favoriteable, polymorphic: true
 
   multisearchable against: [:title]
 
