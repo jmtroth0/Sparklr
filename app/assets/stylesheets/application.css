@@ -16,7 +16,7 @@
 
  html, body, h1, h2, h3,
  h4, h5, h6, div, ul, li,
- label, a, nav, img {
+ label, a, nav, img, button {
    margin: 0;
    padding: 0;
    border: 0;
@@ -51,4 +51,16 @@
    content: "";
    display: block;
    clear: both;
+ }
+
+ button {
+   border: 3px solid #add8e6;
+   border-radius: 5px;
+   padding: 2px 5px;
+   font-size: 12px;
+   cursor: pointer;
+ }
+
+ button:active {
+   background: #aaa;
  }

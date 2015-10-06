@@ -53,8 +53,10 @@ div.button-set > button:hover {
 }
 
 div.album-cover-container {
-  width: 800px;
+  min-width: 800px;
+  width: 100%;
   height: 300px;
+  overflow: hidden;
   position: relative;
   margin: 0 auto;
 }
@@ -66,8 +68,8 @@ div.album-show-container {
 }
 
 div.album-cover-shade {
-  width: inherit;
-  height: inherit;
+  width: 100%;
+  height: 300px;
   background: black;
   opacity: .6;
   position: absolute;
@@ -119,4 +121,37 @@ div.album-info > h3.album-creator:before {
 
 div.album-info > h3 {
   display: inline;
+}
+
+a.return-to-albums,
+div.album-cover-container button.delete-album {
+  position: absolute;
+  z-index: 20;
+  opacity: .3;
+  background: #eee;
+  transition: opacity .3s;
+}
+
+div.album-cover-container button.delete-album {
+  left: 120px;
+  border: 3px solid #660000;
+}
+
+a.return-to-albums {
+  border: 3px solid #add8e6;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+a.return-to-albums:active,
+div.album-cover-container button.delete-album:active {
+  background: #aaa;
+}
+
+div.album-cover-container:hover a.return-to-albums,
+div.album-cover-container:hover button.delete-album {
+  opacity: 1;
+  transition: opacity .3s;
 }

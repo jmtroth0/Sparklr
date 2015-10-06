@@ -10,7 +10,7 @@ Located at www.sparklr.xyz
 * Search by photo/albums or by user via PgSearch
 * Infinite scroll implemented using Kaminari
 * Sign up via omniauth-facebook
-* Normal auth utilized BCrypt to store passwords
+* Normal auth utilizes BCrypt to store passwords
 
 ## Todos
 * Add comments, faves to photos. Might implement polymorphically to simplify future development of albums
