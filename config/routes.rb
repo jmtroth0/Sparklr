@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
     resources :albums, except: [:new, :edit]
     get 'photostream', to: 'photostreams#show'
-    get 'favorites', to: 'favorites#index'
+    resources :favorites, only: [:create, :destroy, :index]
     get "photos/recent", to: "photos#recent_photos"
     resources :photos, except: [:new, :edit] do
       get 'albums', to: "photos#albums"
