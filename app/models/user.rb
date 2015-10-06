@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   has_one :photostream, dependent: :destroy
   has_many :photos, foreign_key: :uploader_id, dependent: :destroy
   has_many :photos_in_albums, through: :albums, source: :photos
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_photos, through: :favorites, source: :favoriteable
 
   pg_search_scope :search_by_email, against: :email,
     using: { tsearch: { prefix: true } }

@@ -9,11 +9,11 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :create, :update] do
       get 'albums', to: 'albums#user_index'
       get 'photostream', to: 'photostreams#user_show'
-      get 'favorites', to: 'favorites#user_show'
+      get 'favorites', to: 'favorites#user_index'
     end
     resources :albums, except: [:new, :edit]
     get 'photostream', to: 'photostreams#show'
-    get 'favorites', to: 'favorites#show'
+    get 'favorites', to: 'favorites#index'
     get "photos/recent", to: "photos#recent_photos"
     resources :photos, except: [:new, :edit] do
       get 'albums', to: "photos#albums"
