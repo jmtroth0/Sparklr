@@ -48,6 +48,17 @@ Sparklr.Models.User = Backbone.Model.extend({
     return this._photostream;
   },
 
+  favorites: function (options) {
+    if (options && options.url) {
+      this._favorites = new Sparklr.Models.FavoritePhotos({url: options.url})
+    } else {
+      this._favorites = this._favorites ||
+        new Sparklr.Models.FavoritePhotos();
+    }
+
+    return this._favorites;
+  },
+
   toJSON: function (){
     return { user: _.clone( this.attributes ) };
   },

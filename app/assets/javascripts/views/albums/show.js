@@ -13,6 +13,7 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
+
     this.user = options && options.user || Sparklr.currentUser;
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.user, 'sync', this.render);
@@ -125,18 +126,3 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
     Backbone.history.navigate("", { trigger: true })
   },
 });
-
-
-Sparklr.Views.PhotostreamShow = Sparklr.Views.AlbumShow.extend({
-  className: 'album-show-container',
-
-  render: function () {
-    var coverView = new Sparklr.Views.UserCover({user: this.user})
-    this.$el.html(this.template({ album: this.model, photostream: true }));
-    coverView.addUserCover($('#main'));
-    this.model.photos().each(function (photo) {
-      this.addPhoto(photo, true)
-    }.bind(this))
-    return this;
-  },
-})

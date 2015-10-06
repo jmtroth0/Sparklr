@@ -34,3 +34,11 @@ Sparklr.Models.Photostream = Sparklr.Models.Album.extend({
     this.url = options && options.url || this.url;
   },
 });
+
+Sparklr.Models.FavoritePhotos = Sparklr.Models.Album.extend({
+  url: 'api/favorites',
+
+  initialize: function (options) {
+    this.url = options && options.url || this.url;
+  },
+})

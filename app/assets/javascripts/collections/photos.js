@@ -5,4 +5,4 @@ Sparklr.Collections.Photos = Backbone.Collection.extend({
 
 Sparklr.Collections.RecentPhotos = Sparklr.Collections.Photos.extend({
   url: 'api/photos/recent'
-})
+});
