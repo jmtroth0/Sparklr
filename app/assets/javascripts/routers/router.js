@@ -1,6 +1,13 @@
 Sparklr.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
+    Sparklr.currentUser = new Sparklr.Models.CurrentUser();
+    Sparklr.currentUser.fetch({success: function () {
+      Sparklr.currentFavoritePhotos = new Sparklr.Models.FavoritePhotos({
+        url: 'api/users/' + Sparklr.currentUser.id + '/favorites'
+      })
+      Sparklr.currentFavoritePhotos.fetch();
+    }});
     this._makeNavBar();
     this._makeFooter();
     this.users = new Sparklr.Collections.Users();

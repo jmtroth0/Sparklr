@@ -38,7 +38,7 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
   },
 
   addPhoto: function (photo, options) {
-    var album_identifier = options.photostream || options.favorite || this.model.id;
+    var album_identifier = (options && (options.photostream || options.favorite)) || this.model.id;
     var photoView = new Sparklr.Views.PhotoIndexItem ({
       photo: photo,
       photos: this.model.photos(),

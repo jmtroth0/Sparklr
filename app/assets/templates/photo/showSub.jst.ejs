@@ -6,7 +6,11 @@
   </p>
   <div class="user-photo-buttons">
     <button class='add-to-album'>Edit Album Membership?</button>
-    <button class='favorite-picture'>Fave?</button>
+    <% if (Sparklr.currentFavoritePhotos && Sparklr.currentFavoritePhotos.photos().get(photo.id)) { %>
+      <button class='un-favorite-picture'>Unfave?</button>
+    <% } else { %>
+      <button class='favorite-picture'>Fave?</button>
+    <% } %>
   </div>
 
   <section class="form-modal">
