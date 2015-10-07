@@ -1,4 +1,5 @@
 
+
   <% if (typeof photostream === "undefined" && typeof favorite === "undefined") { %>
   <div class="album-cover-container">
     <% var backToAlbumsHref = "/#/" %>
@@ -26,8 +27,6 @@
   </div>
   <% } %>
 
-<ul class="photo-list group"></ul>
-
 <% if (typeof photostream !== "undefined" || typeof favorite !== "undefined" || creator === Sparklr.currentUser.get('email')) { %>
   <div class='photo-form-container'>
     <button class="open-form visible">Upload Photo?</button>
@@ -41,3 +40,5 @@
     <div class="modal-screen"></div>
   </section>
 <% } %>
+
+<ul class="photo-list group"></ul>

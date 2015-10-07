@@ -34,7 +34,7 @@ Sparklr.Views.SignIn = Backbone.View.extend({
       email: formData && formData.email || options.email,
       password: formData && formData.password || options.password,
       success: function(){
-        Sparklr.currentFavoritePhotos = new Sparklr.Model.FavoritePhotos({url: 'api/users/' + Sparklr.currentUser.id + '/favorites'})
+        Sparklr.currentFavoritePhotos = new Sparklr.Models.FavoritePhotos({url: 'api/users/' + Sparklr.currentUser.id + '/favorites'})
         Sparklr.currentFavoritePhotos.fetch();
         Backbone.history.navigate("", { trigger: true });
       },

@@ -20,7 +20,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "photos/recent": "recentPhotos",
     "search/:query": "search",
     "search/users/:query": "userSearch",
-    
+
     // own stuff
     "": "albumIndex",
     "_=_": "albumIndex",

@@ -158,3 +158,9 @@ div.album-cover-container:hover button.delete-album {
   background: rgba(0,0,0,.8);
   transition: background .3s;
 }
+
+button.open-form {
+  margin: 10px 0 0 10px;
+  position: relative;
+  z-index: 20;
+}
