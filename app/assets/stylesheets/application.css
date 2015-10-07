@@ -37,7 +37,7 @@
 
  div#backdrop{
    padding: 50px 0 50px 0;
-   min-height: calc(100% - 85px);
+   min-height: calc(100% - 80px);
    overflow: auto;
    position: relative;
    background: #eee;
@@ -54,7 +54,6 @@
  }
 
  button {
-   /*border: 3px solid #add8e6;*/
    background: rgba(0,0,0,.7);
    color: #fff;
    border-radius: 3px;

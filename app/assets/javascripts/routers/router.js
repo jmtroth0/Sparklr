@@ -16,6 +16,11 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
+    // general exploration stuff
+    "photos/recent": "recentPhotos",
+    "search/:query": "search",
+    "search/users/:query": "userSearch",
+    
     // own stuff
     "": "albumIndex",
     "_=_": "albumIndex",
@@ -32,10 +37,6 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "photostream/:stream_id/photos/:id": "streamPhotoShow",
     "users/:user_id/favorites": "showUserFavorites",
 
-    // general exploration stuff
-    "photos/recent": "recentPhotos",
-    "search/:query": "search",
-    "search/users/:query": "userSearch",
 
     // auth stuff
     "users/new": "userNew",

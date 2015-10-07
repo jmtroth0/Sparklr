@@ -55,7 +55,7 @@ Sparklr.Views.PhotoShowSub = Backbone.View.extend({
       $choice.append(album.escape('title')).append('<br>');
       $choices.append($choice);
     }.bind(this));
-    $choices.append($('<input type="submit" value="Edit Albums">'))
+    $choices.append($('<input type="submit" value="Save Albums">'))
     this.$el.find('.form-modal form.choose-albums').html($choices);
   },
 

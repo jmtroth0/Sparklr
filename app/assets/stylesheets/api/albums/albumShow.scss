@@ -17,12 +17,12 @@ li.photoIndexItem div.photo-info {
   bottom: 5px;
   left: 5px;
   color: black;
-  background: #eee;
   opacity: .2;
   transition: opacity .5s;
 }
 
 li.photoIndexItem:hover div.photo-info {
+  background: #eee;
   opacity: .7;
   transition: opacity .5s;
 }
@@ -41,6 +41,7 @@ div.button-set > button {
   float: right;
   background: transparent;
   border: none;
+  text-shadow: 0 0 3px rgb(0, 0, .8);
   border-radius: 5px;
   margin-top: 2px;
 }
@@ -65,6 +66,7 @@ div.album-show-container {
   min-width: 600px;
   margin: 0 auto;
   position: relative;
+  overflow: visible;
 }
 
 div.album-cover-shade {
