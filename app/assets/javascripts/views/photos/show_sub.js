@@ -87,6 +87,11 @@ Sparklr.Views.PhotoShowSub = Backbone.View.extend({
     var photo = this.photo
     var attrs = {'favorite': { favoriteable_id: this.photo.id, favoriteable_type: 'Photo' }}
 
+    var $container = this.$el.find('div.user-photo-buttons');
+    var $button = $container.find('button.favorite-picture');
+    $button.remove();
+    $container.append('<button class="pending-picture">Pending</button>')
+
     $.ajax({
       url: "api/favorites",
       type: 'POST',
@@ -103,7 +108,12 @@ Sparklr.Views.PhotoShowSub = Backbone.View.extend({
     e.preventDefault();
     var self = this;
     var photo_id = this.photo.id
-    var attrs = {'favorite': { favoriteable_id: photo_id, favoriteable_type: 'Photo' }}
+    var attrs = {'favorite': { favoriteable_id: photo_id, favoriteable_type: 'Photo' }};
+
+    var $container = this.$el.find('div.user-photo-buttons');
+    var $button = $container.find('button.un-favorite-picture');
+    $button.remove();
+    $container.append('<button class="pending-picture">Pending</button>')
 
     $.ajax({
       url: "api/favorites/" + photo_id,
@@ -119,18 +129,12 @@ Sparklr.Views.PhotoShowSub = Backbone.View.extend({
 
   checkFaveButton: function (e) {
     var $container = this.$el.find('div.user-photo-buttons')
+    var $button = $container.find('button.pending-picture');
+    $button.remove();
     if (Sparklr.currentFavoritePhotos && Sparklr.currentFavoritePhotos.photos().get(this.photo.id)) {
-      var $button = $container.find('button.favorite-picture');
-      if ($button.length !== 0){
-        $button.remove();
-        $container.append('<button class="un-favorite-picture">Unfave?</button>')
-      }
+      $container.append('<button class="un-favorite-picture">Unfave?</button>')
     } else {
-      var $button = $container.find('button.un-favorite-picture')
-      if ($button.length !== 0){
-        $button.remove();
-        $container.append('<button class="favorite-picture">Fave?</button>')
-      }
+      $container.append('<button class="favorite-picture">Fave?</button>')
     }
   },
 });
