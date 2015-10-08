@@ -6,7 +6,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
       Sparklr.currentFavoritePhotos = new Sparklr.Models.FavoritePhotos({
         url: 'api/users/' + Sparklr.currentUser.id + '/favorites'
       })
-      Sparklr.currentFavoritePhotos.fetch();
+      Sparklr.currentFavoritePhotos.fetch({reset: true});
     }});
     this._makeNavBar();
     this._makeFooter();
