@@ -3,10 +3,12 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
     Sparklr.currentUser = new Sparklr.Models.CurrentUser();
     Sparklr.currentUser.fetch({success: function () {
-      Sparklr.currentFavoritePhotos = new Sparklr.Models.FavoritePhotos({
-        url: 'api/users/' + Sparklr.currentUser.id + '/favorites'
-      })
-      Sparklr.currentFavoritePhotos.fetch({reset: true});
+      if (Sparklr.currentUser.isSignedIn()) {
+        Sparklr.currentFavoritePhotos = new Sparklr.Models.FavoritePhotos({
+          url: 'api/users/' + Sparklr.currentUser.id + '/favorites'
+        })
+        Sparklr.currentFavoritePhotos.fetch({reset: true});
+      }
     }});
     this._makeNavBar();
     this._makeFooter();
