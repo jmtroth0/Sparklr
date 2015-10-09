@@ -37,7 +37,7 @@ Sparklr.Views.SignIn = Backbone.View.extend({
         Sparklr.currentFavoritePhotos = new Sparklr.Models.FavoritePhotos({url: 'api/users/' + Sparklr.currentUser.id + '/favorites'})
         Sparklr.currentFavoritePhotos.fetch();
         Backbone.history.navigate("", { trigger: true });
-      },
+      }.bind(this),
       error: function() {
         alert("Bad combination of email/password. Please try again");
       },
