@@ -11,7 +11,7 @@ Rails, PostgreSql, Backbone.js
 
 ### Implementation
 * Image upload via Paperclip and AWS S3
-* Composite views faciliate re-rendering of just small portions of the page.
+* Composite views facilitate re-rendering of just small portions of the page.
 * Multisearch by photo/albums or by user via PgSearch
 * Infinite scroll implemented using Kaminari
 * Sign up via omniauth-facebook
