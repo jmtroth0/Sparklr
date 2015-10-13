@@ -15,7 +15,7 @@ Sparklr.Views.NavBar = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(Sparklr.currentUser, 'signIn signOut', this.render)
+    this.listenTo(Sparklr.currentUser, 'signIn signOut', this.render);
     this.render();
   },
 
@@ -27,19 +27,19 @@ Sparklr.Views.NavBar = Backbone.View.extend({
   toggleSettings: function (e) {
     this.$el.find('div.user-menu-container').
              find('div.nav-dropdown-container').
-             toggleClass('visible')
+             toggleClass('visible');
   },
 
   openUploadForm: function () {
     if (!Sparklr.currentUser.isSignedIn()){
-      addSignedOutWarning();
+      this.addSignedOutWarning();
       return;
-    };
+    }
 
     var uploadView = new Sparklr.Views.PhotoForm();
     if (this.$el.find('.form-modal')){
       this.$el.find('.form-modal').remove();
-    };
+    }
     this.$el.append(JST['shared/modal']);
     this.$el.find('article.form-content').prepend(uploadView.render().$el);
     this.$el.find('.form-modal').addClass('is-active');
@@ -83,12 +83,12 @@ Sparklr.Views.NavBar = Backbone.View.extend({
     e.preventDefault();
     Sparklr.currentUser.signOut({
       success: function(){
-        Backbone.history.navigate("session/new", { trigger: true })
+        Backbone.history.navigate("session/new", { trigger: true });
       }
-    })
+    });
   },
 
   signIn: function (e) {
-    Backbone.history.navigate("session/new", { trigger: true })
+    Backbone.history.navigate("session/new", { trigger: true });
   }
-})
+});
