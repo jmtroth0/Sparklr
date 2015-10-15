@@ -73,6 +73,6 @@ Sparklr.Views.PhotoIndex = Backbone.CompositeView.extend({
         this.requestingNextPage = false;
         this.photos.pageNum++;
       }.bind(this)
-    })
+    });
   }
-})
+});
