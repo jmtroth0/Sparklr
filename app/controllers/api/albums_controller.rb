@@ -32,7 +32,7 @@ module Api
     end
 
     def show
-      @album = Album.find(params[:id])
+      @album = Album.includes(:photos).find(params[:id])
     end
 
     def destroy

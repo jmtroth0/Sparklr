@@ -13,13 +13,13 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-
     this.user = options && options.user || Sparklr.currentUser;
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.user, 'sync', this.render);
     this.listenTo(this.model.photos(), 'add', this.addPhoto);
     this.listenTo(this.model.photos(), 'remove', this.removePhoto);
     this.listenTo(this.model.photos(), 'sync', this.render);
+    $(window).on("resize", this.resizePhotosContainer.bind(this));
   },
 
   render: function () {
@@ -31,10 +31,29 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
       numPhotos: photos.length,
       creator: email,
     }));
+    this.resizePhotosContainer();
     photos.each(function (photo) {
-      this.addPhoto(photo)
-    }.bind(this))
+      this.addPhoto(photo);
+    }.bind(this));
     return this;
+  },
+
+  remove: function () {
+    $(window).off("resize", this.resizePhotosContainer);
+    Backbone.View.prototype.remove.apply(this, arguments);
+  },
+
+  resizePhotosContainer: function (e) {
+    var windowWidth = $(window).width();
+    var elWidth = Math.floor((windowWidth - 100) / 210) * 210;
+    // if (windowWidth < 510) {
+    //   elWidth = 210;
+    // } else if (windowWidth < 720) {
+    //   elWidth = 420;
+    // } else if (windowWidth < 930) {
+    //   elWidth = 630;
+    // }
+    this.$el.find('ul.photo-list').width(elWidth);
   },
 
   addPhoto: function (photo, options) {
@@ -48,12 +67,12 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
   },
 
   removePhoto: function (photo) {
-    this.removeModelSubview('ul.photo-list', photo)
+    this.removeModelSubview('ul.photo-list', photo);
   },
 
   deleteAlbum: function () {
     this.model.destroy();
-    Backbone.history.navigate("", { trigger: true })
+    Backbone.history.navigate("", { trigger: true });
   },
 
   editAlbumTitle: function (e) {
@@ -66,7 +85,7 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
   },
 
   editAlbumDescription: function (e) {
-    var $form = $('<form class="album-description">')
+    var $form = $('<form class="album-description">');
     var $input = $('<input type=text class="album-description" value="' +
       this.model.escape('description') +
       '" name="album[description]">');
@@ -80,8 +99,8 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
     var self = this;
     this.model.save(attrs, {
       success: function () {
-        self.$el.find('div.album-title').html("<h1 class='album-title'>" + album.escape('title') + "</h1>")
-        self.$el.find('div.album-description').html("<h1 class='album-description'>" + album.escape('description') + "</h1>")
+        self.$el.find('div.album-title').html("<h1 class='album-title'>" + album.escape('title') + "</h1>");
+        self.$el.find('div.album-description').html("<h1 class='album-description'>" + album.escape('description') + "</h1>");
       },
 
       error: function (model, response) {
@@ -122,6 +141,6 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
 
   backToAlbums: function(e) {
     e.preventDefault();
-    Backbone.history.navigate("", { trigger: true })
+    Backbone.history.navigate("", { trigger: true });
   },
 });
