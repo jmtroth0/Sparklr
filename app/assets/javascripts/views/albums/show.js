@@ -46,13 +46,6 @@ Sparklr.Views.AlbumShow = Backbone.CompositeView.extend({
   resizePhotosContainer: function (e) {
     var windowWidth = $(window).width();
     var elWidth = Math.floor((windowWidth - 100) / 210) * 210;
-    // if (windowWidth < 510) {
-    //   elWidth = 210;
-    // } else if (windowWidth < 720) {
-    //   elWidth = 420;
-    // } else if (windowWidth < 930) {
-    //   elWidth = 630;
-    // }
     this.$el.find('ul.photo-list').width(elWidth);
   },
 
