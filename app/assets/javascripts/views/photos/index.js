@@ -5,6 +5,7 @@ Sparklr.Views.PhotoIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.bindScroll();
     this.photos = options.photos;
+    this.source = options.source || "photostream";
     this.photos.pageNum = 1;
     this.photos.fetch({data: {page: this.photos.pageNum} } );
     this.listenTo(this.photos, 'sync', this.placePhotos);
@@ -31,6 +32,7 @@ Sparklr.Views.PhotoIndex = Backbone.CompositeView.extend({
     var photoView = new Sparklr.Views.PhotoIndexItem ({
       photo: photo,
       photos: this.photos,
+      source: this.source
     });
     this.addSubview('ul.photo-list', photoView);
     this.setPhotoViewStyle(photo, photoView);

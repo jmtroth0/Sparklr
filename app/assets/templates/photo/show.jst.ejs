@@ -4,7 +4,9 @@
   </div>
   <div class="photo-buttons group">
     <a class="back-to-album group" href="<%= sourceUrl %>">
-      <% if (sourceUrl.indexOf("photostream") !== -1) { %>
+      <% if (sourceUrl.indexOf("recent") !== -1){ %>
+        Back to recent photos
+      <% } else if (sourceUrl.indexOf("photostream") !== -1) { %>
         Back to photostream
       <% } else if (independent) { %>
         To user

@@ -37,6 +37,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     "users/:user_id/photostream": "userPhotostreamShow",
     "albums/:album_id/photos/:id": "albumPhotoShow",
     "photostream/:stream_id/photos/:id": "streamPhotoShow",
+    "recent/photos/:id": "recentPhotoShow",
     "users/:user_id/favorites": "showUserFavorites",
 
 
@@ -164,6 +165,16 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     this._swapView(showPhotoView);
   },
 
+  recentPhotoShow: function (id) {
+    var photo = Sparklr.currentUser.photos().getOrFetch(id);
+
+    var showPhotoView = new Sparklr.Views.PhotoShow({
+      photo: photo,
+      recentPhoto: true,
+    });
+    this._swapView(showPhotoView);
+  },
+
   showUserFavorites: function (user_id) {
     if (!this._requireSignedIn(this.showUserFavorites.bind(this, user_id))) { return; }
     var user = this.users.getOrFetch(user_id);
@@ -180,7 +191,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
   recentPhotos: function () {
     var photos = new Sparklr.Collections.RecentPhotos();
 
-    var showPhotos = new Sparklr.Views.PhotoIndex({photos: photos});
+    var showPhotos = new Sparklr.Views.PhotoIndex({photos: photos, source: "recentPhotos"});
 
     this._swapView(showPhotos);
   },

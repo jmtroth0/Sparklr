@@ -11,12 +11,14 @@ Sparklr.Views.PhotoIndexItem = Backbone.View.extend({
   initialize: function (options) {
     this.photo = options.photo;
     this.photoUrl = "#";
-    if (typeof options.album_id === "number") {
-      this.photoUrl += "/albums/" + options.album_id
+    if (options.source === "recentPhotos"){
+      this.photoUrl += "/recent";
+    } else if (typeof options.album_id === "number") {
+      this.photoUrl += "/albums/" + options.album_id;
     } else {
-      this.photoUrl += "/photostream/" + this.photo.get('uploader').id
+      this.photoUrl += "/photostream/" + this.photo.get('uploader').id;
     }
-    this.photoUrl += "/photos/" + this.photo.id
+    this.photoUrl += "/photos/" + this.photo.id;
   },
 
   render: function () {
@@ -26,17 +28,17 @@ Sparklr.Views.PhotoIndexItem = Backbone.View.extend({
 
   setCoverPhoto: function (e) {
     e.preventDefault();
-    if (!Sparklr.router._requireSignedIn(this.setCoverPhoto.bind(this, e))){ return }
+    if (!Sparklr.router._requireSignedIn(this.setCoverPhoto.bind(this, e))){ return; }
     Sparklr.currentUser.save({ cover_photo_id: this.photo.id }, {
-      url: (function () { return 'api/users/' + Sparklr.currentUser.id }())
+      url: (function () { return 'api/users/' + Sparklr.currentUser.id; }())
     });
   },
 
   setProfilePhoto: function (e) {
     e.preventDefault();
-    if (!Sparklr.router._requireSignedIn(this.setProfilePhoto.bind(this, e))) { return };
+    if (!Sparklr.router._requireSignedIn(this.setProfilePhoto.bind(this, e))) { return; }
     Sparklr.currentUser.save({ profile_pic_id: this.photo.id }, {
-      url: (function () { return 'api/users/' + Sparklr.currentUser.id }())
+      url: (function () { return 'api/users/' + Sparklr.currentUser.id; }())
     });
   },
 
@@ -49,4 +51,4 @@ Sparklr.Views.PhotoIndexItem = Backbone.View.extend({
   //
   //   return true;
   // }
-})
+});
