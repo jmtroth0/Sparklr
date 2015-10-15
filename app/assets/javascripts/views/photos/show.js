@@ -11,6 +11,7 @@ Sparklr.Views.PhotoShow = Backbone.CompositeView.extend({
     this.photo = options.photo;
     this.album_id = options.album_id;
     this.photostream = options.photostream;
+    debugger
     this.listenTo(this.photo, 'sync', this.render);
   },
 
@@ -29,19 +30,19 @@ Sparklr.Views.PhotoShow = Backbone.CompositeView.extend({
   },
 
   _setSourceUrl: function () {
-    var uploader = this.photo.get('uploader')
+    var uploader = this.photo.get('uploader');
     if (uploader) {
       if (this.album_id) {
         this.sourceURL = "#/albums/" + this.album_id;
       } else if (this.photostream){
         if (uploader.id === Sparklr.currentUser.id){
-          this.sourceURL = "#/photostream"
-        } else (
-          this.sourceURL = "#/users/" + uploader.id + "/photostream"
-        )
+          this.sourceURL = "#/photostream";
+        } else {
+          this.sourceURL = "#/users/" + uploader.id + "/photostream";
+        }
       } else {
         if (uploader) {
-          this.sourceURL = "#/users/" + this.photo.get('uploader').id + "/albums"
+          this.sourceURL = "#/users/" + this.photo.get('uploader').id + "/albums";
         }
         this.independent = true;
       }

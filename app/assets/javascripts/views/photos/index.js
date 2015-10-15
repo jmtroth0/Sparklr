@@ -20,7 +20,7 @@ Sparklr.Views.PhotoIndex = Backbone.CompositeView.extend({
     if (this.photos && this.photos.length > 0) {
       this.photos.each(function (photo) {
         this.addPhoto(photo);
-      }.bind(this))
+      }.bind(this));
     }
     this.$el.find('.photo-list').removeClass('group');
     this.$el.find('.photoIndexItem').removeClass('group');
@@ -37,7 +37,7 @@ Sparklr.Views.PhotoIndex = Backbone.CompositeView.extend({
   },
 
   setPhotoViewStyle: function (photo, photoView) {
-    var width = photo.dimensions[0] < $(window).width() * .8 ? photo.dimensions[0] : $(window).width() * .8
+    var width = photo.dimensions[0] < $(window).width() * 0.8 ? photo.dimensions[0] : $(window).width() * 0.8;
     photoView.$el.css('width', width);
     photoView.$el.css('margin', '5px auto');
     photoView.$el.find('.photoIndexItem').css('float', 'none');

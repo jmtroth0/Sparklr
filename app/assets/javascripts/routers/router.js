@@ -109,7 +109,7 @@ Sparklr.Routers.Router = Backbone.Router.extend({
     var favoritesView = new Sparklr.Views.ShowFavorites({
       user: Sparklr.currentUser,
       model: favorites
-    })
+    });
 
     this._swapView(favoritesView);
   },
