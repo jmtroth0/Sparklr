@@ -7,8 +7,6 @@
 ## Minimum Viable Product
 Sparklr is a clone of Flickr built on Rails and Backbone. Users can:
 
-<!-- This is a Markdown checklist. Use it to keep track of your progress! -->
-
 - [x] Create accounts
 - [x] Log in and out
 - [x] Create albums
