@@ -1,8 +1,8 @@
 # Sparklr
 
-[Heroku link][heroku]
+[Link][heroku]
 
-[heroku]: not yet up
+[heroku]: www.sparklr.xyz
 
 ## Minimum Viable Product
 Sparklr is a clone of Flickr built on Rails and Backbone. Users can:
