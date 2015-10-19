@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20151019200859) do
   end
 
   add_index "album_photos", ["album_id"], name: "index_album_photos_on_album_id", using: :btree
+  add_index "album_photos", ["photo_id", "album_id"], name: "index_album_photos_on_photo_id_and_album_id", using: :btree
   add_index "album_photos", ["photo_id"], name: "index_album_photos_on_photo_id", using: :btree
 
   create_table "albums", force: :cascade do |t|
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20151019200859) do
     t.datetime "updated_at",        null: false
   end
 
+  add_index "favorites", ["favoriteable_id", "favoriteable_type", "user_id"], name: "index_favorites_on_favorite_and_user_id", using: :btree
   add_index "favorites", ["favoriteable_type", "favoriteable_id"], name: "index_favorites_on_favoriteable_type_and_favoriteable_id", using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
@@ -55,6 +57,8 @@ ActiveRecord::Schema.define(version: 20151019200859) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  add_index "pg_search_documents", ["searchable_id", "searchable_type"], name: "index_pg_search_documents_on_searchable_id_and_searchable_type", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.string   "title",              null: false
@@ -78,6 +82,8 @@ ActiveRecord::Schema.define(version: 20151019200859) do
     t.datetime "updated_at",                              null: false
     t.text     "description", default: "All your photos"
   end
+
+  add_index "photostreams", ["user_id"], name: "index_photostreams_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
