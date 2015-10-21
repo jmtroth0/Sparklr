@@ -22,16 +22,16 @@ Sparklr.Views.UserCover = Backbone.View.extend({
     }
     $el.prepend(this.render().$el);
     if (this.user.get('coverPhoto')) {
-      $el.find('.user-cover-main').css('background-image', 'url(' + this.user.get('coverPhoto'));
+      $el.find('.user-cover-main').css('background-image', 'url(' + this.user.get('coverPhoto') + ')');
     }
     if (this.user.id !== Sparklr.currentUser.id) {
-      this.$el.find('a.photostream-link').attr('href', "#/users/" + this.user.get('id') + "/photostream")
-      this.$el.find('a.albums-link').attr('href', "#/users/" + this.user.get('id') + "/albums")
-      this.$el.find('a.favorites-link').attr('href', "#/users/" + this.user.get('id') + "/favorites")
+      this.$el.find('a.photostream-link').attr('href', "#/users/" + this.user.get('id') + "/photostream");
+      this.$el.find('a.albums-link').attr('href', "#/users/" + this.user.get('id') + "/albums");
+      this.$el.find('a.favorites-link').attr('href', "#/users/" + this.user.get('id') + "/favorites");
     }
   },
 
   removeCover: function() {
     this.$el.remove();
   },
-})
+});
