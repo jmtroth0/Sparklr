@@ -55,10 +55,20 @@ form > textarea {
   display: block;
 }
 
+section.form-modal form * {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
 button.close-form {
-  float: left;
+  float: right;
 }
 
 input.submit-form {
   float: left;
+}
+
+button.close-modal {
+  float: right;
 }
