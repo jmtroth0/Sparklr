@@ -17,7 +17,6 @@ Sparklr.Views.PhotoShow = Backbone.CompositeView.extend({
 
   render: function () {
     this._setSourceUrl();
-
     this.$el.html(this.template({
       photo: this.photo,
       sourceUrl: this.sourceURL,

@@ -16,8 +16,8 @@ Sparklr.Views.PhotoShowSub = Backbone.View.extend({
 
   bindEvents: function (e) {
     this.checkFaveButton(e);
-    this.listenTo(Sparklr.currentFavoritePhotos.photos(), 'add remove', this.checkFaveButton)
-    this.listenTo(Sparklr.currentFavoritePhotos, 'sync', this.checkFaveButton)
+    this.listenTo(Sparklr.currentFavoritePhotos.photos(), 'add remove', this.checkFaveButton);
+    this.listenTo(Sparklr.currentFavoritePhotos, 'sync', this.checkFaveButton);
   },
 
   render: function () {
@@ -83,14 +83,14 @@ Sparklr.Views.PhotoShowSub = Backbone.View.extend({
 
   addFavorite: function (e) {
     e.preventDefault();
-    var self = this
-    var photo = this.photo
-    var attrs = {'favorite': { favoriteable_id: this.photo.id, favoriteable_type: 'Photo' }}
+    var self = this;
+    var photo = this.photo;
+    var attrs = {'favorite': { favoriteable_id: this.photo.id, favoriteable_type: 'Photo' }};
 
     var $container = this.$el.find('div.user-photo-buttons');
     var $button = $container.find('button.favorite-picture');
     $button.remove();
-    $container.append('<button class="pending-picture">Pending</button>')
+    $container.append('<button class="pending-picture">Pending</button>');
 
     $.ajax({
       url: "api/favorites",
@@ -107,13 +107,13 @@ Sparklr.Views.PhotoShowSub = Backbone.View.extend({
   removeFavorite: function (e) {
     e.preventDefault();
     var self = this;
-    var photo_id = this.photo.id
+    var photo_id = this.photo.id;
     var attrs = {'favorite': { favoriteable_id: photo_id, favoriteable_type: 'Photo' }};
 
     var $container = this.$el.find('div.user-photo-buttons');
     var $button = $container.find('button.un-favorite-picture');
     $button.remove();
-    $container.append('<button class="pending-picture">Pending</button>')
+    $container.append('<button class="pending-picture">Pending</button>');
 
     $.ajax({
       url: "api/favorites/" + photo_id,
@@ -128,13 +128,13 @@ Sparklr.Views.PhotoShowSub = Backbone.View.extend({
   },
 
   checkFaveButton: function (e) {
-    var $container = this.$el.find('div.user-photo-buttons')
-    var $button = $container.find('button.pending-picture');
+    var $container = this.$el.find('div.user-photo-buttons');
+    var $button = $container.find('button.pending-picture, button.favorite-picture, button.un-favorite-picture');
     $button.remove();
     if (Sparklr.currentFavoritePhotos && Sparklr.currentFavoritePhotos.photos().get(this.photo.id)) {
-      $container.append('<button class="un-favorite-picture">Unfave?</button>')
+      $container.append('<button class="un-favorite-picture">Unfave?</button>');
     } else {
-      $container.append('<button class="favorite-picture">Fave?</button>')
+      $container.append('<button class="favorite-picture">Fave?</button>');
     }
   },
 });
